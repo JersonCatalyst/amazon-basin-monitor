@@ -1,0 +1,50 @@
+# Subir este archivo al repo en la ruta exacta: .github/workflows/publish.yml
+#
+# Que hace: cada dia (y tambien cuando lo corras manualmente desde la pestana
+# "Actions"), descarga los datos mas recientes y los publica en el repo, lo
+# que dispara automaticamente una reconstruccion de GitHub Pages.
+
+name: Actualizar datos del monitor
+
+on:
+  schedule:
+    # Formato: minuto hora dia-mes mes dia-semana, en UTC (NO en hora de Bogota).
+    # Este ejemplo corre a las 11:00 UTC = 06:00 America/Bogota.
+    # Ajustar segun a que hora local quieras que corra (ideal: un poco despues
+    # de que normalmente termine la tarea diaria de Cowork).
+    - cron: "0 11 * * *"
+  workflow_dispatch: {}  # permite darle "Run workflow" manualmente desde GitHub
+
+permissions:
+  contents: write  # necesario para que el workflow pueda hacer commit y push
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Actualizar events.json, meta.json y firms_hotspots.json
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+          SHAREPOINT_EVENTS_URL: ${{ secrets.SHAREPOINT_EVENTS_URL }}
+          SHAREPOINT_META_URL: ${{ secrets.SHAREPOINT_META_URL }}
+        run: python scripts/fetch_and_publish.py
+
+      - name: Hacer commit y push solo si algo cambio
+        run: |
+          git config user.name "amazon-basin-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add events.json meta.json firms_hotspots.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios que publicar hoy."
+          else
+            git commit -m "Actualizacion automatica de datos ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi

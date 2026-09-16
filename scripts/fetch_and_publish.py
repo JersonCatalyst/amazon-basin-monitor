@@ -30,10 +30,30 @@ import http.cookiejar
 import io
 import json
 import os
+import socket
 import sys
 import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
+
+# Algunos runners de GitHub Actions no tienen ruta de red IPv6 utilizable hacia
+# ciertos hosts externos (por ejemplo la NASA), aunque el host sí resuelva una
+# direccion IPv6 por DNS. Eso produce "Network is unreachable" incluso cuando
+# IPv4 funciona perfectamente. Forzamos aqui que TODAS las conexiones salientes
+# de este script usen solo IPv4, para no depender de que el runner tenga IPv6.
+_original_getaddrinfo = socket.getaddrinfo
+
+
+def _ipv4_only_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    results = _original_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+    if results:
+        return results
+    # si por lo que sea no hay resultados IPv4, no lo escondemos: se deja que
+    # falle con el error real en vez de devolver una lista vacia silenciosa.
+    return _original_getaddrinfo(host, port, family, type, proto, flags)
+
+
+socket.getaddrinfo = _ipv4_only_getaddrinfo
 
 # --- Configuracion (ver seccion 9 de las instrucciones originales del proyecto) ---
 AREA_COORDINATES = "-79,-21,-40,11"  # min_lon,min_lat,max_lon,max_lat (Pan-Amazonia)

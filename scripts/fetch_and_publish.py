@@ -26,6 +26,7 @@ y no filtrar datos por accidente.
 """
 
 import csv
+import http.cookiejar
 import io
 import json
 import os
@@ -164,10 +165,40 @@ def update_firms():
     print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de 90 dias")
 
 
+BROWSER_HEADERS = {
+    # SharePoint (y la capa de proteccion contra bots delante de Office 365) suele
+    # rechazar con 403 cualquier peticion que no "parezca" un navegador real, y
+    # los enlaces de "cualquiera con el enlace" a veces pasan por 1-2 redirecciones
+    # que fijan una cookie de sesion antes de servir el archivo. Por eso usamos un
+    # User-Agent de navegador real y un opener con manejo de cookies, en vez de una
+    # peticion urllib "desnuda".
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json,text/plain,*/*",
+    "Accept-Language": "es-CO,es;q=0.9,en;q=0.8",
+}
+
+_cookie_jar = http.cookiejar.CookieJar()
+_opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_cookie_jar))
+
+
 def download_file(url: str, dest_path: str):
-    req = urllib.request.Request(url, headers={"User-Agent": "amazon-basin-monitor/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        data = resp.read()
+    req = urllib.request.Request(url, headers=BROWSER_HEADERS)
+    try:
+        with _opener.open(req, timeout=60) as resp:
+            data = resp.read()
+    except urllib.error.HTTPError as e:
+        # Muestra un fragmento del cuerpo de la respuesta de error (sin exponer la
+        # URL completa, que contiene el token de enlace compartido) para poder
+        # diagnosticar si el bloqueo viene de SharePoint, de un WAF, etc.
+        snippet = ""
+        try:
+            snippet = e.read(300).decode("utf-8", errors="replace")
+        except Exception:
+            pass
+        raise urllib.error.URLError(f"HTTP {e.code}: {e.reason} | cuerpo: {snippet!r}") from e
     with open(dest_path, "wb") as f:
         f.write(data)
 

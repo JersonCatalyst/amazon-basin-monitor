@@ -6,7 +6,7 @@ Corre DENTRO de GitHub Actions (no en Cowork/Claude). Este script es el unico
 punto del sistema que escribe en el repositorio de GitHub, y por eso nunca
 pasa por la restriccion de acceso a la API de GitHub desde Cowork.
 
-Hace dos cosas, cada una independiente (si una falla, la otra igual se intenta):
+Hace tres cosas, cada una independiente (si una falla, las otras igual se intentan):
 
   1) FIRMS: llama directamente a la API de NASA FIRMS, agrega/recorta la
      ventana movil de RETENTION_DAYS dias, y actualiza firms_hotspots.json.
@@ -20,10 +20,22 @@ Hace dos cosas, cada una independiente (si una falla, la otra igual se intenta):
      "cualquiera con el enlace puede ver" que se configuraron en SharePoint,
      y los deja listos para el commit.
 
+  3) SST/ENSO: calcula la anomalia de temperatura superficial del mar del
+     Pacifico ecuatorial (NOAA OISST via Google Earth Engine) contra una
+     climatologia 1991-2020 PRECALCULADA (ver scripts/setup_enso_sst_climatology.py,
+     que se corre una sola vez, no aqui), y publica sst_layer.json con la URL
+     del tile para que index.html la dibuje como capa raster. Esta capa nunca
+     toca SharePoint -- se calcula y se publica enteramente por este script.
+
 Variables de entorno requeridas (se configuran como GitHub Actions secrets):
-  FIRMS_MAP_KEY           -> la MAP_KEY privada de FIRMS
-  SHAREPOINT_EVENTS_URL   -> enlace de descarga directa de events.json
-  SHAREPOINT_META_URL     -> enlace de descarga directa de meta.json
+  FIRMS_MAP_KEY              -> la MAP_KEY privada de FIRMS
+  SHAREPOINT_EVENTS_URL      -> enlace de descarga directa de events.json
+  SHAREPOINT_META_URL        -> enlace de descarga directa de meta.json
+  GEE_SERVICE_ACCOUNT_EMAIL  -> email de la cuenta de servicio de Earth Engine
+  GEE_SERVICE_ACCOUNT_KEY    -> contenido JSON de la clave privada de esa cuenta
+  GEE_PROJECT_ID             -> opcional, por defecto "ee-jersoncatalyst"
+  GEE_CLIMATOLOGY_ASSET_ID   -> opcional, ID del Earth Engine Asset con la
+                                climatologia ya precalculada
 
 No imprime nunca el contenido completo de estos archivos en los logs -
 solo conteos y mensajes de error, para mantener los logs de Actions livianos
@@ -40,6 +52,11 @@ import sys
 import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
+
+try:
+    import ee  # earthengine-api -- ver GEE_* mas abajo; opcional hasta que se instale
+except ImportError:
+    ee = None
 
 # Algunos runners de GitHub Actions no tienen ruta de red IPv6 utilizable hacia
 # ciertos hosts externos (por ejemplo la NASA), aunque el host sí resuelva una
@@ -72,6 +89,28 @@ REPO_ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 FIRMS_JSON_PATH = os.path.join(REPO_ROOT, "firms_hotspots.json")
 EVENTS_JSON_PATH = os.path.join(REPO_ROOT, "events.json")
 META_JSON_PATH = os.path.join(REPO_ROOT, "meta.json")
+SST_LAYER_JSON_PATH = os.path.join(REPO_ROOT, "sst_layer.json")
+
+# Cobertura de la capa SST/ENSO: Pacifico ecuatorial desde el antimeridiano
+# hasta la costa de Sudamerica (min_lon, min_lat, max_lon, max_lat). Cubre
+# completas las regiones Nino 1+2, 3 y 3.4, y la mitad oriental de Nino 4
+# (ver ENSO_REGIONS en index.html para el detalle de cada caja de referencia;
+# la mitad occidental de Nino 4, 160E-180E, se deja fuera para no tener que
+# manejar el cruce del antimeridiano en la geometria).
+SST_ROI_BOUNDS = [-180, -15, -70, 15]
+SST_VIS_PARAMS = {
+    "min": -3.0,
+    "max": 3.0,
+    "palette": ["0000ff", "4db8ff", "ffffff", "ffb84d", "ff0000", "800000"],
+}
+# ID del Earth Engine Asset con la climatologia diaria 1991-2020 YA
+# PRECALCULADA -- se genera una sola vez con scripts/setup_enso_sst_climatology.py,
+# nunca aqui, para no recalcular a diario un promedio de 30 anos que no cambia
+# (eso gastaria cuota de Earth Engine sin necesidad).
+GEE_CLIMATOLOGY_ASSET_ID = os.environ.get(
+    "GEE_CLIMATOLOGY_ASSET_ID",
+    "projects/ee-jersoncatalyst/assets/enso_sst_climatology_1991_2020",
+)
 
 
 def satellite_name(source: str) -> str:
@@ -251,9 +290,66 @@ def sync_from_sharepoint():
         print(f"SHAREPOINT SYNC: BLOQUEADO - {e}")
 
 
+def _gee_initialize():
+    email = os.environ.get("GEE_SERVICE_ACCOUNT_EMAIL", "")
+    key_data = os.environ.get("GEE_SERVICE_ACCOUNT_KEY", "")
+    project_id = os.environ.get("GEE_PROJECT_ID", "ee-jersoncatalyst")
+    if not email or not key_data:
+        raise RuntimeError("faltan GEE_SERVICE_ACCOUNT_EMAIL y/o GEE_SERVICE_ACCOUNT_KEY")
+    credentials = ee.ServiceAccountCredentials(email, key_data=key_data)
+    ee.Initialize(credentials, project=project_id)
+
+
+def update_sst_layer():
+    """Capa ENSO (anomalia de temperatura superficial del mar). Se calcula
+    directamente contra Google Earth Engine -- nunca pasa por SharePoint.
+
+    Si algo falla (falta earthengine-api, faltan credenciales, la API no
+    responde, no existe todavia el Asset de climatologia), se deja
+    sst_layer.json tal como estaba de la corrida anterior: nunca se inventa
+    un tile ni se borra el ultimo que si funciono.
+    """
+    if ee is None:
+        print("SST/ENSO: BLOQUEADO - falta instalar el paquete earthengine-api")
+        return
+
+    try:
+        _gee_initialize()
+
+        climatology = ee.Image(GEE_CLIMATOLOGY_ASSET_ID)
+        sst_col = ee.ImageCollection("NOAA/CDR/OISST/V2_1").select("sst")
+        latest = sst_col.sort("system:time_start", False).first()
+        latest_date = latest.date()
+        doy = latest_date.getRelative("day", "year").add(1).min(365)
+        doy_band = ee.String("doy_").cat(ee.Number(doy).format("%03d"))
+
+        roi = ee.Geometry.BBox(*SST_ROI_BOUNDS)
+        current_sst = latest.multiply(0.01)
+        hist_sst = climatology.select(doy_band)
+        anomaly = current_sst.subtract(hist_sst).rename("sst_anomaly").clip(roi)
+
+        map_id = anomaly.getMapId(SST_VIS_PARAMS)
+        tile_url = map_id["tile_fetcher"].url_format
+        image_date = latest_date.format("YYYY-MM-dd").getInfo()
+
+        payload = {
+            "tileUrl": tile_url,
+            "date": image_date,
+            "vis": SST_VIS_PARAMS,
+            "bounds": SST_ROI_BOUNDS,
+        }
+        with open(SST_LAYER_JSON_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
+
+        print(f"SST/ENSO: capa actualizada (imagen del {image_date})")
+    except Exception as e:
+        print(f"SST/ENSO: BLOQUEADO - {e}")
+
+
 def main():
     update_firms()
     sync_from_sharepoint()
+    update_sst_layer()
 
 
 if __name__ == "__main__":

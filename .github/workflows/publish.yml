@@ -10,9 +10,9 @@ on:
   schedule:
     # Formato: minuto hora dia-mes mes dia-semana, en UTC (NO en hora de Bogota).
     # Bogota es UTC-5 todo el ano (no tiene horario de verano), asi que
-    # 09:00 America/Bogota = 14:00 UTC.
-    # Se corre 1 hora despues de la tarea diaria de Cowork (recomendada a las
-    # 08:00 America/Bogota) para dejarle margen suficiente a terminar de
+    # 10:00 America/Bogota = 15:00 UTC.
+    # Se corre 1 hora despues de la tarea diaria de Cowork (configurada a las
+    # 09:00 America/Bogota) para dejarle margen suficiente a terminar de
     # subir events.json/meta.json actualizados a SharePoint antes de que este
     # workflow los descargue - si el margen es muy corto, este workflow puede
     # descargar silenciosamente la version de ayer sin que se vea como error.
@@ -34,11 +34,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Actualizar events.json, meta.json y firms_hotspots.json
+      - name: Instalar dependencias (Earth Engine, para la capa SST/ENSO)
+        run: pip install earthengine-api
+
+      - name: Actualizar events.json, meta.json, firms_hotspots.json y sst_layer.json
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
           SHAREPOINT_EVENTS_URL: ${{ secrets.SHAREPOINT_EVENTS_URL }}
           SHAREPOINT_META_URL: ${{ secrets.SHAREPOINT_META_URL }}
+          GEE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GEE_SERVICE_ACCOUNT_EMAIL }}
+          GEE_SERVICE_ACCOUNT_KEY: ${{ secrets.GEE_SERVICE_ACCOUNT_KEY }}
         run: python scripts/fetch_and_publish.py
 
       - name: Hacer commit y push solo si algo cambio
@@ -46,6 +51,13 @@ jobs:
           git config user.name "amazon-basin-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
           git add events.json meta.json firms_hotspots.json
+          # sst_layer.json es opcional: todavia no existe hasta que se complete
+          # la integracion con Earth Engine (ver setup_enso_sst_climatology.py
+          # y los secrets GEE_*). "git add" con -e activo tumbaria el paso
+          # entero si el archivo no existe, por eso se agrega solo si esta.
+          if [ -f sst_layer.json ]; then
+            git add sst_layer.json
+          fi
           if git diff --cached --quiet; then
             echo "Sin cambios que publicar hoy."
           else

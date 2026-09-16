@@ -16,7 +16,7 @@ on:
     # subir events.json/meta.json actualizados a SharePoint antes de que este
     # workflow los descargue - si el margen es muy corto, este workflow puede
     # descargar silenciosamente la version de ayer sin que se vea como error.
-    - cron: "0 14 * * *"
+    - cron: "0 15 * * *"
   workflow_dispatch: {}  # permite darle "Run workflow" manualmente desde GitHub
 
 permissions:

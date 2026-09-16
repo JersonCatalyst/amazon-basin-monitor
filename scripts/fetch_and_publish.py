@@ -9,7 +9,12 @@ pasa por la restriccion de acceso a la API de GitHub desde Cowork.
 Hace dos cosas, cada una independiente (si una falla, la otra igual se intenta):
 
   1) FIRMS: llama directamente a la API de NASA FIRMS, agrega/recorta la
-     ventana movil de 90 dias, y actualiza firms_hotspots.json.
+     ventana movil de RETENTION_DAYS dias, y actualiza firms_hotspots.json.
+     Esta ventana es solo para lo que se muestra en el mapa publico (lo
+     operacionalmente accionable); el historico completo de focos de calor
+     ya lo mantiene la propia NASA en su herramienta de descarga
+     (https://firms.modaps.eosdis.nasa.gov/download/), asi que este script
+     no intenta duplicar ese archivo.
 
   2) SHAREPOINT SYNC: descarga events.json y meta.json desde los enlaces
      "cualquiera con el enlace puede ver" que se configuraron en SharePoint,
@@ -59,7 +64,7 @@ socket.getaddrinfo = _ipv4_only_getaddrinfo
 AREA_COORDINATES = "-79,-21,-40,11"  # min_lon,min_lat,max_lon,max_lat (Pan-Amazonia)
 SOURCES = ["VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT"]
 DAY_RANGE = 1
-RETENTION_DAYS = 90
+RETENTION_DAYS = 7  # ventana del mapa publico; el historico completo vive en NASA FIRMS
 GRID_SIZE_DEG = 0.25
 GRID_AGGREGATION_TRIGGER = 1500  # solo agrega si un solo dia supera este umbral
 
@@ -182,7 +187,7 @@ def update_firms():
     with open(FIRMS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(combined, f, ensure_ascii=False, separators=(",", ":"))
 
-    print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de 90 dias")
+    print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de {RETENTION_DAYS} dias")
 
 
 BROWSER_HEADERS = {

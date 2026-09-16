@@ -12,7 +12,7 @@ on:
     # Este ejemplo corre a las 11:00 UTC = 06:00 America/Bogota.
     # Ajustar segun a que hora local quieras que corra (ideal: un poco despues
     # de que normalmente termine la tarea diaria de Cowork).
-    - cron: "0 11 * * *"
+    - cron: "0 12 * * *"
   workflow_dispatch: {}  # permite darle "Run workflow" manualmente desde GitHub
 
 permissions:

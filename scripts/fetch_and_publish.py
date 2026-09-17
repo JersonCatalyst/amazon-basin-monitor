@@ -14,7 +14,11 @@ Hace tres cosas, cada una independiente (si una falla, las otras igual se intent
      operacionalmente accionable); el historico completo de focos de calor
      ya lo mantiene la propia NASA en su herramienta de descarga
      (https://firms.modaps.eosdis.nasa.gov/download/), asi que este script
-     no intenta duplicar ese archivo.
+     no intenta duplicar ese archivo. Los puntos se recortan ademas a la
+     forma real de la cuenca (amazon_basin.geojson, capa oficial
+     Panamazonia) via load_basin_polygon()/filter_to_basin(): el rectangulo
+     AREA_COORDINATES solo se usa para la llamada a la API de FIRMS (que
+     exige un rectangulo), nunca como filtro final.
 
   2) SHAREPOINT SYNC: descarga events.json y meta.json desde los enlaces
      "cualquiera con el enlace puede ver" que se configuraron en SharePoint,
@@ -58,6 +62,18 @@ try:
 except ImportError:
     ee = None
 
+try:
+    # shapely -- para recortar los puntos FIRMS a la forma real de la cuenca
+    # amazonica (amazon_basin.geojson) en vez de solo al rectangulo
+    # AREA_COORDINATES. Opcional: si no esta instalado, se usa solo el
+    # rectangulo, igual que antes.
+    from shapely.geometry import Point, shape
+    from shapely.ops import unary_union
+except ImportError:
+    Point = None
+    shape = None
+    unary_union = None
+
 # Algunos runners de GitHub Actions no tienen ruta de red IPv6 utilizable hacia
 # ciertos hosts externos (por ejemplo la NASA), aunque el host sí resuelva una
 # direccion IPv6 por DNS. Eso produce "Network is unreachable" incluso cuando
@@ -79,6 +95,12 @@ socket.getaddrinfo = _ipv4_only_getaddrinfo
 
 # --- Configuracion (ver seccion 9 de las instrucciones originales del proyecto) ---
 AREA_COORDINATES = "-79,-21,-40,11"  # min_lon,min_lat,max_lon,max_lat (Pan-Amazonia)
+# AREA_COORDINATES es solo el rectangulo que se le pasa a la API de FIRMS
+# (FIRMS exige un rectangulo, no acepta poligonos). La forma real de la
+# cuenca -- la "zona de verdad" del proyecto -- vive en amazon_basin.geojson
+# (capa oficial Panamazonia, incluye el estuario) y se usa mas abajo para
+# recortar cualquier punto que caiga dentro del rectangulo pero fuera de la
+# cuenca real. Ver AMAZON_BASIN_GEOJSON_PATH y load_basin_polygon().
 SOURCES = ["VIIRS_NOAA20_NRT", "VIIRS_NOAA21_NRT"]
 DAY_RANGE = 1
 RETENTION_DAYS = 7  # ventana del mapa publico; el historico completo vive en NASA FIRMS
@@ -90,6 +112,7 @@ FIRMS_JSON_PATH = os.path.join(REPO_ROOT, "firms_hotspots.json")
 EVENTS_JSON_PATH = os.path.join(REPO_ROOT, "events.json")
 META_JSON_PATH = os.path.join(REPO_ROOT, "meta.json")
 SST_LAYER_JSON_PATH = os.path.join(REPO_ROOT, "sst_layer.json")
+AMAZON_BASIN_GEOJSON_PATH = os.path.join(REPO_ROOT, "amazon_basin.geojson")
 
 # Cobertura de la capa SST/ENSO: Pacifico ecuatorial desde el antimeridiano
 # hasta la costa de Sudamerica (min_lon, min_lat, max_lon, max_lat). Cubre
@@ -204,6 +227,60 @@ def dedupe(points):
     return unique
 
 
+_basin_geometry_cache = {"loaded": False, "geometry": None}
+
+
+def load_basin_polygon():
+    """Carga la forma real de la cuenca amazonica (amazon_basin.geojson) como
+    geometria de shapely, para recortar puntos que caigan dentro del
+    rectangulo AREA_COORDINATES pero fuera de la cuenca real (por ejemplo, el
+    Caribe, los Andes o el Pacifico, que entran en el rectangulo pero no en
+    la cuenca).
+
+    Si shapely no esta instalado o el archivo no existe/esta corrupto, se
+    devuelve None y quien llame sigue usando solo el rectangulo -- igual que
+    antes de este cambio. Nunca se bloquea FIRMS por esto; se hace lo mismo
+    que con SharePoint y Earth Engine: si algo opcional falla, se avisa y se
+    sigue con lo que si funciona.
+    """
+    if _basin_geometry_cache["loaded"]:
+        return _basin_geometry_cache["geometry"]
+    _basin_geometry_cache["loaded"] = True
+
+    if shape is None:
+        print("FIRMS: shapely no esta instalado - se usa solo el rectangulo AREA_COORDINATES, sin recorte a la forma real de la cuenca")
+        return None
+    if not os.path.exists(AMAZON_BASIN_GEOJSON_PATH):
+        print("FIRMS: no se encontro amazon_basin.geojson - se usa solo el rectangulo AREA_COORDINATES, sin recorte a la forma real de la cuenca")
+        return None
+
+    try:
+        with open(AMAZON_BASIN_GEOJSON_PATH, "r", encoding="utf-8") as f:
+            geojson_data = json.load(f)
+        geometries = [shape(feat["geometry"]) for feat in geojson_data["features"]]
+        geometry = geometries[0] if len(geometries) == 1 else unary_union(geometries)
+        _basin_geometry_cache["geometry"] = geometry
+        return geometry
+    except Exception as e:
+        print(f"FIRMS: no se pudo leer amazon_basin.geojson ({e}) - se usa solo el rectangulo AREA_COORDINATES")
+        return None
+
+
+def filter_to_basin(points):
+    """Descarta los puntos [lat, lon] que caigan fuera de la forma real de la
+    cuenca. Si no hay geometria cargada (shapely ausente o archivo faltante),
+    devuelve los puntos sin cambios -- el rectangulo AREA_COORDINATES sigue
+    siendo el unico filtro, tal como funcionaba antes."""
+    basin_geometry = load_basin_polygon()
+    if basin_geometry is None:
+        return points
+    kept = [p for p in points if basin_geometry.contains(Point(p["lon"], p["lat"]))]
+    removed = len(points) - len(kept)
+    if removed:
+        print(f"FIRMS: {removed} puntos descartados por caer fuera de la forma real de la cuenca (dentro del rectangulo, pero fuera del limite oficial)")
+    return kept
+
+
 def update_firms():
     map_key = os.environ.get("FIRMS_MAP_KEY", "")
     if not map_key:
@@ -222,11 +299,12 @@ def update_firms():
     new_points = aggregate_if_needed(new_points)
     existing = load_json_array(FIRMS_JSON_PATH)
     combined = dedupe(trim_to_window(existing + new_points))
+    combined = filter_to_basin(combined)
 
     with open(FIRMS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(combined, f, ensure_ascii=False, separators=(",", ":"))
 
-    print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de {RETENTION_DAYS} dias")
+    print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de {RETENTION_DAYS} dias (ya recortados a la forma real de la cuenca)")
 
 
 BROWSER_HEADERS = {

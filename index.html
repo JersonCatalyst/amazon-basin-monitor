@@ -155,7 +155,8 @@ const DICT = {
       <p style="margin:0 0 4px">Jerarquía de fuentes: Nivel 1 (GDACS, USGS, WMO, NASA, Copernicus, FAO, OCHA, ReliefWeb, servicios meteorológicos/geológicos nacionales) → Nivel 2 (WFP, IFRC, Cruz Roja) → Nivel 3 (medios acreditados) → Nivel 4 (redes sociales, solo como pista, nunca confirmación única).</p>
       <p style="margin:0 0 4px">Cada evento requiere verificación cruzada cuando es posible (idealmente fuente oficial + humanitaria, o fuente oficial + medio acreditado). Si solo hay una fuente confiable: <code>SINGLE_SOURCE</code>. Si las fuentes se contradicen: <code>CONFLICTING_INFORMATION</code>.</p>
       <p style="margin:0 0 4px">Los focos de calor satelitales (FIRMS) que se muestran en el mapa cubren los últimos 7 días; para el histórico completo, consulta la <a href="https://firms.modaps.eosdis.nasa.gov/download/" target="_blank" style="color:var(--3is-cyan)">herramienta de descarga histórica de NASA FIRMS ↗</a>.</p>
-      <p style="margin:0">Coordenadas en WGS84 (EPSG:4326). La cobertura geográfica se limita a Bolivia, Brasil, Colombia, Ecuador, Perú y Venezuela; un evento dentro de un país elegible no se incluye automáticamente si ocurre fuera de la cuenca amazónica.</p>
+      <p style="margin:0 0 4px">Coordenadas en WGS84 (EPSG:4326). La cobertura geográfica se limita a Bolivia, Brasil, Colombia, Ecuador, Perú y Venezuela; un evento dentro de un país elegible no se incluye automáticamente si ocurre fuera de la cuenca amazónica.</p>
+      <p style="margin:0">El límite oficial de la cuenca (capa de la Panamazonía, incluyendo el estuario) se usa como la única zona de verdad: los eventos y los focos de calor (FIRMS) con coordenadas fuera de ese límite se excluyen del mapa y del listado, aunque queden dentro del rectángulo geográfico de búsqueda. La capa ENSO/TSM (Pacífico) es un indicador predictivo externo y no se recorta a este límite.</p>
       <p style="margin:8px 0 0"><a href="https://gdacs.org/" target="_blank" style="color:var(--3is-cyan)">GDACS ↗</a> · <a href="https://reliefweb.int/" target="_blank" style="color:var(--3is-cyan)">ReliefWeb ↗</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS ↗</a> · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS ↗</a></p>
       <p style="margin:12px 0 0;padding-top:10px;border-top:1px solid #ffffff88"><b style="color:var(--3is-navy)">Alcance del proyecto</b></p>
       <p style="margin:4px 0 0">Este monitor apoya "Strengthening Response Capacity in the Amazon Basin", financiado por la Comisión Europea (DG ECHO), implementado del 01/06/2026 al 31/05/2028 por un consorcio liderado por Diakonie Katastrophenhilfe (DKH) junto con World Vision, 3iS y PREDES. Cobertura: Bolivia, Brasil, Colombia, Ecuador, Perú y Venezuela.</p>
@@ -181,7 +182,8 @@ const DICT = {
       <p style="margin:0 0 4px">Hierarquia de fontes: Nível 1 (GDACS, USGS, WMO, NASA, Copernicus, FAO, OCHA, ReliefWeb, serviços meteorológicos/geológicos nacionais) → Nível 2 (WFP, IFRC, Cruz Vermelha) → Nível 3 (mídia credenciada) → Nível 4 (redes sociais, apenas como pista, nunca confirmação única).</p>
       <p style="margin:0 0 4px">Cada evento exige verificação cruzada quando possível (idealmente fonte oficial + humanitária, ou fonte oficial + mídia credenciada). Se houver apenas uma fonte confiável: <code>SINGLE_SOURCE</code>. Se as fontes se contradizem: <code>CONFLICTING_INFORMATION</code>.</p>
       <p style="margin:0 0 4px">Os focos de calor por satélite (FIRMS) exibidos no mapa cobrem os últimos 7 dias; para o histórico completo, consulte a <a href="https://firms.modaps.eosdis.nasa.gov/download/" target="_blank" style="color:var(--3is-cyan)">ferramenta de download histórico da NASA FIRMS ↗</a>.</p>
-      <p style="margin:0">Coordenadas em WGS84 (EPSG:4326). A cobertura geográfica se limita à Bolívia, Brasil, Colômbia, Equador, Peru e Venezuela; um evento dentro de um país elegível não é incluído automaticamente se ocorrer fora da bacia amazônica.</p>
+      <p style="margin:0 0 4px">Coordenadas em WGS84 (EPSG:4326). A cobertura geográfica se limita à Bolívia, Brasil, Colômbia, Equador, Peru e Venezuela; um evento dentro de um país elegível não é incluído automaticamente se ocorrer fora da bacia amazônica.</p>
+      <p style="margin:0">O limite oficial da bacia (camada da Panamazônia, incluindo o estuário) é usado como a única zona de verdade: eventos e focos de calor (FIRMS) com coordenadas fora desse limite são excluídos do mapa e da lista, mesmo que fiquem dentro do retângulo geográfico de busca. A camada ENSO/TSM (Pacífico) é um indicador preditivo externo e não é recortada por esse limite.</p>
       <p style="margin:8px 0 0"><a href="https://gdacs.org/" target="_blank" style="color:var(--3is-cyan)">GDACS ↗</a> · <a href="https://reliefweb.int/" target="_blank" style="color:var(--3is-cyan)">ReliefWeb ↗</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS ↗</a> · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS ↗</a></p>
       <p style="margin:12px 0 0;padding-top:10px;border-top:1px solid #ffffff88"><b style="color:var(--3is-navy)">Alcance do projeto</b></p>
       <p style="margin:4px 0 0">Este monitor apoia o "Strengthening Response Capacity in the Amazon Basin", financiado pela Comissão Europeia (DG ECHO), implementado de 01/06/2026 a 31/05/2028 por um consórcio liderado pela Diakonie Katastrophenhilfe (DKH), junto com World Vision, 3iS e PREDES. Cobertura: Bolívia, Brasil, Colômbia, Equador, Peru e Venezuela.</p>
@@ -207,7 +209,8 @@ const DICT = {
       <p style="margin:0 0 4px">Source hierarchy: Tier 1 (GDACS, USGS, WMO, NASA, Copernicus, FAO, OCHA, ReliefWeb, national meteorological/geological services) → Tier 2 (WFP, IFRC, Red Cross) → Tier 3 (credible media) → Tier 4 (social media, lead only, never sole confirmation).</p>
       <p style="margin:0 0 4px">Every event requires cross-checking when possible (ideally official + humanitarian source, or official + credible media). If only one reliable source exists: <code>SINGLE_SOURCE</code>. If sources conflict: <code>CONFLICTING_INFORMATION</code>.</p>
       <p style="margin:0 0 4px">The satellite heat spots (FIRMS) shown on the map cover the last 7 days; for the full historical record, see the <a href="https://firms.modaps.eosdis.nasa.gov/download/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS Archive Download Tool ↗</a>.</p>
-      <p style="margin:0">Coordinates in WGS84 (EPSG:4326). Geographic coverage is limited to Bolivia, Brazil, Colombia, Ecuador, Peru, and Venezuela; an event in an eligible country is not automatically included if it occurs outside the Amazon Basin.</p>
+      <p style="margin:0 0 4px">Coordinates in WGS84 (EPSG:4326). Geographic coverage is limited to Bolivia, Brazil, Colombia, Ecuador, Peru, and Venezuela; an event in an eligible country is not automatically included if it occurs outside the Amazon Basin.</p>
+      <p style="margin:0">The official basin boundary (the Pan-Amazon layer, including the estuary) is used as the single source of truth: events and heat spots (FIRMS) with coordinates outside that boundary are excluded from the map and the list, even if they fall inside the geographic search rectangle. The ENSO/SST layer (Pacific) is an external predictive indicator and is not clipped to this boundary.</p>
       <p style="margin:8px 0 0"><a href="https://gdacs.org/" target="_blank" style="color:var(--3is-cyan)">GDACS ↗</a> · <a href="https://reliefweb.int/" target="_blank" style="color:var(--3is-cyan)">ReliefWeb ↗</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS ↗</a> · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS ↗</a></p>
       <p style="margin:12px 0 0;padding-top:10px;border-top:1px solid #ffffff88"><b style="color:var(--3is-navy)">Project scope</b></p>
       <p style="margin:4px 0 0">This monitor supports "Strengthening Response Capacity in the Amazon Basin," funded by the European Commission (DG ECHO), implemented from 01/06/2026 to 31/05/2028 by a consortium led by Diakonie Katastrophenhilfe (DKH) together with World Vision, 3iS, and PREDES. Coverage: Bolivia, Brazil, Colombia, Ecuador, Peru, and Venezuela.</p>
@@ -219,6 +222,46 @@ let LAST_UPDATED = "";
 let EVENTS = [];
 let FIRMS_HOTSPOTS = [];
 let SST_LAYER = null; // { tileUrl, date, vis:{min,max,palette} } o null si aun no existe sst_layer.json
+let AMAZON_BASIN_GEOJSON = null; // poligono real de la cuenca (amazon_basin.geojson), null si no cargo
+
+// Ray-casting simple sobre un GeoJSON Polygon/MultiPolygon (con huecos) para
+// saber si un punto [lat,lon] cae dentro. No depende de ninguna libreria
+// externa (Turf, etc.) -- el sitio ya evita sumar dependencias de JS.
+function pointInRing(lat, lon, ring){
+  var inside = false;
+  for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    var xi = ring[i][0], yi = ring[i][1];
+    var xj = ring[j][0], yj = ring[j][1];
+    var intersect = ((yi > lat) !== (yj > lat)) &&
+      (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+function pointInPolygonCoords(lat, lon, polygonCoords){
+  // polygonCoords: [ [ [lon,lat], ... ] (anillo exterior), [ ... ] (huecos), ... ]
+  if (!polygonCoords.length || !pointInRing(lat, lon, polygonCoords[0])) return false;
+  for (var h = 1; h < polygonCoords.length; h++) {
+    if (pointInRing(lat, lon, polygonCoords[h])) return false; // cae en un hueco
+  }
+  return true;
+}
+function pointInBasin(lat, lon){
+  if (!AMAZON_BASIN_GEOJSON) return true; // sin poligono cargado, no se filtra nada
+  var feats = AMAZON_BASIN_GEOJSON.features || [];
+  for (var f = 0; f < feats.length; f++) {
+    var geom = feats[f].geometry;
+    if (!geom) continue;
+    if (geom.type === 'Polygon') {
+      if (pointInPolygonCoords(lat, lon, geom.coordinates)) return true;
+    } else if (geom.type === 'MultiPolygon') {
+      for (var p = 0; p < geom.coordinates.length; p++) {
+        if (pointInPolygonCoords(lat, lon, geom.coordinates[p])) return true;
+      }
+    }
+  }
+  return false;
+}
 
 // Regiones de referencia ENSO (limites estandar NOAA CPC). Niño 4 cruza el
 // antimeridiano (160E-150W); aqui se representa solo su mitad oriental
@@ -248,7 +291,7 @@ const ICON_PATHS = {
 const HAZARD_ORDER = ["WILDFIRE","FLOOD","FLASH_FLOOD","EXTREME_RAIN","DROUGHT","LANDSLIDE","EARTHQUAKE","EXTREME_HEAT","SEVERE_STORM","DEFORESTATION"];
 
 const PRIORITY_COLOR = { RED:"#E24B4A", ORANGE:"#EF9F27", GREEN:"#639922" };
-const FIRMS_COLOR = { high:"#E24B4A", nominal:"#EF9F27", low:"#F4B942" };
+const FIRMS_COLOR = { high:"#5B21B6", nominal:"#8B5CF6", low:"#C4B5FD" };
 
 const DEFAULT_MAP_CENTER = [-6, -66];
 const DEFAULT_MAP_ZOOM = 4;
@@ -310,6 +353,16 @@ function getFiltered(){
     if (activeCountry && e.country !== activeCountry) return false;
     if (activeHazard && e.hazard !== activeHazard) return false;
     if (!inDateRange(e)) return false;
+    // Filtro defensivo del lado del cliente: si el evento SI tiene coordenadas
+    // y el poligono real de la cuenca ya cargo, se oculta cualquier evento que
+    // caiga fuera de la forma real (amazon_basin.geojson), aunque haya pasado
+    // el filtro de pais/rectangulo en el origen de datos. Un evento sin
+    // coordenadas (lat/lon NULL, pendiente de verificacion geografica) nunca
+    // se descarta por esto -- no hay como probarlo, y ya se marca aparte con
+    // su propio estado de verificacion.
+    if (typeof e.lat === 'number' && typeof e.lon === 'number' && !isNaN(e.lat) && !isNaN(e.lon)) {
+      if (!pointInBasin(e.lat, e.lon)) return false;
+    }
     return true;
   });
 }
@@ -451,9 +504,16 @@ function renderFirmsMarkers(){
   if (!firmsLayer) return;
   firmsLayer.clearLayers();
   (typeof FIRMS_HOTSPOTS !== 'undefined' ? FIRMS_HOTSPOTS : []).forEach(function(p){
+    // Filtro defensivo del lado del cliente: si ya tenemos el poligono real
+    // de la cuenca cargado, se descartan aqui los puntos que hayan quedado
+    // dentro del rectangulo de busqueda de FIRMS pero fuera de la cuenca real
+    // (el filtro principal ya corre en fetch_and_publish.py -- esto es solo
+    // para que un firms_hotspots.json viejo, generado antes de ese cambio,
+    // tambien se vea correcto sin esperar a la proxima corrida diaria).
+    if (AMAZON_BASIN_GEOJSON && !pointInBasin(p.lat, p.lon)) return;
     var color = FIRMS_COLOR[p.confidence] || FIRMS_COLOR.nominal;
     var m = L.circleMarker([p.lat, p.lon], {
-      radius: 3.5, color: color, weight: 1, fillColor: color, fillOpacity: 0.75
+      radius: 2.2, color: color, weight: 1, fillColor: color, fillOpacity: 0.8
     });
     m.bindPopup('<div style="font-size:12px"><b>'+t('layerFirms')+'</b><br>'+p.satellite+' · '+p.date+' · '+p.confidence+'</div>');
     m.addTo(firmsLayer);
@@ -647,7 +707,11 @@ document.addEventListener('DOMContentLoaded', function(){
     // sst_layer.json es opcional -- todavia no existe hasta que se conecte
     // Earth Engine del lado de GitHub Actions. Se resuelve a null en vez de
     // rechazar, para que su ausencia nunca tumbe la carga de events/FIRMS/meta.
-    fetch('./sst_layer.json').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+    fetch('./sst_layer.json').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+    // amazon_basin.geojson es el poligono real de la cuenca (Eva & Huber 2005,
+    // sensu latissimo) -- tambien opcional/tolerante, para que su ausencia
+    // nunca tumbe la carga del resto de los datos.
+    fetch('./amazon_basin.geojson').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
   ]).then(function(results){
     // Normaliza el hazard a MAYUSCULAS_CON_GUION_BAJO para que siempre calce con
     // ICON_PATHS/HAZARD_ORDER, sin importar como venga escrito en events.json
@@ -661,6 +725,7 @@ document.addEventListener('DOMContentLoaded', function(){
     FIRMS_HOTSPOTS = results[1];
     LAST_UPDATED = (results[2] && results[2].lastUpdated) ? results[2].lastUpdated : '';
     SST_LAYER = results[3] || null;
+    AMAZON_BASIN_GEOJSON = results[4] || null;
     initDashboard();
   }).catch(function(err){
     console.error('Error cargando datos del monitor:', err);
@@ -668,6 +733,7 @@ document.addEventListener('DOMContentLoaded', function(){
     FIRMS_HOTSPOTS = [];
     LAST_UPDATED = '';
     SST_LAYER = null;
+    AMAZON_BASIN_GEOJSON = null;
     initDashboard();
   });
 });

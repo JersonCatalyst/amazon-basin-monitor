@@ -34,8 +34,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar dependencias (Earth Engine, para la capa SST/ENSO)
-        run: pip install earthengine-api
+      - name: Instalar dependencias (Earth Engine para SST/ENSO; shapely para recortar FIRMS a la forma real de la cuenca)
+        run: pip install earthengine-api shapely
 
       - name: Actualizar events.json, meta.json, firms_hotspots.json y sst_layer.json
         env:

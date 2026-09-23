@@ -47,11 +47,14 @@
   .tab-btn.active::before, .tab-btn.active::after { content:""; position:absolute; bottom:0; width:10px; height:10px; pointer-events:none; }
   .tab-btn.active::before { left:-10px; background:radial-gradient(circle at 0 0, transparent 9.5px, #fff 10px); }
   .tab-btn.active::after { right:-10px; background:radial-gradient(circle at 100% 0, transparent 9.5px, #fff 10px); }
-  #lang { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.55); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:500; cursor:pointer; }
+  /* Titulo, subtitulo e idioma arriba a la derecha, sin agrandar el banner */
+  #bannerTitle { position:absolute; top:-0.6rem; right:0; text-align:right; }
+  #lang { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.55); border-radius:999px; padding:2px 10px; font-size:12px; font-weight:500; cursor:pointer; }
   #lang option { color:#000; }
   /* Pantallas angostas: el titulo baja bajo el logo, asi que las pestanas necesitan su propio espacio */
   @media (max-width: 760px) {
     #banner { padding-bottom: 3.4rem !important; }
+    #bannerTitle { position: static; }
     .tabs-bar { left: 1.5rem; }
   }
   .brand-divider { height: 6px; background: linear-gradient(90deg, var(--3is-aqua) 0%, var(--3is-cyan) 55%, var(--3is-navy) 100%); }
@@ -97,16 +100,14 @@
 <path d="M313.913 96.9688C313.637 97.3207 313.352 97.6642 313.042 97.9826C311.475 99.5494 309.389 100.387 307.16 100.387C304.931 100.387 302.803 99.5494 301.236 97.9826C299.669 96.3823 298.798 94.2876 298.798 92.0589C298.798 89.8301 299.669 87.7438 301.236 86.1351C302.803 84.5683 304.931 83.7304 307.16 83.7304C309.389 83.7304 311.475 84.5683 313.042 86.1351C313.352 86.4451 313.637 86.7635 313.88 87.1071L311.475 88.8833C310.503 87.5595 308.936 86.6546 307.16 86.6546C304.202 86.6546 301.798 89.0928 301.798 92.0505C301.798 95.0082 304.202 97.4464 307.16 97.4464C308.936 97.4464 310.503 96.5415 311.475 95.1841L313.913 96.9604V96.9688Z" fill="white"/>
 <path d="M317.994 94.74V86.9394H315.623V84.0823H317.994V77.9156H320.985V84.0823H325.895V86.9394H320.985V94.673C320.985 95.9633 322.099 97.1782 323.356 97.1782H326.037L326.8 100.035H323.281C320.356 100.035 317.985 97.6977 317.985 94.74H317.994Z" fill="white"/>
 </svg>
-    <div style="display:flex;align-items:flex-end;gap:14px">
-      <select id="lang" aria-label="Idioma / Language">
+    <div id="bannerTitle">
+      <p style="font-weight:800;font-size:20px;line-height:1.15;margin:0;color:#fff" data-i18n="title"></p>
+      <p style="font-size:13px;line-height:1.2;font-weight:500;color:#D4F5EE;margin:2px 0 0" data-i18n="subtitle"></p>
+      <select id="lang" aria-label="Idioma / Language" style="margin-top:6px">
         <option value="es">Español</option>
         <option value="pt">Português</option>
         <option value="en">English</option>
       </select>
-      <div style="text-align:right">
-        <p style="font-weight:800;font-size:20px;margin:0;color:#fff" data-i18n="title"></p>
-        <p style="font-size:13px;font-weight:500;color:#D4F5EE;margin:2px 0 0" data-i18n="subtitle"></p>
-      </div>
     </div>
   </div>
   <!-- Pestanas tipo carpeta (estilo Chrome), apoyadas sobre el borde inferior del banner -->

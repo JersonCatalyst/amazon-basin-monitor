@@ -138,7 +138,7 @@
 const DICT = {
   es: { title:"Mapa de riesgos — Cuenca amazónica", subtitle:"Eventos activos por hazard y prioridad", mapNote:"Mapa base OpenStreetMap. Datos: base propia de eventos verificados (ver lista a la derecha).",
     total:"Eventos", red:"Alertas rojas", countries:"Países afectados",
-    all:"Todos", FLOOD:"Inundación", EXTREME_RAIN:"Lluvia extrema", DROUGHT:"Sequía", WILDFIRE:"Incendio forestal", EARTHQUAKE:"Sismo", LANDSLIDE:"Deslizamiento",
+    all:"Todos", FLOOD:"Inundación", EXTREME_RAIN:"Lluvia extrema", DROUGHT:"Sequía", WILDFIRE:"Incendio forestal", EARTHQUAKE:"Sismo", LANDSLIDE:"Deslizamiento", DEFORESTATION:"Deforestación", FLASH_FLOOD:"Inundación repentina", EXTREME_HEAT:"Calor extremo", SEVERE_STORM:"Tormenta severa",
     Brazil:"Brasil", Peru:"Perú", Colombia:"Colombia", Bolivia:"Bolivia", Ecuador:"Ecuador", Venezuela:"Venezuela",
     RED:"Rojo", ORANGE:"Naranja", GREEN:"Verde", updated:"Actualizado", source:"Fuente", readMore:"Leer más",
     legendShape:"Forma = tipo de peligro", legendColor:"Color = nivel de amenaza", methodology:"Metodología", info:"Info", borders:"Límites nacionales", alertsPanel:"Alertas",
@@ -146,7 +146,7 @@ const DICT = {
     layerNews:"Noticias", layerFirms:"Anomalías térmicas (focos de calor)",
     dataSourcesHTML:`Fuentes de datos: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animación de emisiones por incendio, herramienta externa)`,
     bordersNote:"Los datos geográficos, nombres y límites políticos y administrativos utilizados en este mapa no implican aceptación oficial por parte de 3iS.",
-    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)",
+    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)", firms24h:"Últimas 24 h de datos", firmsUpTo:"hasta", firmsRange:"Fechas seleccionadas", firmsNone:"Sin focos en esas fechas (el mapa guarda solo los últimos 7 días).", eventDateLbl:"Evento", updatedLbl:"Act.",
     sstNote:"Capa ENSO: anomalía de temperatura superficial del mar (NOAA OISST vía Google Earth Engine) en el Pacífico ecuatorial, con las regiones de referencia Niño 1+2, 3, 3.4 y 4. Es un indicador predictivo de sequías/inundaciones en la cuenca amazónica, no un evento dentro de la cuenca — por eso puede requerir alejar el mapa hacia el Pacífico para verse.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Niveles de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Rojo</span>: evento mayor o de rápida escalada, con consecuencias humanitarias, ambientales, agrícolas o de medios de vida significativas.</p>
@@ -165,7 +165,7 @@ const DICT = {
       <p style="margin:4px 0 0;font-size:11px;text-align:center;line-height:1.8">Jerson ACHICANOY<br>Information Management and GIS Expert<br>3iS<br><a href="mailto:jachicanoy@3is.org" style="color:var(--3is-cyan)">jachicanoy@3is.org</a><br><a href="mailto:jerson.achicanoy@outlook.com" style="color:var(--3is-cyan)">jerson.achicanoy@outlook.com</a></p>` },
   pt: { title:"Mapa de riscos — Bacia amazônica", subtitle:"Eventos ativos por perigo e prioridade", mapNote:"Mapa base OpenStreetMap. Dados: base própria de eventos verificados (ver lista à direita).",
     total:"Eventos", red:"Alertas vermelhos", countries:"Países afetados",
-    all:"Todos", FLOOD:"Inundação", EXTREME_RAIN:"Chuva extrema", DROUGHT:"Seca", WILDFIRE:"Incêndio florestal", EARTHQUAKE:"Terremoto", LANDSLIDE:"Deslizamento",
+    all:"Todos", FLOOD:"Inundação", EXTREME_RAIN:"Chuva extrema", DROUGHT:"Seca", WILDFIRE:"Incêndio florestal", EARTHQUAKE:"Terremoto", LANDSLIDE:"Deslizamento", DEFORESTATION:"Desmatamento", FLASH_FLOOD:"Inundação repentina", EXTREME_HEAT:"Calor extremo", SEVERE_STORM:"Tempestade severa",
     Brazil:"Brasil", Peru:"Peru", Colombia:"Colômbia", Bolivia:"Bolívia", Ecuador:"Equador", Venezuela:"Venezuela",
     RED:"Vermelho", ORANGE:"Laranja", GREEN:"Verde", updated:"Atualizado", source:"Fonte", readMore:"Ler mais",
     legendShape:"Forma = tipo de perigo", legendColor:"Cor = nível de ameaça", methodology:"Metodologia", info:"Info", borders:"Limites nacionais", alertsPanel:"Alertas",
@@ -173,7 +173,7 @@ const DICT = {
     layerNews:"Notícias", layerFirms:"Anomalias térmicas (focos de calor)",
     dataSourcesHTML:`Fontes de dados: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animação de emissões por incêndio, ferramenta externa)`,
     bordersNote:"Os dados geográficos, nomes e limites políticos e administrativos utilizados neste mapa não implicam aceitação oficial por parte da 3iS.",
-    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)",
+    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)", firms24h:"Últimas 24 h de dados", firmsUpTo:"até", firmsRange:"Datas selecionadas", firmsNone:"Sem focos nessas datas (o mapa guarda apenas os últimos 7 dias).", eventDateLbl:"Evento", updatedLbl:"Atual.",
     sstNote:"Camada ENSO: anomalia da temperatura da superfície do mar (NOAA OISST via Google Earth Engine) no Pacífico equatorial, com as regiões de referência Niño 1+2, 3, 3.4 e 4. É um indicador preditivo de secas/inundações na bacia amazônica, não um evento dentro da bacia — por isso pode ser necessário afastar o mapa em direção ao Pacífico para vê-la.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Níveis de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Vermelho</span>: evento maior ou de rápida escalada, com consequências humanitárias, ambientais, agrícolas ou de meios de vida significativas.</p>
@@ -192,7 +192,7 @@ const DICT = {
       <p style="margin:4px 0 0;font-size:11px;text-align:center;line-height:1.8">Jerson ACHICANOY<br>Information Management and GIS Expert<br>3iS<br><a href="mailto:jachicanoy@3is.org" style="color:var(--3is-cyan)">jachicanoy@3is.org</a><br><a href="mailto:jerson.achicanoy@outlook.com" style="color:var(--3is-cyan)">jerson.achicanoy@outlook.com</a></p>` },
   en: { title:"Risk map — Amazon Basin", subtitle:"Active events by hazard and priority", mapNote:"Base map: OpenStreetMap. Data: our own base of verified events (see list on the right).",
     total:"Events", red:"Red alerts", countries:"Countries affected",
-    all:"All", FLOOD:"Flood", EXTREME_RAIN:"Extreme rain", DROUGHT:"Drought", WILDFIRE:"Wildfire", EARTHQUAKE:"Earthquake", LANDSLIDE:"Landslide",
+    all:"All", FLOOD:"Flood", EXTREME_RAIN:"Extreme rain", DROUGHT:"Drought", WILDFIRE:"Wildfire", EARTHQUAKE:"Earthquake", LANDSLIDE:"Landslide", DEFORESTATION:"Deforestation", FLASH_FLOOD:"Flash flood", EXTREME_HEAT:"Extreme heat", SEVERE_STORM:"Severe storm",
     Brazil:"Brazil", Peru:"Peru", Colombia:"Colombia", Bolivia:"Bolivia", Ecuador:"Ecuador", Venezuela:"Venezuela",
     RED:"Red", ORANGE:"Orange", GREEN:"Green", updated:"Updated", source:"Source", readMore:"Read more",
     legendShape:"Shape = hazard type", legendColor:"Color = threat level", methodology:"Methodology", info:"Info", borders:"National borders", alertsPanel:"Alerts",
@@ -200,7 +200,7 @@ const DICT = {
     layerNews:"News", layerFirms:"Thermal anomalies (heat spots)",
     dataSourcesHTML:`Data sources: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (VIIRS heat spots) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animated fire-emissions view, external tool)`,
     bordersNote:"The geographic data, names, and political and administrative boundaries used on this map do not imply official acceptance by 3iS.",
-    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)",
+    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)", firms24h:"Last 24 h of data", firmsUpTo:"up to", firmsRange:"Selected dates", firmsNone:"No hotspots on those dates (the map keeps only the last 7 days).", eventDateLbl:"Event", updatedLbl:"Upd.",
     sstNote:"ENSO layer: sea surface temperature anomaly (NOAA OISST via Google Earth Engine) across the equatorial Pacific, with the Niño 1+2, 3, 3.4, and 4 reference regions. It is a predictive indicator for droughts/floods in the Amazon Basin, not an event inside the basin itself — you may need to pan the map toward the Pacific to see it.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Alert levels</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Red</span>: major or rapidly escalating event with significant humanitarian, environmental, agricultural, or livelihood consequences.</p>
@@ -518,16 +518,55 @@ function renderMarkers(filtered){
   });
 }
 
+// Ventana temporal de FIRMS. Sin fechas en el panel: ultimas 24 h de datos,
+// contadas desde la observacion mas reciente del archivo (no desde "ahora",
+// para que el mapa no quede vacio si la corrida diaria aun no ha pasado).
+// Con fechas en el panel: los focos de esos dias (misma logica que noticias).
+var FIRMS_WINDOW = { mode: '24h', maxT: null, count: 0 };
+function firmsTime(p){
+  if (!p.time) return null;
+  var hhmm = String(p.time); while (hhmm.length < 4) hhmm = '0' + hhmm;
+  var ms = Date.parse(p.date + 'T' + hhmm.slice(0,2) + ':' + hhmm.slice(2,4) + ':00Z');
+  return isNaN(ms) ? null : ms;
+}
+function selectFirmsWindow(all){
+  if (dateFrom || dateTo) {
+    FIRMS_WINDOW = { mode: 'range', maxT: null };
+    return all.filter(function(p){
+      if (dateFrom && p.date < dateFrom) return false;
+      if (dateTo && p.date > dateTo) return false;
+      return true;
+    });
+  }
+  var maxT = null, maxDate = '';
+  all.forEach(function(p){
+    var ms = firmsTime(p);
+    if (ms != null && (maxT == null || ms > maxT)) maxT = ms;
+    if (p.date > maxDate) maxDate = p.date;
+  });
+  FIRMS_WINDOW = { mode: '24h', maxT: maxT, maxDate: maxDate };
+  var cut = (maxT != null) ? maxT - 24 * 3600 * 1000 : null;
+  var refDate = (maxT != null) ? new Date(maxT).toISOString().slice(0,10) : maxDate;
+  return all.filter(function(p){
+    var ms = firmsTime(p);
+    // puntos sin hora (datos previos al cambio): se aproximan por el dia mas reciente
+    if (ms == null) return p.date === refDate;
+    return ms > cut;
+  });
+}
+
 function renderFirmsMarkers(){
   if (!firmsLayer) return;
   firmsLayer.clearLayers();
-  var pts = (typeof FIRMS_HOTSPOTS !== 'undefined' ? FIRMS_HOTSPOTS : []).filter(function(p){
+  var all = (typeof FIRMS_HOTSPOTS !== 'undefined' ? FIRMS_HOTSPOTS : []);
+  var pts = selectFirmsWindow(all).filter(function(p){
     // Filtro defensivo del lado del cliente (el principal corre en
     // fetch_and_publish.py): descarta lo que caiga fuera de la cuenca real.
     return !(AMAZON_BASIN_GEOJSON && !pointInBasin(p.lat, p.lon));
   }).map(function(p){ return { p: p, c: firmsClassIndex(p) }; });
   // Los mas intensos se dibujan al final, encima, para que resalten.
   pts.sort(function(a, b){ return a.c - b.c; });
+  FIRMS_WINDOW.count = pts.length;
   pts.forEach(function(o){
     var p = o.p, k = FIRMS_CLASSES[o.c];
     var m = L.circleMarker([p.lat, p.lon], {
@@ -535,7 +574,8 @@ function renderFirmsMarkers(){
       fillColor: k.fill, fillOpacity: 0.85
     });
     var frpVal = (p.frp_sum != null) ? p.frp_sum : p.frp;
-    var lines = [p.satellite + ' · ' + p.date + ' · ' + p.confidence];
+    var when = p.date + (p.time ? ' ' + String(p.time).padStart(4,'0').replace(/(\d\d)(\d\d)/, '$1:$2') + ' UTC' : '');
+    var lines = [p.satellite + ' · ' + when + ' · ' + p.confidence];
     if (p.count) lines.push(p.count + ' ' + t('firmsCell'));
     lines.push(frpVal != null ? t('firmsFrp') + ': ' + (Math.round(frpVal * 10) / 10) + ' MW' : t('firmsNoFrp'));
     m.bindPopup('<div style="font-size:12px"><b>' + t('layerFirms') + '</b><br>' + lines.join('<br>') + '</div>');
@@ -565,7 +605,16 @@ function updateFirmsLegend(){
       '<span style="width:' + sz + 'px;height:' + sz + 'px;border-radius:50%;background:' + k.fill + ';border:1px solid #fff;box-shadow:0 0 0 0.5px #888"></span></span>' +
       '<span>' + k.label + '</span></div>';
   }).join('');
-  el.innerHTML = '<div style="font-weight:600;margin-bottom:4px">' + t('firmsLegend') + '</div>' + rows +
+  var win;
+  if (FIRMS_WINDOW.mode === 'range') {
+    win = t('firmsRange') + ': ' + (dateFrom || '…') + ' – ' + (dateTo || '…');
+  } else {
+    var upTo = (FIRMS_WINDOW.maxT != null) ? new Date(FIRMS_WINDOW.maxT).toISOString().slice(0,16).replace('T',' ') + ' UTC' : (FIRMS_WINDOW.maxDate || '');
+    win = t('firms24h') + (upTo ? ' (' + t('firmsUpTo') + ' ' + upTo + ')' : '');
+  }
+  var none = (FIRMS_WINDOW.count === 0) ? '<div style="margin-top:4px;color:#b45309;font-size:10px">' + t('firmsNone') + '</div>' : '';
+  el.innerHTML = '<div style="font-weight:600;margin-bottom:2px">' + t('firmsLegend') + '</div>' +
+    '<div style="color:var(--3is-teal-deep);font-size:10px;margin-bottom:4px">' + win + '</div>' + rows + none +
     '<div style="margin-top:4px;color:#6b7583;font-size:10px">' + t('firmsLegendNote') + '</div>';
 }
 
@@ -618,7 +667,10 @@ function renderList(filtered){
     h.style.fontWeight = '800'; h.style.fontSize = '15px'; h.style.color = 'var(--3is-navy)'; h.style.margin = '14px 0 6px';
     h.textContent = countryLabel(c);
     wrap.appendChild(h);
-    byCountry[c].sort(function(a,b){ return (b.eventDate||'').localeCompare(a.eventDate||''); }).forEach(function(e){
+    byCountry[c].sort(function(a,b){
+      var ka = (a.lastUpdated || a.eventDate || a.firstDetected || ''), kb = (b.lastUpdated || b.eventDate || b.firstDetected || '');
+      return kb.localeCompare(ka) || (b.eventDate || '').localeCompare(a.eventDate || '') || (b.id || '').localeCompare(a.id || '');
+    }).forEach(function(e){
       var card = document.createElement('div');
       card.style.border = '1px solid var(--3is-gray)'; card.style.borderRadius = 'var(--radius)'; card.style.padding = '10px 12px'; card.style.marginBottom = '8px'; card.style.background = '#fff'; card.style.cursor = 'pointer';
       var title = (e.title && e.title[currentLang]) || e.id;
@@ -626,7 +678,7 @@ function renderList(filtered){
       card.innerHTML = '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">'+
         '<span style="width:9px;height:9px;border-radius:50%;background:'+(PRIORITY_COLOR[e.priority]||PRIORITY_COLOR.GREEN)+';flex:none"></span>'+
         '<span style="color:var(--3is-teal-deep);display:inline-flex">'+iconSvg(e.hazard,13)+'</span>'+
-        '<span style="font-size:12px;color:var(--text-muted)">'+hazardLabel(e.hazard)+' · '+ (e.eventDate||e.firstDetected) +'</span>'+
+        '<span style="font-size:12px;color:var(--text-muted)">'+hazardLabel(e.hazard)+' · '+t('eventDateLbl')+' '+(e.eventDate||e.firstDetected)+(e.lastUpdated ? ' · '+t('updatedLbl')+' '+e.lastUpdated : '')+'</span>'+
         '</div>'+
         '<p style="margin:0 0 4px;font-size:13px;font-weight:600;color:var(--3is-navy)">'+title+'</p>'+
         (srcHtml ? '<p style="margin:0;font-size:11px">'+srcHtml+'</p>' : '');
@@ -668,6 +720,7 @@ function renderAll(){
   renderStats(filtered);
   renderMarkers(filtered);
   renderList(filtered);
+  renderFirmsMarkers();
 }
 
 function buildLayersControl(){
@@ -745,7 +798,6 @@ function wireControls(){
     currentLang = e.target.value;
     applyI18nText();
     renderAll();
-    renderFirmsMarkers();
   });
   document.getElementById('infoBtn').addEventListener('click', function(){
     var p = document.getElementById('infoPanel');
@@ -767,7 +819,6 @@ function initDashboard(){
   initMap();
   wireControls();
   renderBasinLayer();
-  renderFirmsMarkers();
   renderSstLayer();
   renderAll();
 }

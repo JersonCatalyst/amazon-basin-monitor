@@ -163,6 +163,8 @@ def fetch_firms_points(map_key: str):
                     "lat": round(float(row["latitude"]), 4),
                     "lon": round(float(row["longitude"]), 4),
                     "date": row.get("acq_date", "").strip(),
+                    # hora de adquisicion HHMM (UTC): el mapa la usa para la ventana de 24 h
+                    "time": (row.get("acq_time") or "").strip().zfill(4) if (row.get("acq_time") or "").strip() else "",
                     "confidence": CONFIDENCE_CODES.get(conf_raw, conf_raw),
                     "satellite": sat,
                 }
@@ -205,6 +207,9 @@ def aggregate_if_needed(points):
             "satellite": sat,
             "count": len(group),
         }
+        times = [g["time"] for g in group if g.get("time")]
+        if times:
+            cell["time"] = max(times)  # la observacion mas reciente de la celda
         # FRP total y maxima de la celda: el mapa usa frp_sum como intensidad
         frps = [g["frp"] for g in group if g.get("frp") is not None]
         if frps:

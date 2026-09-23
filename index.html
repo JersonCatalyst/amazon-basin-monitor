@@ -116,7 +116,6 @@
   <nav id="tabs" class="tabs-bar" role="tablist">
     <button class="tab-btn active" role="tab" data-tab="monitor" data-i18n="tabMonitor"></button>
     <button class="tab-btn" role="tab" data-tab="forecast" data-i18n="tabForecast"></button>
-    <button class="tab-btn" role="tab" data-tab="fire" data-i18n="tabFire"></button>
   </nav>
 </div>
 <div class="brand-divider"></div>
@@ -151,6 +150,15 @@
     <p style="font-size:12px;color:var(--text-muted);margin:2px 0 0" data-i18n="sstNote"></p>
     <p id="dataSources" style="font-size:12px;color:var(--text-muted);margin:8px 0 0"></p>
     <p id="lastUpdated" style="font-size:12px;color:var(--text-muted);margin:2px 0 0;font-weight:500"></p>
+    <!-- Recuadro CAMS Fire Emissions Watch: Copernicus no permite embeberlo, se abre aparte -->
+    <div id="fireBox" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--3is-gray);border-left:4px solid var(--3is-coral);border-radius:var(--radius);padding:10px 14px;background:#fafafa">
+      <div style="flex:1;min-width:220px">
+        <p style="font-weight:700;font-size:13px;color:var(--3is-navy);margin:0" data-i18n="fireTitle"></p>
+        <p style="font-size:12px;color:var(--3is-teal-deep);margin:2px 0 0;line-height:1.45" data-i18n="fireDesc"></p>
+        <p id="fireDates" style="font-size:11px;color:var(--text-muted);margin:2px 0 0"></p>
+      </div>
+      <a id="fireOpen" class="chip" target="_blank" rel="noopener" style="text-decoration:none;white-space:nowrap" data-i18n="fireOpen"></a>
+    </div>
   </div>
   <div style="flex:1;min-width:260px;display:flex;flex-direction:column;border:1px solid var(--3is-gray);border-radius:var(--radius);padding:1rem;background:#fafafa">
     <p style="font-weight:700;font-size:14px;color:var(--3is-navy);margin:0 0 10px" data-i18n="alertsPanel"></p>
@@ -174,24 +182,6 @@
   <p style="font-size:12px;color:var(--text-muted);margin:2px 0 0" data-i18n="fcCredit"></p>
 </div>
 </div><!-- /tabForecast -->
-
-<!-- Incendios y humo: CAMS Fire Emissions Watch (Copernicus). El sitio no permite
-     mostrarse dentro de otra pagina (bloquea iframes), asi que se presenta como
-     tarjeta con enlace que abre la herramienta en otra pestana con los ultimos 7 dias. -->
-<div id="tabFire" hidden>
-<div style="border:1px solid var(--3is-gray);border-radius:var(--radius);padding:2rem;background:#fafafa;max-width:860px;margin:0 auto">
-  <p style="font-weight:800;font-size:20px;color:var(--3is-navy);margin:0 0 6px" data-i18n="fireTitle"></p>
-  <p style="font-size:14px;color:var(--3is-teal-deep);margin:0 0 16px;line-height:1.55" data-i18n="fireDesc"></p>
-  <ul style="font-size:14px;color:var(--text-primary);margin:0 0 20px;padding-left:1.2rem;line-height:1.7">
-    <li data-i18n="fireB1"></li>
-    <li data-i18n="fireB2"></li>
-    <li data-i18n="fireB3"></li>
-  </ul>
-  <a id="fireOpen" target="_blank" rel="noopener" style="display:inline-block;background:var(--3is-teal);color:var(--3is-navy);font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;text-decoration:none" data-i18n="fireOpen"></a>
-  <p id="fireDates" style="font-size:12px;color:var(--text-muted);margin:10px 0 0"></p>
-  <p style="font-size:12px;color:var(--text-muted);margin:14px 0 0" data-i18n="fireCredit"></p>
-</div>
-</div><!-- /tabFire -->
 </div>
 </div>
 
@@ -208,7 +198,7 @@ const DICT = {
     layerNews:"Noticias", layerFirms:"Anomalías térmicas (focos de calor)",
     dataSourcesHTML:`Fuentes de datos: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animación de emisiones por incendio, herramienta externa)`,
     bordersNote:"Los datos geográficos, nombres y límites políticos y administrativos utilizados en este mapa no implican aceptación oficial por parte de 3iS.",
-    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", fcTitle:"Pronóstico meteorológico", tabMonitor:"Monitor", tabForecast:"Pronóstico", tabFire:"Incendios y humo", fireTitle:"Emisiones de incendios y humo (CAMS)", fireOpen:"Abrir en Copernicus ↗", fireDesc:"Copernicus no permite mostrar esta herramienta dentro de otras páginas, así que se abre en una pestaña nueva, ya con los últimos 7 días seleccionados.", fireB1:"Emisiones diarias de carbono de los incendios por país y región.", fireB2:"Intensidad del fuego (potencia radiativa) y humo observados por satélite.", fireB3:"Comparación de la temporada actual con más de 20 años de historia.", firePeriod:"Período", fireCredit:"Fuente: Copernicus Atmosphere Monitoring Service (CAMS) — Global Fire Assimilation System (GFAS).", fcRain:"Precipitación", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Lluvia acumulada", fcThunder:"Tormentas eléctricas", fcNote:"Mapa interactivo independiente (no incluye el límite del proyecto ni los eventos). Use la línea de tiempo inferior para avanzar el pronóstico. En la Amazonía hay muy pocos radares, por lo que la capa de radar aparecerá mayormente vacía.", fcCredit:"Pronóstico: Windy.com (widget embebido gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)", firms24h:"Últimas 24 h de datos", firmsUpTo:"hasta", firmsRange:"Fechas seleccionadas", firmsNone:"Sin focos en esas fechas (el mapa guarda solo los últimos 7 días).", eventDateLbl:"Evento", updatedLbl:"Act.",
+    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", fcTitle:"Pronóstico meteorológico", tabMonitor:"Monitor", tabForecast:"Pronóstico", fireTitle:"Emisiones de incendios y humo (CAMS)", fireOpen:"Abrir en Copernicus ↗", fireDesc:"Emisiones de carbono, intensidad del fuego y humo por país, con comparación histórica de más de 20 años (Copernicus CAMS). Se abre en una pestaña nueva con los últimos 7 días.", firePeriod:"Período", fcRain:"Precipitación", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Lluvia acumulada", fcThunder:"Tormentas eléctricas", fcNote:"Mapa interactivo independiente (no incluye el límite del proyecto ni los eventos). Use la línea de tiempo inferior para avanzar el pronóstico. En la Amazonía hay muy pocos radares, por lo que la capa de radar aparecerá mayormente vacía.", fcCredit:"Pronóstico: Windy.com (widget embebido gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)", firms24h:"Últimas 24 h de datos", firmsUpTo:"hasta", firmsRange:"Fechas seleccionadas", firmsNone:"Sin focos en esas fechas (el mapa guarda solo los últimos 7 días).", eventDateLbl:"Evento", updatedLbl:"Act.",
     sstNote:"Capa ENSO: anomalía de temperatura superficial del mar (NOAA OISST vía Google Earth Engine) en el Pacífico ecuatorial, con las regiones de referencia Niño 1+2, 3, 3.4 y 4. Es un indicador predictivo de sequías/inundaciones en la cuenca amazónica, no un evento dentro de la cuenca — por eso puede requerir alejar el mapa hacia el Pacífico para verse.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Niveles de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Rojo</span>: evento mayor o de rápida escalada, con consecuencias humanitarias, ambientales, agrícolas o de medios de vida significativas.</p>
@@ -235,7 +225,7 @@ const DICT = {
     layerNews:"Notícias", layerFirms:"Anomalias térmicas (focos de calor)",
     dataSourcesHTML:`Fontes de dados: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animação de emissões por incêndio, ferramenta externa)`,
     bordersNote:"Os dados geográficos, nomes e limites políticos e administrativos utilizados neste mapa não implicam aceitação oficial por parte da 3iS.",
-    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", fcTitle:"Previsão meteorológica", tabMonitor:"Monitor", tabForecast:"Previsão", tabFire:"Incêndios e fumaça", fireTitle:"Emissões de incêndios e fumaça (CAMS)", fireOpen:"Abrir no Copernicus ↗", fireDesc:"O Copernicus não permite exibir esta ferramenta dentro de outras páginas, por isso ela abre em uma nova aba, já com os últimos 7 dias selecionados.", fireB1:"Emissões diárias de carbono dos incêndios por país e região.", fireB2:"Intensidade do fogo (potência radiativa) e fumaça observados por satélite.", fireB3:"Comparação da temporada atual com mais de 20 anos de histórico.", firePeriod:"Período", fireCredit:"Fonte: Copernicus Atmosphere Monitoring Service (CAMS) — Global Fire Assimilation System (GFAS).", fcRain:"Precipitação", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Chuva acumulada", fcThunder:"Tempestades elétricas", fcNote:"Mapa interativo independente (não inclui o limite do projeto nem os eventos). Use a linha do tempo inferior para avançar a previsão. Na Amazônia há muito poucos radares, por isso a camada de radar aparecerá quase vazia.", fcCredit:"Previsão: Windy.com (widget incorporado gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)", firms24h:"Últimas 24 h de dados", firmsUpTo:"até", firmsRange:"Datas selecionadas", firmsNone:"Sem focos nessas datas (o mapa guarda apenas os últimos 7 dias).", eventDateLbl:"Evento", updatedLbl:"Atual.",
+    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", fcTitle:"Previsão meteorológica", tabMonitor:"Monitor", tabForecast:"Previsão", fireTitle:"Emissões de incêndios e fumaça (CAMS)", fireOpen:"Abrir no Copernicus ↗", fireDesc:"Emissões de carbono, intensidade do fogo e fumaça por país, com comparação histórica de mais de 20 anos (Copernicus CAMS). Abre em uma nova aba com os últimos 7 dias.", firePeriod:"Período", fcRain:"Precipitação", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Chuva acumulada", fcThunder:"Tempestades elétricas", fcNote:"Mapa interativo independente (não inclui o limite do projeto nem os eventos). Use a linha do tempo inferior para avançar a previsão. Na Amazônia há muito poucos radares, por isso a camada de radar aparecerá quase vazia.", fcCredit:"Previsão: Windy.com (widget incorporado gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)", firms24h:"Últimas 24 h de dados", firmsUpTo:"até", firmsRange:"Datas selecionadas", firmsNone:"Sem focos nessas datas (o mapa guarda apenas os últimos 7 dias).", eventDateLbl:"Evento", updatedLbl:"Atual.",
     sstNote:"Camada ENSO: anomalia da temperatura da superfície do mar (NOAA OISST via Google Earth Engine) no Pacífico equatorial, com as regiões de referência Niño 1+2, 3, 3.4 e 4. É um indicador preditivo de secas/inundações na bacia amazônica, não um evento dentro da bacia — por isso pode ser necessário afastar o mapa em direção ao Pacífico para vê-la.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Níveis de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Vermelho</span>: evento maior ou de rápida escalada, com consequências humanitárias, ambientais, agrícolas ou de meios de vida significativas.</p>
@@ -262,7 +252,7 @@ const DICT = {
     layerNews:"News", layerFirms:"Thermal anomalies (heat spots)",
     dataSourcesHTML:`Data sources: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (VIIRS heat spots) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animated fire-emissions view, external tool)`,
     bordersNote:"The geographic data, names, and political and administrative boundaries used on this map do not imply official acceptance by 3iS.",
-    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", fcTitle:"Weather forecast", tabMonitor:"Monitor", tabForecast:"Forecast", tabFire:"Fires & smoke", fireTitle:"Fire emissions and smoke (CAMS)", fireOpen:"Open in Copernicus ↗", fireDesc:"Copernicus does not allow this tool to be shown inside other pages, so it opens in a new tab with the last 7 days already selected.", fireB1:"Daily wildfire carbon emissions by country and region.", fireB2:"Satellite-observed fire intensity (radiative power) and smoke.", fireB3:"Comparison of the current season with 20+ years of history.", firePeriod:"Period", fireCredit:"Source: Copernicus Atmosphere Monitoring Service (CAMS) — Global Fire Assimilation System (GFAS).", fcRain:"Precipitation", fcTemp:"Temperature", fcRadar:"Weather radar", fcRainAccu:"Rain accumulation", fcThunder:"Thunderstorms", fcNote:"Standalone interactive map (does not include the project boundary or events). Use the timeline at the bottom to move the forecast forward. There are very few radars in the Amazon, so the radar layer will be mostly empty.", fcCredit:"Forecast: Windy.com (free embedded widget, ECMWF model).", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)", firms24h:"Last 24 h of data", firmsUpTo:"up to", firmsRange:"Selected dates", firmsNone:"No hotspots on those dates (the map keeps only the last 7 days).", eventDateLbl:"Event", updatedLbl:"Upd.",
+    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", fcTitle:"Weather forecast", tabMonitor:"Monitor", tabForecast:"Forecast", fireTitle:"Fire emissions and smoke (CAMS)", fireOpen:"Open in Copernicus ↗", fireDesc:"Carbon emissions, fire intensity and smoke by country, with a 20+ year historical comparison (Copernicus CAMS). Opens in a new tab with the last 7 days.", firePeriod:"Period", fcRain:"Precipitation", fcTemp:"Temperature", fcRadar:"Weather radar", fcRainAccu:"Rain accumulation", fcThunder:"Thunderstorms", fcNote:"Standalone interactive map (does not include the project boundary or events). Use the timeline at the bottom to move the forecast forward. There are very few radars in the Amazon, so the radar layer will be mostly empty.", fcCredit:"Forecast: Windy.com (free embedded widget, ECMWF model).", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)", firms24h:"Last 24 h of data", firmsUpTo:"up to", firmsRange:"Selected dates", firmsNone:"No hotspots on those dates (the map keeps only the last 7 days).", eventDateLbl:"Event", updatedLbl:"Upd.",
     sstNote:"ENSO layer: sea surface temperature anomaly (NOAA OISST via Google Earth Engine) across the equatorial Pacific, with the Niño 1+2, 3, 3.4, and 4 reference regions. It is a predictive indicator for droughts/floods in the Amazon Basin, not an event inside the basin itself — you may need to pan the map toward the Pacific to see it.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Alert levels</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Red</span>: major or rapidly escalating event with significant humanitarian, environmental, agricultural, or livelihood consequences.</p>
@@ -831,12 +821,11 @@ function renderFire(){
   if (d && m) d.textContent = t('firePeriod') + ': ' + m[1] + ' – ' + m[2];
 }
 
-const TAB_HASH = { monitor: '', forecast: '#pronostico', fire: '#incendios' };
+const TAB_HASH = { monitor: '', forecast: '#pronostico' };
 function showTab(name){
   activeTab = TAB_HASH.hasOwnProperty(name) ? name : 'monitor';
   document.getElementById('tabMonitor').hidden = (activeTab !== 'monitor');
   document.getElementById('tabForecast').hidden = (activeTab !== 'forecast');
-  document.getElementById('tabFire').hidden = (activeTab !== 'fire');
   document.querySelectorAll('#tabs .tab-btn').forEach(function(b){
     var on = b.getAttribute('data-tab') === activeTab;
     b.classList.toggle('active', on);
@@ -844,7 +833,6 @@ function showTab(name){
   });
   try { history.replaceState(null, '', TAB_HASH[activeTab] || (location.pathname + location.search)); } catch (e) {}
   if (activeTab === 'forecast') renderForecast();
-  if (activeTab === 'fire') renderFire();
   // Leaflet necesita recalcular el tamano al volver a mostrarse
   if (activeTab === 'monitor' && map) setTimeout(function(){ map.invalidateSize(); }, 0);
 }
@@ -957,7 +945,6 @@ function wireTabs(){
     b.addEventListener('click', function(){ showTab(b.getAttribute('data-tab')); });
   });
   if (/^#(pronostico|previsao|forecast)$/i.test(location.hash)) showTab('forecast');
-  else if (/^#(incendios|fires?)$/i.test(location.hash)) showTab('fire');
   renderFire(); // deja listo el enlace "Abrir en Copernicus"
 }
 

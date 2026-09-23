@@ -38,6 +38,9 @@
   .stat-card { background: var(--3is-gray); border-radius: var(--radius); padding: 1rem; }
   .stat-card p:first-child { font-size: 13px; color: var(--3is-teal-deep); margin: 0; font-weight: 500; }
   .stat-card p:last-child { font-size: 24px; font-weight: 800; margin: 4px 0 0; color: var(--3is-navy); }
+  .tab-btn { font-family: var(--font-sans); font-size: 14px; font-weight: 600; padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.55); background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+  .tab-btn:hover { background: rgba(255,255,255,.18); }
+  .tab-btn.active { background: #fff; color: var(--3is-navy); border-color: #fff; }
   .brand-divider { height: 6px; background: linear-gradient(90deg, var(--3is-aqua) 0%, var(--3is-cyan) 55%, var(--3is-navy) 100%); }
   .dot-field { position:absolute; inset:0; opacity:0.15;
     background-image: radial-gradient(circle, #ffffff 1px, transparent 1.4px);
@@ -51,6 +54,7 @@
 <div style="position:relative;background:linear-gradient(135deg, var(--3is-navy) 0%, var(--3is-teal-deep) 55%, var(--3is-cyan) 100%);padding:1.25rem 1.5rem">
   <div class="dot-field"></div>
   <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+    <div style="display:flex;align-items:flex-end;flex-wrap:wrap;column-gap:3cm;row-gap:12px">
     <svg width="182" height="50" viewBox="0 0 399 110" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M198.568 71.5806C198.248 69.2172 197.633 66.9526 196.637 64.7943C193.613 58.2284 188.293 54.1856 181.803 51.4422C178.376 49.9907 174.797 49.0559 171.172 48.2504C168.132 47.5816 165.047 47.1485 161.969 46.7305C159.978 46.4645 157.956 46.4037 155.965 46.1378C153.184 45.7654 150.418 45.2714 147.705 44.5571C147.515 44.4811 147.325 44.3975 147.127 44.3291C143.875 43.2196 140.858 41.7529 138.927 38.7131C137.879 36.9653 137.354 35.073 137.309 33.0364C137.263 31.0833 137.347 29.1531 137.871 27.2608C138.357 26.3033 138.791 25.3153 139.353 24.4034C140.485 22.5492 142.157 21.2041 143.875 19.9274C145.767 18.7266 147.803 17.8451 149.893 17.0624C150.045 17.0472 150.197 17.0472 150.342 17.0016C152.956 16.1808 155.646 15.7629 158.367 15.6033C161.232 15.4361 164.074 15.8161 166.855 16.5228C169.963 17.3132 172.897 18.5519 175.367 20.6189C177.707 22.572 179.546 24.943 180.329 27.9751C180.519 28.7199 180.8 29.191 181.727 29.0771C182.799 28.9403 183.893 28.9555 184.972 28.9175C188.202 28.8035 191.432 28.6971 194.654 28.5223C196.029 28.4463 196.014 28.5071 195.817 27.1696C195.763 26.782 195.703 26.4021 195.619 26.0221C194.274 19.6918 191.363 14.2658 186.538 9.86572C183.521 7.12233 180.124 5.06289 176.37 3.543C172.973 2.15991 169.454 1.27078 165.807 0.807213C165.054 0.70842 164.249 0.898406 163.542 0.488037H156.072C155.821 0.822412 155.456 0.640026 155.145 0.662824C153.176 0.814812 151.246 1.14919 149.331 1.60515C147.279 2.06112 145.242 2.55508 143.32 3.42901C141.124 4.12056 139.087 5.14648 137.126 6.33959C135.059 7.46431 133.121 8.77901 131.472 10.4737C131.336 10.5269 131.168 10.5497 131.07 10.6485C129.23 12.4115 127.528 14.2962 126.183 16.4848C125.036 18.1795 124.131 19.9958 123.455 21.926C121.973 26.1133 121.335 30.3994 121.798 34.8526C122.049 37.2768 122.368 39.6707 123.121 41.9961C123.972 44.6407 125.134 47.1181 126.913 49.2763C127.217 50.0667 127.923 50.5378 128.448 51.1458C129.626 52.5061 131.009 53.6536 132.574 54.5655C132.681 54.6719 132.764 54.8011 132.886 54.8771C134.816 56.093 136.845 57.1113 138.958 57.9701C140.478 58.502 141.975 59.0948 143.548 59.4823C145.106 59.8623 146.633 60.4095 148.252 60.5159C148.358 60.5767 148.457 60.6755 148.563 60.6907C150.957 61.0706 153.343 61.519 155.745 61.8002C159.02 62.1801 162.311 62.4537 165.579 62.9021C169.051 63.3809 172.494 63.9812 175.762 65.3035C177.586 66.0406 179.28 67.0286 180.625 68.4725C181.94 69.8783 182.662 71.6034 182.989 73.5109C183.475 76.3379 183.262 79.0585 182.039 81.6803C181.043 83.8005 179.66 85.594 177.874 87.1366C176.013 88.7553 173.938 89.9864 171.688 90.9212C168.915 92.0687 166.042 92.8742 163.033 93.1554C160.32 93.4062 157.622 93.3986 154.917 93.0186C152.948 92.745 151.071 92.1523 149.164 91.6507C149.042 91.5671 148.928 91.4607 148.799 91.4075C145.63 90.2676 142.811 88.5653 140.417 86.1867C140.098 85.7155 139.596 85.3964 139.33 84.8796C139.239 84.7048 139.087 84.568 138.829 84.7656C137.134 86.0651 135.287 87.167 133.653 88.5501C133.517 88.6033 133.365 88.6413 133.251 88.7173C131.366 90.0472 129.496 91.3847 127.612 92.707C126.335 93.5961 126.267 93.6341 127.247 94.7969C129.23 97.1451 131.389 99.3261 134.026 100.96C134.618 101.614 135.432 101.955 136.161 102.396C137.635 103.285 139.11 104.19 140.766 104.729C141.184 104.95 141.602 105.162 142.058 105.33C144.498 106.257 146.968 107.093 149.521 107.64C152.454 108.309 155.433 108.643 158.427 108.742C161.406 108.841 164.37 108.521 167.319 108.043C172.57 107.192 177.517 105.52 182.16 102.928C186.355 100.595 190.026 97.6466 192.974 93.8317C195.687 90.3208 197.519 86.4147 198.385 82.045C198.583 81.0647 198.522 80.0388 198.894 79.0889V73.6249C198.514 72.9789 198.659 72.2342 198.568 71.5426V71.5806ZM105.338 24.6998C104.152 24.7302 102.975 24.7226 101.789 24.7378C100.391 24.7378 98.9924 24.7378 97.6017 24.7378C96.2642 24.7378 94.9267 24.7378 93.5968 24.7378C93.1712 24.7302 92.7457 24.7074 92.3201 24.7074C90.671 24.7226 90.861 24.5174 90.861 26.1589C90.861 52.9164 90.861 79.6664 90.861 106.424C90.861 106.667 90.8838 106.91 90.861 107.154C90.8078 107.708 91.0434 107.906 91.5906 107.891C92.9281 107.853 94.258 107.86 95.5955 107.853C96.8722 107.853 98.1489 107.853 99.418 107.853C100.816 107.853 102.215 107.853 103.605 107.853C103.848 107.86 104.092 107.875 104.335 107.883C105.429 107.893 105.976 107.351 105.976 106.257C105.976 79.5828 105.976 52.9088 105.976 26.2349C105.976 25.9309 105.953 25.6269 105.976 25.3229C106.014 24.8442 105.794 24.6846 105.33 24.6922L105.338 24.6998ZM132.369 76.3151C132.612 71.0715 127.885 67.5529 123.295 68.6017C118.531 69.6732 116 74.4988 117.938 78.9445C119.017 81.4143 120.886 82.9722 123.653 83.2837C124.496 83.6941 125.355 83.4813 126.214 83.3217C129.876 82.6454 132.202 79.8564 132.369 76.3151ZM95.0635 15.9529C96.4466 16.538 97.8829 17.0396 99.4256 16.4848C99.5472 16.4848 99.6764 16.5304 99.7827 16.5C102.541 15.8617 104.456 14.2506 105.368 11.5452C106.288 8.8094 105.703 6.34719 103.902 4.15096C102.655 2.63107 100.93 1.96992 99.0608 1.61275C98.3389 1.56715 97.6245 1.60515 96.9026 1.74194C93.4904 2.38789 91.1498 4.78931 90.7242 8.48263C90.4051 11.264 91.8793 14.5926 95.0711 15.9453L95.0635 15.9529ZM70.6542 62.0054C69.0887 59.4671 67.0444 57.3849 64.643 55.637C63.9059 54.9075 62.9711 54.4667 62.1352 53.8664C61.7552 53.5928 61.6944 53.456 62.0896 53.152C62.7128 52.6809 63.3055 52.1641 63.9059 51.6625C65.5549 50.2491 66.8468 48.524 67.8424 46.6241C70.6694 41.2361 71.3837 35.4454 71.0417 29.4342C70.8669 26.4173 70.259 23.5219 69.2027 20.7177C67.8576 17.1384 65.8361 13.9922 62.9939 11.3932C61.6488 9.83533 59.9618 8.69541 58.2595 7.5707C57.1272 6.74996 55.9189 6.07361 54.6118 5.57205C52.9627 4.56893 51.154 3.98377 49.3226 3.43661C47.3695 2.74506 45.3557 2.2815 43.3114 1.97752C41.2596 1.68115 39.2078 1.29358 37.1179 1.43037C35.8792 1.42277 34.6405 1.36957 33.4018 1.41517C32.4519 1.45316 31.4791 1.47596 30.5596 1.79514C28.3482 1.89393 26.2431 2.45629 24.1761 3.20103C21.9647 3.78619 19.9508 4.81971 17.975 5.93682C17.8382 5.99762 17.6938 6.04321 17.5646 6.11161C14.388 7.96587 11.675 10.3597 9.38002 13.2095C6.62903 16.6292 4.74437 20.4897 3.71845 24.7682C3.61206 25.2166 3.59686 25.4901 4.15922 25.6269C8.3997 26.6376 12.6326 27.6636 16.8655 28.7047C17.405 28.8339 17.6558 28.6743 17.7698 28.1651C18.0206 27.0024 18.5753 25.9537 19.0921 24.8974C19.852 23.6359 20.7944 22.5264 21.8355 21.47C22.7246 20.5581 23.8037 19.9122 24.7461 19.0762C26.7675 17.9667 28.9105 17.146 31.1296 16.5228C33.2346 16.1428 35.3624 16.1276 37.4979 16.12C39.5269 16.2644 41.5104 16.69 43.5014 17.0776C45.5761 17.8375 47.6431 18.6051 49.5202 19.8134C51.648 21.4472 53.5403 23.2863 54.6574 25.7865C55.0601 26.668 55.3641 27.5952 55.5161 28.5451C56.0101 31.6989 55.7745 34.807 54.6574 37.8164C53.4643 40.7878 51.7392 43.3412 48.9654 45.0814C47.7343 45.7806 46.4348 46.3125 45.0441 46.6089C44.231 46.7837 43.4102 46.9205 42.5971 47.0725C40.7732 47.0725 38.957 47.1029 37.1331 47.0877C36.4796 47.0801 36.2136 47.2853 36.2136 47.9692C36.2364 52.2401 36.2288 56.5186 36.2136 60.7894C36.2136 61.3974 36.396 61.671 37.0495 61.6634C39.0178 61.633 40.9936 61.6406 42.9619 61.6254C45.1733 61.9218 47.3771 62.2561 49.5202 62.9021C51.7088 63.8292 53.753 64.9843 55.5237 66.5954C57.1728 68.1457 58.3203 70.0531 59.3386 72.0442C59.4146 72.3026 59.4754 72.561 59.559 72.8193C60.0606 74.3012 60.4025 75.7983 60.4709 77.3866C60.5697 79.6664 60.0758 81.7943 59.1638 83.8537C57.9175 86.1259 56.3672 88.1398 54.247 89.6748C52.5067 90.9743 50.5993 91.9623 48.593 92.7754C46.678 93.3682 44.7401 93.8849 42.7719 94.2801C40.7124 94.5385 38.653 94.6677 36.5784 94.6449C34.3061 94.6601 32.0491 94.5157 29.8377 93.9153C27.4894 93.4594 25.3692 92.441 23.287 91.3239C22.527 90.7236 21.7519 90.1536 21.0147 89.5305C19.1453 87.9422 17.747 85.9815 16.5387 83.8613C16.0675 82.3642 15.3684 80.9279 15.1328 79.3624C15.0416 78.7773 14.844 78.6329 14.2437 78.7393C10.2844 79.4688 6.31745 80.1452 2.35816 80.8671C0.519096 81.2015 0.488698 81.2471 0.876269 83.1013C2.35056 90.1384 5.6715 96.1343 11.1051 100.899C12.8606 102.434 14.7756 103.772 16.8958 104.775C18.9705 105.907 21.1515 106.789 23.4466 107.366C25.6352 108.126 27.9226 108.423 30.1948 108.772C32.3759 108.939 34.5569 109.259 36.7531 109.137C38.8886 109.243 41.0088 108.939 43.1291 108.772C43.5774 108.719 44.0258 108.681 44.4666 108.613C46.0396 108.377 47.6127 108.157 49.1402 107.678C51.154 107.283 53.0919 106.66 54.9689 105.862C56.618 105.238 58.2291 104.517 59.711 103.551C61.778 102.457 63.6247 101.059 65.3574 99.4933C67.7512 97.4491 69.651 95.002 71.1937 92.2663C73.3824 88.6793 74.6667 84.758 74.963 80.6011C75.1606 77.8426 75.1606 75.0536 74.6667 72.2874C74.0055 68.5941 72.8352 65.1211 70.6618 62.0282L70.6542 62.0054ZM20.3536 61.8078C20.7108 61.7546 21.0755 61.7166 21.4251 61.6406C25.5212 60.7894 27.7022 57.2405 27.421 53.6916C27.1095 49.7171 23.8113 46.7305 19.9888 46.7533C19.4949 46.6773 19.0313 46.7989 18.5525 46.8901C14.3196 47.65 12.0854 51.3358 12.3742 54.8695C12.7162 59.0568 16.1815 61.9902 20.3536 61.8078Z" fill="white"/>
 <path d="M221.061 5.54879C221.061 4.46794 221.932 3.59655 223.046 3.59655C224.161 3.59655 224.999 4.46794 224.999 5.54879C224.999 6.62964 224.127 7.53454 223.046 7.53454C221.965 7.53454 221.061 6.62964 221.061 5.54879ZM221.547 10.1068H224.538V26.0598H221.547V10.1068Z" fill="white"/>
@@ -81,6 +85,11 @@
 <path d="M313.913 96.9688C313.637 97.3207 313.352 97.6642 313.042 97.9826C311.475 99.5494 309.389 100.387 307.16 100.387C304.931 100.387 302.803 99.5494 301.236 97.9826C299.669 96.3823 298.798 94.2876 298.798 92.0589C298.798 89.8301 299.669 87.7438 301.236 86.1351C302.803 84.5683 304.931 83.7304 307.16 83.7304C309.389 83.7304 311.475 84.5683 313.042 86.1351C313.352 86.4451 313.637 86.7635 313.88 87.1071L311.475 88.8833C310.503 87.5595 308.936 86.6546 307.16 86.6546C304.202 86.6546 301.798 89.0928 301.798 92.0505C301.798 95.0082 304.202 97.4464 307.16 97.4464C308.936 97.4464 310.503 96.5415 311.475 95.1841L313.913 96.9604V96.9688Z" fill="white"/>
 <path d="M317.994 94.74V86.9394H315.623V84.0823H317.994V77.9156H320.985V84.0823H325.895V86.9394H320.985V94.673C320.985 95.9633 322.099 97.1782 323.356 97.1782H326.037L326.8 100.035H323.281C320.356 100.035 317.985 97.6977 317.985 94.74H317.994Z" fill="white"/>
 </svg>
+    <nav id="tabs" role="tablist" style="display:flex;gap:6px">
+      <button class="tab-btn active" role="tab" data-tab="monitor" data-i18n="tabMonitor"></button>
+      <button class="tab-btn" role="tab" data-tab="forecast" data-i18n="tabForecast"></button>
+    </nav>
+    </div>
     <div style="text-align:right">
       <p style="font-weight:800;font-size:20px;margin:0;color:#fff" data-i18n="title"></p>
       <p style="font-size:13px;font-weight:500;color:#D4F5EE;margin:2px 0 0" data-i18n="subtitle"></p>
@@ -90,6 +99,7 @@
 <div class="brand-divider"></div>
 
 <div id="av-3is-body">
+<div id="tabMonitor">
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
     <div id="countryFilters" style="display:flex;flex-wrap:wrap;gap:8px"></div>
@@ -131,17 +141,21 @@
   </div>
 </div>
 
+</div><!-- /tabMonitor -->
+
+<div id="tabForecast" hidden>
 <!-- Pronostico meteorologico: widget embebido gratuito de Windy.com (iframe).
      Es un mapa independiente del mapa principal (no comparte capas). -->
-<div id="forecastSection" style="margin-top:1.5rem;border:1px solid var(--3is-gray);border-radius:var(--radius);padding:1rem;background:#fafafa">
+<div id="forecastSection" style="border:1px solid var(--3is-gray);border-radius:var(--radius);padding:1rem;background:#fafafa">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
     <p style="font-weight:700;font-size:14px;color:var(--3is-navy);margin:0" data-i18n="fcTitle"></p>
     <div id="forecastLayers" style="display:flex;flex-wrap:wrap;gap:8px"></div>
   </div>
-  <iframe id="windyFrame" title="Windy forecast" loading="lazy" style="width:100%;height:480px;border:0;border-radius:var(--radius);display:block;background:#e6e6e6" allowfullscreen></iframe>
+  <iframe id="windyFrame" title="Windy forecast" loading="lazy" style="width:100%;height:calc(100vh - 290px);min-height:540px;border:0;border-radius:var(--radius);display:block;background:#e6e6e6" allowfullscreen></iframe>
   <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0" data-i18n="fcNote"></p>
   <p style="font-size:12px;color:var(--text-muted);margin:2px 0 0" data-i18n="fcCredit"></p>
 </div>
+</div><!-- /tabForecast -->
 </div>
 </div>
 
@@ -158,7 +172,7 @@ const DICT = {
     layerNews:"Noticias", layerFirms:"Anomalías térmicas (focos de calor)",
     dataSourcesHTML:`Fuentes de datos: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animación de emisiones por incendio, herramienta externa)`,
     bordersNote:"Los datos geográficos, nombres y límites políticos y administrativos utilizados en este mapa no implican aceptación oficial por parte de 3iS.",
-    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", fcTitle:"Pronóstico meteorológico", fcRain:"Precipitación", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Lluvia acumulada", fcThunder:"Tormentas eléctricas", fcNote:"Mapa interactivo independiente (no incluye el límite del proyecto ni los eventos). Use la línea de tiempo inferior para avanzar el pronóstico. En la Amazonía hay muy pocos radares, por lo que la capa de radar aparecerá mayormente vacía.", fcCredit:"Pronóstico: Windy.com (widget embebido gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)", firms24h:"Últimas 24 h de datos", firmsUpTo:"hasta", firmsRange:"Fechas seleccionadas", firmsNone:"Sin focos en esas fechas (el mapa guarda solo los últimos 7 días).", eventDateLbl:"Evento", updatedLbl:"Act.",
+    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", fcTitle:"Pronóstico meteorológico", tabMonitor:"Monitor", tabForecast:"Pronóstico", fcRain:"Precipitación", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Lluvia acumulada", fcThunder:"Tormentas eléctricas", fcNote:"Mapa interactivo independiente (no incluye el límite del proyecto ni los eventos). Use la línea de tiempo inferior para avanzar el pronóstico. En la Amazonía hay muy pocos radares, por lo que la capa de radar aparecerá mayormente vacía.", fcCredit:"Pronóstico: Windy.com (widget embebido gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)", firms24h:"Últimas 24 h de datos", firmsUpTo:"hasta", firmsRange:"Fechas seleccionadas", firmsNone:"Sin focos en esas fechas (el mapa guarda solo los últimos 7 días).", eventDateLbl:"Evento", updatedLbl:"Act.",
     sstNote:"Capa ENSO: anomalía de temperatura superficial del mar (NOAA OISST vía Google Earth Engine) en el Pacífico ecuatorial, con las regiones de referencia Niño 1+2, 3, 3.4 y 4. Es un indicador predictivo de sequías/inundaciones en la cuenca amazónica, no un evento dentro de la cuenca — por eso puede requerir alejar el mapa hacia el Pacífico para verse.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Niveles de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Rojo</span>: evento mayor o de rápida escalada, con consecuencias humanitarias, ambientales, agrícolas o de medios de vida significativas.</p>
@@ -185,7 +199,7 @@ const DICT = {
     layerNews:"Notícias", layerFirms:"Anomalias térmicas (focos de calor)",
     dataSourcesHTML:`Fontes de dados: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animação de emissões por incêndio, ferramenta externa)`,
     bordersNote:"Os dados geográficos, nomes e limites políticos e administrativos utilizados neste mapa não implicam aceitação oficial por parte da 3iS.",
-    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", fcTitle:"Previsão meteorológica", fcRain:"Precipitação", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Chuva acumulada", fcThunder:"Tempestades elétricas", fcNote:"Mapa interativo independente (não inclui o limite do projeto nem os eventos). Use a linha do tempo inferior para avançar a previsão. Na Amazônia há muito poucos radares, por isso a camada de radar aparecerá quase vazia.", fcCredit:"Previsão: Windy.com (widget incorporado gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)", firms24h:"Últimas 24 h de dados", firmsUpTo:"até", firmsRange:"Datas selecionadas", firmsNone:"Sem focos nessas datas (o mapa guarda apenas os últimos 7 dias).", eventDateLbl:"Evento", updatedLbl:"Atual.",
+    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", fcTitle:"Previsão meteorológica", tabMonitor:"Monitor", tabForecast:"Previsão", fcRain:"Precipitação", fcTemp:"Temperatura", fcRadar:"Radar meteorológico", fcRainAccu:"Chuva acumulada", fcThunder:"Tempestades elétricas", fcNote:"Mapa interativo independente (não inclui o limite do projeto nem os eventos). Use a linha do tempo inferior para avançar a previsão. Na Amazônia há muito poucos radares, por isso a camada de radar aparecerá quase vazia.", fcCredit:"Previsão: Windy.com (widget incorporado gratuito, modelo ECMWF).", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)", firms24h:"Últimas 24 h de dados", firmsUpTo:"até", firmsRange:"Datas selecionadas", firmsNone:"Sem focos nessas datas (o mapa guarda apenas os últimos 7 dias).", eventDateLbl:"Evento", updatedLbl:"Atual.",
     sstNote:"Camada ENSO: anomalia da temperatura da superfície do mar (NOAA OISST via Google Earth Engine) no Pacífico equatorial, com as regiões de referência Niño 1+2, 3, 3.4 e 4. É um indicador preditivo de secas/inundações na bacia amazônica, não um evento dentro da bacia — por isso pode ser necessário afastar o mapa em direção ao Pacífico para vê-la.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Níveis de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Vermelho</span>: evento maior ou de rápida escalada, com consequências humanitárias, ambientais, agrícolas ou de meios de vida significativas.</p>
@@ -212,7 +226,7 @@ const DICT = {
     layerNews:"News", layerFirms:"Thermal anomalies (heat spots)",
     dataSourcesHTML:`Data sources: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (VIIRS heat spots) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animated fire-emissions view, external tool)`,
     bordersNote:"The geographic data, names, and political and administrative boundaries used on this map do not imply official acceptance by 3iS.",
-    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", fcTitle:"Weather forecast", fcRain:"Precipitation", fcTemp:"Temperature", fcRadar:"Weather radar", fcRainAccu:"Rain accumulation", fcThunder:"Thunderstorms", fcNote:"Standalone interactive map (does not include the project boundary or events). Use the timeline at the bottom to move the forecast forward. There are very few radars in the Amazon, so the radar layer will be mostly empty.", fcCredit:"Forecast: Windy.com (free embedded widget, ECMWF model).", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)", firms24h:"Last 24 h of data", firmsUpTo:"up to", firmsRange:"Selected dates", firmsNone:"No hotspots on those dates (the map keeps only the last 7 days).", eventDateLbl:"Event", updatedLbl:"Upd.",
+    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", fcTitle:"Weather forecast", tabMonitor:"Monitor", tabForecast:"Forecast", fcRain:"Precipitation", fcTemp:"Temperature", fcRadar:"Weather radar", fcRainAccu:"Rain accumulation", fcThunder:"Thunderstorms", fcNote:"Standalone interactive map (does not include the project boundary or events). Use the timeline at the bottom to move the forecast forward. There are very few radars in the Amazon, so the radar layer will be mostly empty.", fcCredit:"Forecast: Windy.com (free embedded widget, ECMWF model).", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)", firms24h:"Last 24 h of data", firmsUpTo:"up to", firmsRange:"Selected dates", firmsNone:"No hotspots on those dates (the map keeps only the last 7 days).", eventDateLbl:"Event", updatedLbl:"Upd.",
     sstNote:"ENSO layer: sea surface temperature anomaly (NOAA OISST via Google Earth Engine) across the equatorial Pacific, with the Niño 1+2, 3, 3.4, and 4 reference regions. It is a predictive indicator for droughts/floods in the Amazon Basin, not an event inside the basin itself — you may need to pan the map toward the Pacific to see it.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Alert levels</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Red</span>: major or rapidly escalating event with significant humanitarian, environmental, agricultural, or livelihood consequences.</p>
@@ -757,8 +771,26 @@ function renderForecast(){
     b.onclick = function(){ windyOverlay = l.overlay; renderForecast(); };
     wrap.appendChild(b);
   });
+  if (activeTab !== 'forecast') return; // el iframe se carga solo al abrir la pestana
   var src = windySrc(windyOverlay);
   if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+}
+
+// --- Pestanas (Monitor / Pronostico). La pestana activa queda en la URL (#pronostico). ---
+let activeTab = 'monitor';
+function showTab(name){
+  activeTab = (name === 'forecast') ? 'forecast' : 'monitor';
+  document.getElementById('tabMonitor').hidden = (activeTab !== 'monitor');
+  document.getElementById('tabForecast').hidden = (activeTab !== 'forecast');
+  document.querySelectorAll('#tabs .tab-btn').forEach(function(b){
+    var on = b.getAttribute('data-tab') === activeTab;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  try { history.replaceState(null, '', activeTab === 'forecast' ? '#pronostico' : location.pathname + location.search); } catch (e) {}
+  if (activeTab === 'forecast') renderForecast();
+  // Leaflet necesita recalcular el tamano al volver a mostrarse
+  if (activeTab === 'monitor' && map) setTimeout(function(){ map.invalidateSize(); }, 0);
 }
 
 function renderAll(){
@@ -863,11 +895,19 @@ function wireControls(){
   });
 }
 
+function wireTabs(){
+  document.querySelectorAll('#tabs .tab-btn').forEach(function(b){
+    b.addEventListener('click', function(){ showTab(b.getAttribute('data-tab')); });
+  });
+  if (/^#(pronostico|previsao|forecast)$/i.test(location.hash)) showTab('forecast');
+}
+
 function initDashboard(){
   document.getElementById('lang').value = currentLang;
   applyI18nText();
   initMap();
   wireControls();
+  wireTabs();
   renderBasinLayer();
   renderSstLayer();
   renderAll();

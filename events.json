@@ -964,5 +964,50 @@
         "url": "https://www.elcomercio.com/actualidad/ecuador/ecuador-tendra-lluvias-tormentas-rafagas-viento-23-27-septiembre/"
       }
     ]
+  },
+  {
+    "id": "AMZ-20260923-002",
+    "country": "Brazil",
+    "hazard": "Drought",
+    "priority": "ORANGE",
+    "status": "ONGOING",
+    "basinStatus": "INSIDE",
+    "verification": "MULTIPLE_SOURCES",
+    "lat": -9.9747,
+    "lon": -67.8076,
+    "coordAccuracy": "MUNICIPALITY_APPROXIMATION",
+    "firstDetected": "2026-09-23",
+    "lastUpdated": "2026-09-23",
+    "updateCount": 0,
+    "eventDate": "2026-09-21",
+    "adminLevel1": "Acre",
+    "adminLevel2": "NOT_REPORTED",
+    "municipality": "Rio Branco (referencia)",
+    "locality": "Cuenca del río Acre (punto representativo: Rio Branco)",
+    "title": {
+      "es": "Sequía severa en Acre (Brasil): el estado concentra el 69% de los registros de sequía de la Región Norte",
+      "pt": "Seca severa no Acre: estado concentra 69% dos registros de seca e estiagem da Região Norte",
+      "en": "Severe drought in Acre (Brazil): state accounts for 69% of drought records in the North Region"
+    },
+    "desc": {
+      "es": "Según la Confederación Nacional de Municipios (CNM, 21-sep), Acre concentró 24 de los 35 registros de anormalidad por sequía y estiaje de la Región Norte entre el 1-jul y el 15-sep de 2026 (68,6%), un 20% más que en 2025 (20 casos). En toda la Región Norte, 33 municipios afectados y pérdidas estimadas de R$ 632 millones (agricultura R$ 46,8 M; ganadería R$ 32,6 M; abastecimiento de agua R$ 17 M). El gobierno de Acre decretó situación de emergencia el 3-ago ante la previsión de sequía severa del río Acre. En agosto el Monitor de Secas indicó sequía en el 100% del territorio acreano, la más severa de Brasil. El río Acre en Rio Branco marcó su mínimo de 2026 (1,59 m); la Defensa Civil mantiene distribución de agua en carros cisterna y registro de productores rurales con pérdidas.",
+      "pt": "Segundo a Confederação Nacional de Municípios (CNM, 21-set), o Acre concentrou 24 dos 35 registros de anormalidade por seca e estiagem da Região Norte entre 1-jul e 15-set de 2026 (68,6%), 20% a mais que em 2025 (20 casos). Em toda a Região Norte, 33 municípios afetados e prejuízos estimados em R$ 632 milhões (agricultura R$ 46,8 mi; pecuária R$ 32,6 mi; abastecimento de água R$ 17 mi). O governo do Acre decretou situação de emergência em 3-ago diante da previsão de seca severa no Rio Acre. Em agosto o Monitor de Secas apontou seca em 100% do território acreano, a mais severa do Brasil. O Rio Acre em Rio Branco registrou a mínima de 2026 (1,59 m); a Defesa Civil mantém distribuição de água por carros-pipa e cadastro de produtores rurais com perdas.",
+      "en": "According to the National Confederation of Municipalities (CNM, Sep 21), Acre accounted for 24 of the 35 drought/dry-spell abnormality records in Brazil's North Region between Jul 1 and Sep 15, 2026 (68.6%), 20% more than in 2025 (20 cases). Across the North Region, 33 municipalities were affected, with estimated losses of R$ 632 million (agriculture R$ 46.8M; livestock R$ 32.6M; water supply R$ 17M). Acre's government decreed a state of emergency on Aug 3 over the forecast severe drought of the Acre River. In August the Drought Monitor reported drought across 100% of Acre's territory, the most severe in Brazil. The Acre River at Rio Branco hit its 2026 low (1.59 m); Civil Defense continues tanker-truck water distribution and registration of rural producers with crop losses."
+    },
+    "notes": {
+      "es": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) y AMZ-20260911-003 (Roraima). Cifras de pérdidas son agregadas de la Región Norte, no exclusivas de Acre. Coordenadas = Rio Branco, punto representativo. Población afectada no reportada: verificar con Defesa Civil/S2iD.",
+      "pt": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) e AMZ-20260911-003 (Roraima). Valores de prejuízo são agregados da Região Norte, não exclusivos do Acre. Coordenadas = Rio Branco, ponto representativo. População afetada não informada: verificar com Defesa Civil/S2iD.",
+      "en": "Distinct from AMZ-20260902-001 (Rio Negro/Manaus) and AMZ-20260911-003 (Roraima). Loss figures are North Region aggregates, not Acre-only. Coordinates = Rio Branco, representative point. Affected population not reported: verify with Civil Defense/S2iD."
+    },
+    "sources": [
+      {
+        "label": "Confederação Nacional de Municípios (CNM), vía Acre Agora",
+        "url": "https://acreagora.com/2026/09/22/acre-concentra-69-dos-registros-de-seca-e-estiagem-contabilizados-na-regiao-norte/"
+      },
+      {
+        "label": "Defesa Civil do Acre, vía A Gazeta do Acre",
+        "url": "https://agazetadoacre.com/2026/09/noticias/geral/nivel-do-rio-acre-apresenta-elevacao-mas-defesa-civil-alerta-que-oscilacao-nao-altera-cenario-de-seca/"
+      }
+    ]
   }
 ]

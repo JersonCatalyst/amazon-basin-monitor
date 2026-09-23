@@ -107,7 +107,9 @@ GRID_AGGREGATION_TRIGGER = 1500  # solo agrega si un solo dia supera este umbral
 REPO_ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 FIRMS_JSON_PATH = os.path.join(REPO_ROOT, "firms_hotspots.json")
 SST_LAYER_JSON_PATH = os.path.join(REPO_ROOT, "sst_layer.json")
-AMAZON_BASIN_GEOJSON_PATH = os.path.join(REPO_ROOT, "amazon_basin.geojson")
+# Cuenca oficial SIN Guyana, Surinam ni Guayana Francesa (fuera del proyecto).
+# El original completo sigue en amazon_basin.geojson como referencia.
+AMAZON_BASIN_GEOJSON_PATH = os.path.join(REPO_ROOT, "amazon_basin_project.geojson")
 
 # Cobertura de la capa SST/ENSO: Pacifico ecuatorial desde el antimeridiano
 # hasta la costa de Sudamerica (min_lon, min_lat, max_lon, max_lat). Cubre

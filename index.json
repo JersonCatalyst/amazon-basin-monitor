@@ -1,0 +1,233 @@
+[
+  {
+    "id": "AMZ-20260801-001",
+    "country": "Bolivia",
+    "hazard": "Wildfire",
+    "lat": -14.5,
+    "lon": -64.9,
+    "status": "ONGOING",
+    "firstDetected": "2026-08-01",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Bolivia is experiencing a wildfire season that had already surpassed the 2025 peak by 21 July (2,835 heat spots, versus 2,536 for all of 2025). CEJIS "
+  },
+  {
+    "id": "AMZ-20260902-001",
+    "country": "Brazil",
+    "hazard": "Drought",
+    "lat": -3.1316,
+    "lon": -60.0224,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-02",
+    "lastUpdated": "2026-09-22",
+    "descEnPreview": "SGB and INPA report the Rio Negro at Manaus has been falling without interruption since early August, with projections placing the 2026 minimum level "
+  },
+  {
+    "id": "AMZ-20260907-001",
+    "country": "Peru",
+    "hazard": "Flood",
+    "lat": -5.8942,
+    "lon": -76.1122,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-07",
+    "lastUpdated": "2026-09-08",
+    "descEnPreview": "Several hours of intense, sudden rainfall, following a preceding stretch of heat and low rainfall, caused rapid urban flooding in Yurimaguas. Streets,"
+  },
+  {
+    "id": "AMZ-20260908-001",
+    "country": "Peru",
+    "hazard": "Drought",
+    "lat": -3.7437,
+    "lon": -73.2516,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-08",
+    "lastUpdated": "2026-09-09",
+    "descEnPreview": "SENAMHI reports that the Huallaga and Amazonas rivers in Loreto are falling faster than normal due to reduced upstream rainfall combined with the dry-"
+  },
+  {
+    "id": "AMZ-20260909-001",
+    "country": "Brazil",
+    "hazard": "Wildfire",
+    "lat": 2.5,
+    "lon": -50.95,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-09",
+    "lastUpdated": "2026-09-17",
+    "descEnPreview": "Amapá's state environment secretariat (Sema-AP), via the Painel do Fogo (using INPE and Ibama/ICMBio data), recorded 90 heat spots between August 1 an"
+  },
+  {
+    "id": "AMZ-20260910-001",
+    "country": "Peru",
+    "hazard": "Earthquake",
+    "lat": -3.91,
+    "lon": -77.4,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-10",
+    "lastUpdated": "2026-09-11",
+    "descEnPreview": "Peru's IGP recorded three earthquakes in the early hours of 10 September 2026 in Condorcanqui, Amazonas: M5.4 at 01:42 (15 km depth, 92 km NE of Santa"
+  },
+  {
+    "id": "AMZ-20260910-002",
+    "country": "Brazil",
+    "hazard": "Wildfire",
+    "lat": -5.1214,
+    "lon": -60.3806,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-10",
+    "lastUpdated": "2026-09-22",
+    "descEnPreview": "INPE data show Amazonas (Brazil) led the national heat-spot count in the first week of September 2026 (1,167-1,224 spots, depending on source), far ah"
+  },
+  {
+    "id": "AMZ-20260911-001",
+    "country": "Colombia",
+    "hazard": "Drought",
+    "lat": -4.2153,
+    "lon": -69.9406,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-11",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "According to an Asocapitales/UNGRD report cited by Infobae Colombia (11 September 2026), the Amazon River's level has fallen at Leticia (Amazonas depa"
+  },
+  {
+    "id": "AMZ-20260911-002",
+    "country": "Ecuador",
+    "hazard": "Extreme Rain",
+    "lat": -0.0892,
+    "lon": -76.8869,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-11",
+    "lastUpdated": "2026-09-18",
+    "descEnPreview": "Ecuador's National Institute of Meteorology and Hydrology (INAMHI) issued a medium-to-high intensity rain alert for the night of September 5 through t"
+  },
+  {
+    "id": "AMZ-20260911-003",
+    "country": "Brazil",
+    "hazard": "Drought",
+    "lat": -2.8235,
+    "lon": -60.6758,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-11",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "The government of Roraima state (Brazil) decreed a state of emergency (Level II) on September 2 for 180 days amid severe drought worsened by El Niño. "
+  },
+  {
+    "id": "AMZ-20260911-004",
+    "country": "Peru",
+    "hazard": "Landslide",
+    "lat": -6.0333,
+    "lon": -76.9667,
+    "status": "FORECAST",
+    "firstDetected": "2026-09-11",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Peru's SENAMHI (weather advisory No. 358) and INDECI issued an alert for light-to-moderate rainfall forecast between September 13-14 across 160 distri"
+  },
+  {
+    "id": "AMZ-20260912-001",
+    "country": "Venezuela",
+    "hazard": "Drought",
+    "lat": 5.6639,
+    "lon": -67.6236,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-12",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Venezuela's National Institute of Meteorology and Hydrology (INAMEH) warned on 10 September 2026, in statements from its president Reidy Zambrano, tha"
+  },
+  {
+    "id": "AMZ-20260912-002",
+    "country": "Bolivia",
+    "hazard": "Flood",
+    "lat": -14.8339,
+    "lon": -64.9014,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-12",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Bolivia's National Meteorology and Hydrology Service (SENAMHI), which had maintained an orange river-overflow alert for Santa Cruz, Cochabamba and La "
+  },
+  {
+    "id": "AMZ-20260914-001",
+    "country": "Ecuador",
+    "hazard": "Landslide",
+    "lat": -2.3072,
+    "lon": -78.1113,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-14",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "ECU 911 reported multiple landslides and road damage in Ecuador's Amazonian provinces on the morning of September 14, 2026, as a direct consequence of"
+  },
+  {
+    "id": "AMZ-20260914-002",
+    "country": "Venezuela",
+    "hazard": "Extreme Rain",
+    "lat": 5.6639,
+    "lon": -67.6236,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-14",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Venezuela's National Institute of Meteorology and Hydrology (INAMEH) issued an alert over the passage of Tropical Wave No. 49, combined with the Inter"
+  },
+  {
+    "id": "AMZ-20260914-003",
+    "country": "Brazil",
+    "hazard": "Deforestation",
+    "lat": -3.2,
+    "lon": -52.21,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-14",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "Data from the DETER/INPE system, released on September 14, 2026, show deforestation alerts in Pará rose from 74 km² to 155 km² between August 2025 and"
+  },
+  {
+    "id": "AMZ-20260914-004",
+    "country": "Ecuador",
+    "hazard": "Earthquake",
+    "lat": -3.738,
+    "lon": -78.7,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-14",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "On September 14, 2026 at 14:16h, a magnitude-5.5 earthquake was recorded with a reported epicenter near the Ecuador-Peru border area (Loreto region), "
+  },
+  {
+    "id": "AMZ-20260916-001",
+    "country": "Peru",
+    "hazard": "Earthquake",
+    "lat": -3.7302,
+    "lon": -77.3609,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-16",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "USGS recorded a magnitude 4.8 earthquake on September 14, 2026 at 19:16:49 UTC (approx. 14:16 local time), 106 km WSW of Alianza Cristiana, Loreto, Pe"
+  },
+  {
+    "id": "AMZ-20260916-002",
+    "country": "Ecuador",
+    "hazard": "Earthquake",
+    "lat": -1.6157,
+    "lon": -78.094,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-16",
+    "lastUpdated": "2026-09-16",
+    "descEnPreview": "USGS recorded a magnitude 4.5 earthquake on September 15, 2026 at 23:45:06 UTC, located 17 km WNW of Palora, Morona Santiago province, Ecuador (-1.615"
+  },
+  {
+    "id": "AMZ-20260916-003",
+    "country": "Colombia",
+    "hazard": "Extreme Rain",
+    "lat": 1.6144,
+    "lon": -75.6062,
+    "status": "FORECAST",
+    "firstDetected": "2026-09-16",
+    "lastUpdated": "2026-09-18",
+    "descEnPreview": "El Espectador reported on September 14, 2026 that, per weather forecasts citing IDEAM, the country's heaviest rainfall is expected on September 17 and"
+  },
+  {
+    "id": "AMZ-20260917-001",
+    "country": "Peru",
+    "hazard": "Earthquake",
+    "lat": -11.37,
+    "lon": -73.32,
+    "status": "OBSERVED",
+    "firstDetected": "2026-09-17",
+    "lastUpdated": "2026-09-17",
+    "descEnPreview": "Peru's National Seismological Center (CENSIS) at the Geophysical Institute of Peru (IGP) recorded a magnitude-4.0 earthquake on September 17, 2026 at "
+  }
+]

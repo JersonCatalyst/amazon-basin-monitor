@@ -11,8 +11,8 @@
     "lon": -64.9,
     "coordAccuracy": "APPROXIMATE",
     "firstDetected": "2026-08-01",
-    "lastUpdated": "2026-09-16",
-    "updateCount": 4,
+    "lastUpdated": "2026-09-23",
+    "updateCount": 5,
     "eventDate": "2026-09-11",
     "adminLevel1": "Beni / Santa Cruz",
     "adminLevel2": "NOT_REPORTED",
@@ -29,9 +29,9 @@
       "en": "Bolivia is experiencing a wildfire season that had already surpassed the 2025 peak by 21 July (2,835 heat spots, versus 2,536 for all of 2025). CEJIS documented 1,122 heat spots between 17-31 August across 30 of 58 indigenous territories. Beni and Santa Cruz account for 86.7% of nationally burned area. UPDATE (11 Sep): the Santa Cruz government reports 395 heat spots (10 Sep) and 6,615 cumulative for September; 5 active wildfires: Concepción, San José de Chiquitos, San Ignacio de Velasco, San Miguel de Velasco (extinguished), and Otuquis, where fire crossed from Brazil into Bolivia. Concepción, Chiquitos, Velasco, and Otuquis lie in the Santa Cruz Chiquitania/Pantanal, outside the Amazon basin; Beni remains the Amazonian department of primary interest."
     },
     "notes": {
-      "es": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni es amazónico, gran parte de Santa Cruz es Chiquitania/Chaco (fuera de la cuenca). ACTUALIZACIÓN 16/09: La Razón (14-sep, título/fecha verificados, contenido tras muro de pago) reporta coordinación bilateral Bolivia-Brasil para el combate de incendios, en el contexto del foco transfronterizo de Otuquis que cruzó desde Brasil hacia el Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que la crisis de incendios sigue activa y ahora tiene una dimensión de cooperación internacional. Se mantiene la recomendación de aislar cifras de Beni (amazónico) del total de Santa Cruz (mayormente Chiquitania/Chaco).",
-      "pt": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni é amazônico, grande parte de Santa Cruz é Chiquitania/Chaco (fora da bacia). ATUALIZAÇÃO 16/09: La Razón (14-set, título/data verificados, conteúdo atrás de paywall) noticia coordenação bilateral Bolívia-Brasil para o combate a incêndios, no contexto do foco transfronteiriço de Otuquis vindo do Brasil para o Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que a crise de incêndios segue ativa e agora tem uma dimensão de cooperação internacional. Mantém-se a recomendação de isolar números de Beni (amazônico) do total de Santa Cruz (majoritariamente Chiquitania/Chaco).",
-      "en": "AMAZON_BASIN_STATUS marked PARTIALLY_INSIDE: Beni is Amazonian, much of Santa Cruz is Chiquitania/Chaco (outside the basin). UPDATE 09/16: La Razón (Sep 14, title/date verified, content behind a paywall) reports bilateral Bolivia-Brazil coordination to fight fires, in the context of the cross-border Otuquis blaze that crossed from Brazil into Otuquis National Park (Germán Busch, Santa Cruz); confirms the fire crisis remains active and now has an international cooperation dimension. The recommendation to isolate Beni-specific (Amazonian) figures from the Santa Cruz total (mostly Chiquitania/Chaco) stands."
+      "es": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni es amazónico, gran parte de Santa Cruz es Chiquitania/Chaco (fuera de la cuenca). ACTUALIZACIÓN 16/09: La Razón (14-sep, título/fecha verificados, contenido tras muro de pago) reporta coordinación bilateral Bolivia-Brasil para el combate de incendios, en el contexto del foco transfronterizo de Otuquis que cruzó desde Brasil hacia el Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que la crisis de incendios sigue activa y ahora tiene una dimensión de cooperación internacional. Se mantiene la recomendación de aislar cifras de Beni (amazónico) del total de Santa Cruz (mayormente Chiquitania/Chaco). ACTUALIZACIÓN 23/09: el Centro Departamental de Monitoreo de Santa Cruz reportó el 21-sep 347 focos de calor en el día, 13.618 acumulados en septiembre, 128 incendios registrados en el mes y 23.103 ha afectadas; 2 incendios activos en fase de monitoreo (Aguas Calientes y zona Vertedero, Concepción -- Chiquitania, mayormente fuera de la cuenca); 4 incendios extinguidos el fin de semana. Sin cifra nueva para Beni. Fuente: El Deber / La Razón (21-sep).",
+      "pt": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni é amazônico, grande parte de Santa Cruz é Chiquitania/Chaco (fora da bacia). ATUALIZAÇÃO 16/09: La Razón (14-set, título/data verificados, conteúdo atrás de paywall) noticia coordenação bilateral Bolívia-Brasil para o combate a incêndios, no contexto do foco transfronteiriço de Otuquis vindo do Brasil para o Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que a crise de incêndios segue ativa e agora tem uma dimensão de cooperação internacional. Mantém-se a recomendação de isolar números de Beni (amazônico) do total de Santa Cruz (majoritariamente Chiquitania/Chaco). ATUALIZAÇÃO 23/09: o Centro Departamental de Monitoramento de Santa Cruz relatou em 21-set 347 focos de calor no dia, 13.618 acumulados em setembro, 128 incêndios registrados no mês e 23.103 ha afetados; 2 incêndios ativos em fase de monitoramento (Aguas Calientes e zona Vertedero, Concepción -- Chiquitania, majoritariamente fora da bacia); 4 incêndios extintos no fim de semana. Sem número novo para Beni. Fonte: El Deber / La Razón (21-set).",
+      "en": "AMAZON_BASIN_STATUS marked PARTIALLY_INSIDE: Beni is Amazonian, much of Santa Cruz is Chiquitania/Chaco (outside the basin). UPDATE 09/16: La Razón (Sep 14, title/date verified, content behind a paywall) reports bilateral Bolivia-Brazil coordination to fight fires, in the context of the cross-border Otuquis blaze that crossed from Brazil into Otuquis National Park (Germán Busch, Santa Cruz); confirms the fire crisis remains active and now has an international cooperation dimension. The recommendation to isolate Beni-specific (Amazonian) figures from the Santa Cruz total (mostly Chiquitania/Chaco) stands. UPDATE 09/23: Santa Cruz's Departmental Monitoring Center reported on Sep 21 347 heat spots that day, 13,618 accumulated in September, 128 fires registered this month and 23,103 ha affected; 2 active fires under monitoring (Aguas Calientes and the Vertedero area, Concepción -- Chiquitania, mostly outside the basin); 4 fires extinguished over the weekend. No new figure for Beni. Source: El Deber / La Razón (Sep 21)."
     },
     "sources": [
       {
@@ -921,6 +921,47 @@
       {
         "label": "Instituto Geofisico del Peru (IGP/CENSIS), via Infobae",
         "url": "https://www.infobae.com/peru/2026/09/17/sismo-de-magnitud-4-se-siente-en-a-sepahua-ucayali/"
+      }
+    ]
+  },
+  {
+    "id": "AMZ-20260923-001",
+    "country": "Ecuador",
+    "hazard": "Extreme Rain",
+    "priority": "YELLOW",
+    "status": "FORECAST",
+    "basinStatus": "INSIDE",
+    "verification": "SINGLE_SOURCE",
+    "lat": -0.9938,
+    "lon": -77.8129,
+    "coordAccuracy": "APPROXIMATE",
+    "firstDetected": "2026-09-23",
+    "lastUpdated": "2026-09-23",
+    "updateCount": 0,
+    "eventDate": "2026-09-23",
+    "adminLevel1": "Sucumbíos, Orellana, Napo (piedemonte de Tena), Pastaza, Morona Santiago",
+    "adminLevel2": "NOT_REPORTED",
+    "municipality": "Tena (referencia)",
+    "locality": "Piedemonte amazónico (referencia representativa)",
+    "title": {
+      "es": "INAMHI emite Advertencia N.° 74 por lluvias y tormentas en la Amazonía ecuatoriana (23-27 sep)",
+      "pt": "INAMHI emite Aviso n.º 74 por chuvas e tempestades na Amazônia equatoriana (23-27 set)",
+      "en": "INAMHI issues Advisory No. 74 for rain and storms in Ecuador's Amazon region (Sep 23-27)"
+    },
+    "desc": {
+      "es": "El INAMHI emitió el 22-sep la Advertencia Meteorológica N.° 74, vigente del 23-sep (13:00) al 27-sep (10:00), por lluvias, tormentas eléctricas y ráfagas de viento. En la Amazonía se prevén mayores impactos en Sucumbíos, Orellana y el piedemonte (Tena, Pastaza, Morona Santiago), con acumulados de 22-31 mm/día (intensidad media) a 32-54 mm/día (alta). Los picos se esperan el 23-sep y la noche del 25 a la madrugada del 26-sep. El INAMHI advierte posibles deslizamientos y desbordamientos de ríos en zonas susceptibles.",
+      "pt": "O INAMHI emitiu em 22-set o Aviso Meteorológico n.º 74, válido de 23-set (13h) a 27-set (10h), por chuvas, tempestades elétricas e rajadas de vento. Na Amazônia, os maiores impactos são previstos em Sucumbíos, Orellana e no sopé andino (Tena, Pastaza, Morona Santiago), com acumulados de 22-31 mm/dia (intensidade média) a 32-54 mm/dia (alta). Os picos são esperados em 23-set e na noite de 25 para a madrugada de 26-set. O INAMHI alerta para possíveis deslizamentos e transbordamentos de rios em áreas suscetíveis.",
+      "en": "On Sep 22 INAMHI issued Meteorological Advisory No. 74, valid from Sep 23 (13:00) to Sep 27 (10:00), for rain, thunderstorms and strong wind gusts. In the Amazon region the greatest impacts are expected in Sucumbíos, Orellana and the foothills (Tena, Pastaza, Morona Santiago), with totals of 22-31 mm/day (medium intensity) to 32-54 mm/day (high). Peaks are expected on Sep 23 and from the night of Sep 25 into the early morning of Sep 26. INAMHI warns of possible landslides and river overflows in susceptible areas."
+    },
+    "notes": {
+      "es": "Episodio de pronóstico distinto de AMZ-20260911-002 (Alerta N.° 70, vigencia terminada ~16-18 sep). Mismas provincias afectadas por deslizamientos el 14-sep (AMZ-20260914-001): vigilar impactos 23-27 sep. Coordenadas = Tena, punto representativo, no epicentro. Requiere verificación con boletín oficial INAMHI/SNGR.",
+      "pt": "Episódio de previsão distinto de AMZ-20260911-002 (Alerta n.º 70, vigência encerrada ~16-18 set). Mesmas províncias afetadas por deslizamentos em 14-set (AMZ-20260914-001): monitorar impactos 23-27 set. Coordenadas = Tena, ponto representativo. Requer verificação no boletim oficial INAMHI/SNGR.",
+      "en": "Forecast episode distinct from AMZ-20260911-002 (Alert No. 70, validity ended ~Sep 16-18). Same provinces hit by landslides on Sep 14 (AMZ-20260914-001): watch for impacts Sep 23-27. Coordinates = Tena, a representative point. Requires verification against the official INAMHI/SNGR bulletin."
+    },
+    "sources": [
+      {
+        "label": "INAMHI (Advertencia Meteorológica N.° 74), vía El Comercio Ecuador",
+        "url": "https://www.elcomercio.com/actualidad/ecuador/ecuador-tendra-lluvias-tormentas-rafagas-viento-23-27-septiembre/"
       }
     ]
   }

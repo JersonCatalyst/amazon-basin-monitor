@@ -131,6 +131,9 @@ GEE_CLIMATOLOGY_ASSET_ID = os.environ.get(
 )
 
 
+CONFIDENCE_CODES = {"l": "low", "n": "nominal", "h": "high"}
+
+
 def satellite_name(source: str) -> str:
     return "NOAA-20" if "NOAA20" in source else "NOAA-21"
 
@@ -154,15 +157,21 @@ def fetch_firms_points(map_key: str):
         sat = satellite_name(source)
         for row in reader:
             try:
-                points.append(
-                    {
-                        "lat": round(float(row["latitude"]), 4),
-                        "lon": round(float(row["longitude"]), 4),
-                        "date": row.get("acq_date", "").strip(),
-                        "confidence": (row.get("confidence") or "nominal").strip().lower(),
-                        "satellite": sat,
-                    }
-                )
+                # VIIRS entrega la confianza como l/n/h; se normaliza a low/nominal/high
+                conf_raw = (row.get("confidence") or "nominal").strip().lower()
+                point = {
+                    "lat": round(float(row["latitude"]), 4),
+                    "lon": round(float(row["longitude"]), 4),
+                    "date": row.get("acq_date", "").strip(),
+                    "confidence": CONFIDENCE_CODES.get(conf_raw, conf_raw),
+                    "satellite": sat,
+                }
+                # FRP = potencia radiativa del fuego (MW): la medida de intensidad
+                # que usa el mapa para el tamano y el tono de gris de cada punto.
+                frp_raw = (row.get("frp") or "").strip()
+                if frp_raw:
+                    point["frp"] = round(float(frp_raw), 1)
+                points.append(point)
             except (KeyError, ValueError):
                 # fila con formato inesperado -> se ignora, no se inventa nada
                 continue
@@ -185,12 +194,23 @@ def aggregate_if_needed(points):
         cells.setdefault(key, []).append(p)
 
     aggregated = []
-    confidence_rank = {"low": 0, "nominal": 1, "high": 2}
+    confidence_rank = {"low": 0, "l": 0, "nominal": 1, "n": 1, "high": 2, "h": 2}
     for (lat, lon, date, sat), group in cells.items():
         best_confidence = max(group, key=lambda g: confidence_rank.get(g["confidence"], 0))["confidence"]
-        aggregated.append(
-            {"lat": lat, "lon": lon, "date": date, "confidence": best_confidence, "satellite": sat}
-        )
+        cell = {
+            "lat": round(lat, 4),
+            "lon": round(lon, 4),
+            "date": date,
+            "confidence": best_confidence,
+            "satellite": sat,
+            "count": len(group),
+        }
+        # FRP total y maxima de la celda: el mapa usa frp_sum como intensidad
+        frps = [g["frp"] for g in group if g.get("frp") is not None]
+        if frps:
+            cell["frp_sum"] = round(sum(frps), 1)
+            cell["frp_max"] = round(max(frps), 1)
+        aggregated.append(cell)
     return aggregated
 
 
@@ -291,9 +311,13 @@ def update_firms():
         print(f"FIRMS: BLOQUEADO - {e}")
         return
 
-    new_points = aggregate_if_needed(new_points)
+    # Se recortan los puntos crudos a la forma real de la cuenca ANTES de
+    # agregarlos por rejilla, para que ninguna celda sume focos de fuera.
+    new_points = aggregate_if_needed(filter_to_basin(new_points))
     existing = load_json_array(FIRMS_JSON_PATH)
-    combined = dedupe(trim_to_window(existing + new_points))
+    # Los puntos nuevos van primero: si el Action corre dos veces el mismo dia,
+    # dedupe() conserva la version mas reciente (con FRP) y no la anterior.
+    combined = dedupe(trim_to_window(new_points + existing))
     combined = filter_to_basin(combined)
 
     with open(FIRMS_JSON_PATH, "w", encoding="utf-8") as f:

@@ -26,6 +26,7 @@
   #av-3is-root, #av-3is-root * { font-family: var(--font-sans); box-sizing: border-box; }
   #av-3is-root { background: #ffffff; border: 1px solid var(--3is-gray); border-radius: 16px; overflow: hidden; }
   #av-3is-body { padding: 1.5rem; }
+  .firms-legend { background:#fff; padding:8px 10px; border-radius:8px; border:1px solid var(--3is-gray); font-size:11px; line-height:1.3; max-width:200px; box-shadow:0 1px 4px rgba(0,0,0,.15); }
   #map { height: 420px; border-radius: var(--radius); z-index: 0; }
   select, input[type=checkbox] { font-family: var(--font-sans); }
   select { border: 1px solid var(--3is-cyan); border-radius: var(--radius); padding: 5px 10px; font-size: 13px; color: var(--3is-teal-deep); background: #fff; }
@@ -145,7 +146,7 @@ const DICT = {
     layerNews:"Noticias", layerFirms:"Anomalías térmicas (focos de calor)",
     dataSourcesHTML:`Fuentes de datos: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animación de emisiones por incendio, herramienta externa)`,
     bordersNote:"Los datos geográficos, nombres y límites políticos y administrativos utilizados en este mapa no implican aceptación oficial por parte de 3iS.",
-    layerSst:"Anomalía SST (ENSO)",
+    layerSst:"Anomalía SST (ENSO)", layerBasin:"Límite de la cuenca amazónica", firmsLegend:"Focos de calor — potencia radiativa (FRP, MW)", firmsLegendNote:"Celdas agregadas: FRP total de la celda. Puntos sin FRP: clase según confianza.", firmsCell:"focos en la celda", firmsFrp:"FRP", firmsNoFrp:"sin FRP (clase por confianza)",
     sstNote:"Capa ENSO: anomalía de temperatura superficial del mar (NOAA OISST vía Google Earth Engine) en el Pacífico ecuatorial, con las regiones de referencia Niño 1+2, 3, 3.4 y 4. Es un indicador predictivo de sequías/inundaciones en la cuenca amazónica, no un evento dentro de la cuenca — por eso puede requerir alejar el mapa hacia el Pacífico para verse.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Niveles de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Rojo</span>: evento mayor o de rápida escalada, con consecuencias humanitarias, ambientales, agrícolas o de medios de vida significativas.</p>
@@ -172,7 +173,7 @@ const DICT = {
     layerNews:"Notícias", layerFirms:"Anomalias térmicas (focos de calor)",
     dataSourcesHTML:`Fontes de dados: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (focos de calor VIIRS) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animação de emissões por incêndio, ferramenta externa)`,
     bordersNote:"Os dados geográficos, nomes e limites políticos e administrativos utilizados neste mapa não implicam aceitação oficial por parte da 3iS.",
-    layerSst:"Anomalia de TSM (ENSO)",
+    layerSst:"Anomalia de TSM (ENSO)", layerBasin:"Limite da bacia amazônica", firmsLegend:"Focos de calor — potência radiativa (FRP, MW)", firmsLegendNote:"Células agregadas: FRP total da célula. Pontos sem FRP: classe pela confiança.", firmsCell:"focos na célula", firmsFrp:"FRP", firmsNoFrp:"sem FRP (classe pela confiança)",
     sstNote:"Camada ENSO: anomalia da temperatura da superfície do mar (NOAA OISST via Google Earth Engine) no Pacífico equatorial, com as regiões de referência Niño 1+2, 3, 3.4 e 4. É um indicador preditivo de secas/inundações na bacia amazônica, não um evento dentro da bacia — por isso pode ser necessário afastar o mapa em direção ao Pacífico para vê-la.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Níveis de alerta</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Vermelho</span>: evento maior ou de rápida escalada, com consequências humanitárias, ambientais, agrícolas ou de meios de vida significativas.</p>
@@ -199,7 +200,7 @@ const DICT = {
     layerNews:"News", layerFirms:"Thermal anomalies (heat spots)",
     dataSourcesHTML:`Data sources: <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:var(--3is-cyan)">OpenStreetMap</a> · <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" style="color:var(--3is-cyan)">NASA FIRMS</a> (VIIRS heat spots) · <a href="https://apps.atmosphere.copernicus.eu/fire-emissions-watch/" target="_blank" style="color:var(--3is-cyan)">Copernicus CAMS — Fire Emissions Watch ↗</a> (animated fire-emissions view, external tool)`,
     bordersNote:"The geographic data, names, and political and administrative boundaries used on this map do not imply official acceptance by 3iS.",
-    layerSst:"SST Anomaly (ENSO)",
+    layerSst:"SST Anomaly (ENSO)", layerBasin:"Amazon basin boundary", firmsLegend:"Heat spots — fire radiative power (FRP, MW)", firmsLegendNote:"Aggregated cells: total FRP of the cell. Points without FRP: class by confidence.", firmsCell:"hotspots in cell", firmsFrp:"FRP", firmsNoFrp:"no FRP (class by confidence)",
     sstNote:"ENSO layer: sea surface temperature anomaly (NOAA OISST via Google Earth Engine) across the equatorial Pacific, with the Niño 1+2, 3, 3.4, and 4 reference regions. It is a predictive indicator for droughts/floods in the Amazon Basin, not an event inside the basin itself — you may need to pan the map toward the Pacific to see it.",
     infoHTML:`<p style="margin:0 0 8px"><b style="color:var(--3is-navy)">Alert levels</b></p>
       <p style="margin:0 0 4px"><span style="color:#E24B4A">● Red</span>: major or rapidly escalating event with significant humanitarian, environmental, agricultural, or livelihood consequences.</p>
@@ -291,7 +292,24 @@ const ICON_PATHS = {
 const HAZARD_ORDER = ["WILDFIRE","FLOOD","FLASH_FLOOD","EXTREME_RAIN","DROUGHT","LANDSLIDE","EARTHQUAKE","EXTREME_HEAT","SEVERE_STORM","DEFORESTATION"];
 
 const PRIORITY_COLOR = { RED:"#E24B4A", ORANGE:"#EF9F27", GREEN:"#639922" };
-const FIRMS_COLOR = { high:"#5B21B6", nominal:"#8B5CF6", low:"#C4B5FD" };
+// Clases de severidad FIRMS segun la potencia radiativa del fuego (FRP, MW).
+// En celdas agregadas se usa la FRP total de la celda. Escala de grises:
+// claro/pequeno = menos intenso, oscuro/grande = mas intenso.
+const FIRMS_CLASSES = [
+  { max: 5,        radius: 2.5, fill: "#D0D0D0", label: "< 5" },
+  { max: 25,       radius: 3.5, fill: "#A0A0A0", label: "5 – 25" },
+  { max: 100,      radius: 5,   fill: "#707070", label: "25 – 100" },
+  { max: 500,      radius: 7,   fill: "#404040", label: "100 – 500" },
+  { max: Infinity, radius: 10,  fill: "#111111", label: "≥ 500" }
+];
+// Respaldo para puntos sin FRP (datos anteriores al cambio): clase por confianza.
+const FIRMS_CONF_CLASS = { low:0, l:0, nominal:1, n:1, high:2, h:2 };
+function firmsClassIndex(p){
+  var v = (p.frp_sum != null) ? p.frp_sum : p.frp;
+  if (v == null || isNaN(v)) return (FIRMS_CONF_CLASS[p.confidence] != null) ? FIRMS_CONF_CLASS[p.confidence] : 1;
+  for (var i = 0; i < FIRMS_CLASSES.length; i++) { if (v < FIRMS_CLASSES[i].max) return i; }
+  return FIRMS_CLASSES.length - 1;
+}
 
 const DEFAULT_MAP_CENTER = [-6, -66];
 const DEFAULT_MAP_ZOOM = 4;
@@ -318,7 +336,7 @@ let activeHazard = null;
 let dateFrom = null;
 let dateTo = null;
 
-let map, newsLayer, firmsLayer, sstLayer, layersControl;
+let map, newsLayer, firmsLayer, sstLayer, layersControl, basinLayer, firmsRenderer, firmsLegendControl;
 
 function t(key){ return (DICT[currentLang] && DICT[currentLang][key] !== undefined) ? DICT[currentLang][key] : key; }
 function hazardLabel(hz){ return (DICT[currentLang] && DICT[currentLang][hz]) ? DICT[currentLang][hz] : hz; }
@@ -503,21 +521,64 @@ function renderMarkers(filtered){
 function renderFirmsMarkers(){
   if (!firmsLayer) return;
   firmsLayer.clearLayers();
-  (typeof FIRMS_HOTSPOTS !== 'undefined' ? FIRMS_HOTSPOTS : []).forEach(function(p){
-    // Filtro defensivo del lado del cliente: si ya tenemos el poligono real
-    // de la cuenca cargado, se descartan aqui los puntos que hayan quedado
-    // dentro del rectangulo de busqueda de FIRMS pero fuera de la cuenca real
-    // (el filtro principal ya corre en fetch_and_publish.py -- esto es solo
-    // para que un firms_hotspots.json viejo, generado antes de ese cambio,
-    // tambien se vea correcto sin esperar a la proxima corrida diaria).
-    if (AMAZON_BASIN_GEOJSON && !pointInBasin(p.lat, p.lon)) return;
-    var color = FIRMS_COLOR[p.confidence] || FIRMS_COLOR.nominal;
+  var pts = (typeof FIRMS_HOTSPOTS !== 'undefined' ? FIRMS_HOTSPOTS : []).filter(function(p){
+    // Filtro defensivo del lado del cliente (el principal corre en
+    // fetch_and_publish.py): descarta lo que caiga fuera de la cuenca real.
+    return !(AMAZON_BASIN_GEOJSON && !pointInBasin(p.lat, p.lon));
+  }).map(function(p){ return { p: p, c: firmsClassIndex(p) }; });
+  // Los mas intensos se dibujan al final, encima, para que resalten.
+  pts.sort(function(a, b){ return a.c - b.c; });
+  pts.forEach(function(o){
+    var p = o.p, k = FIRMS_CLASSES[o.c];
     var m = L.circleMarker([p.lat, p.lon], {
-      radius: 2.2, color: color, weight: 1, fillColor: color, fillOpacity: 0.8
+      renderer: firmsRenderer, radius: k.radius, color: '#ffffff', weight: 0.6, opacity: 0.9,
+      fillColor: k.fill, fillOpacity: 0.85
     });
-    m.bindPopup('<div style="font-size:12px"><b>'+t('layerFirms')+'</b><br>'+p.satellite+' · '+p.date+' · '+p.confidence+'</div>');
+    var frpVal = (p.frp_sum != null) ? p.frp_sum : p.frp;
+    var lines = [p.satellite + ' · ' + p.date + ' · ' + p.confidence];
+    if (p.count) lines.push(p.count + ' ' + t('firmsCell'));
+    lines.push(frpVal != null ? t('firmsFrp') + ': ' + (Math.round(frpVal * 10) / 10) + ' MW' : t('firmsNoFrp'));
+    m.bindPopup('<div style="font-size:12px"><b>' + t('layerFirms') + '</b><br>' + lines.join('<br>') + '</div>');
     m.addTo(firmsLayer);
   });
+  updateFirmsLegend();
+}
+
+// Leyenda de FIRMS (tamano + gris por clase de FRP). Solo visible si la capa esta encendida.
+function updateFirmsLegend(){
+  if (!map) return;
+  if (!firmsLegendControl) {
+    firmsLegendControl = L.control({ position: 'bottomleft' });
+    firmsLegendControl.onAdd = function(){
+      var d = L.DomUtil.create('div', 'firms-legend');
+      L.DomEvent.disableClickPropagation(d);
+      return d;
+    };
+    firmsLegendControl.addTo(map);
+  }
+  var el = firmsLegendControl.getContainer();
+  el.style.display = map.hasLayer(firmsLayer) ? 'block' : 'none';
+  var rows = FIRMS_CLASSES.map(function(k){
+    var sz = k.radius * 2;
+    return '<div style="display:flex;align-items:center;gap:6px;margin:2px 0">' +
+      '<span style="display:inline-flex;justify-content:center;align-items:center;width:22px">' +
+      '<span style="width:' + sz + 'px;height:' + sz + 'px;border-radius:50%;background:' + k.fill + ';border:1px solid #fff;box-shadow:0 0 0 0.5px #888"></span></span>' +
+      '<span>' + k.label + '</span></div>';
+  }).join('');
+  el.innerHTML = '<div style="font-weight:600;margin-bottom:4px">' + t('firmsLegend') + '</div>' + rows +
+    '<div style="margin-top:4px;color:#6b7583;font-size:10px">' + t('firmsLegendNote') + '</div>';
+}
+
+// Limite oficial de la cuenca (amazon_basin.geojson), el mismo poligono que
+// filtra eventos y focos de calor. Va en su propio pane, debajo de los puntos.
+function renderBasinLayer(){
+  if (!basinLayer) return;
+  basinLayer.clearLayers();
+  if (!AMAZON_BASIN_GEOJSON) return;
+  L.geoJSON(AMAZON_BASIN_GEOJSON, {
+    pane: 'basinPane', interactive: false,
+    style: { color: '#207685', weight: 2.5, opacity: 0.95, dashArray: '6 4', fillColor: '#41C0A6', fillOpacity: 0.06 }
+  }).addTo(basinLayer);
 }
 
 function renderSstLayer(){
@@ -614,6 +675,7 @@ function buildLayersControl(){
   baseLayers['OpenStreetMap'] = window.__osmLayer;
   baseLayers['Satellite'] = window.__satLayer;
   var overlays = {};
+  overlays[t('layerBasin')] = basinLayer;
   overlays[t('borders')] = window.__bordersLayer;
   overlays[t('layerNews')] = newsLayer;
   overlays[t('layerFirms')] = firmsLayer;
@@ -659,8 +721,17 @@ function initMap(){
   window.__bordersLayer = L.layerGroup();
   loadBordersLayer();
 
+  // Pane propio para el limite de la cuenca, por debajo de noticias y FIRMS.
+  map.createPane('basinPane');
+  map.getPane('basinPane').style.zIndex = 350;
+  map.getPane('basinPane').style.pointerEvents = 'none';
+  basinLayer = L.layerGroup().addTo(map);
+
   newsLayer = L.layerGroup().addTo(map);
+  // Canvas en vez de SVG: miles de focos de calor se dibujan mucho mas rapido.
+  firmsRenderer = L.canvas({ padding: 0.5 });
   firmsLayer = L.layerGroup().addTo(map);
+  map.on('overlayadd overlayremove', updateFirmsLegend);
   // Apagada por defecto (igual que los limites nacionales): es una capa de
   // contexto/prediccion (ENSO), no un evento dentro de la cuenca, asi que no
   // se agrega al mapa aqui -- solo queda registrada en el selector de capas.
@@ -674,6 +745,7 @@ function wireControls(){
     currentLang = e.target.value;
     applyI18nText();
     renderAll();
+    renderFirmsMarkers();
   });
   document.getElementById('infoBtn').addEventListener('click', function(){
     var p = document.getElementById('infoPanel');
@@ -694,6 +766,7 @@ function initDashboard(){
   applyI18nText();
   initMap();
   wireControls();
+  renderBasinLayer();
   renderFirmsMarkers();
   renderSstLayer();
   renderAll();

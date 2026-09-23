@@ -48,13 +48,15 @@
   .tab-btn.active::before { left:-10px; background:radial-gradient(circle at 0 0, transparent 9.5px, #fff 10px); }
   .tab-btn.active::after { right:-10px; background:radial-gradient(circle at 100% 0, transparent 9.5px, #fff 10px); }
   /* Titulo, subtitulo e idioma arriba a la derecha, sin agrandar el banner */
-  #bannerTitle { position:absolute; top:-0.6rem; right:0; text-align:right; }
+  #bannerTitle { position:absolute; top:-0.75rem; right:0; text-align:right; }
+  #lang { position:absolute; right:1.5rem; bottom:8px; z-index:2; }
   #lang { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.55); border-radius:999px; padding:2px 10px; font-size:12px; font-weight:500; cursor:pointer; }
   #lang option { color:#000; }
   /* Pantallas angostas: el titulo baja bajo el logo, asi que las pestanas necesitan su propio espacio */
   @media (max-width: 760px) {
     #banner { padding-bottom: 3.4rem !important; }
     #bannerTitle { position: static; }
+    #lang { position: relative; right:auto; bottom:auto; display:block; margin: 8px 0 0 auto; }
     .tabs-bar { left: 1.5rem; }
   }
   .brand-divider { height: 6px; background: linear-gradient(90deg, var(--3is-aqua) 0%, var(--3is-cyan) 55%, var(--3is-navy) 100%); }
@@ -101,15 +103,15 @@
 <path d="M317.994 94.74V86.9394H315.623V84.0823H317.994V77.9156H320.985V84.0823H325.895V86.9394H320.985V94.673C320.985 95.9633 322.099 97.1782 323.356 97.1782H326.037L326.8 100.035H323.281C320.356 100.035 317.985 97.6977 317.985 94.74H317.994Z" fill="white"/>
 </svg>
     <div id="bannerTitle">
-      <p style="font-weight:800;font-size:20px;line-height:1.15;margin:0;color:#fff" data-i18n="title"></p>
-      <p style="font-size:13px;line-height:1.2;font-weight:500;color:#D4F5EE;margin:2px 0 0" data-i18n="subtitle"></p>
-      <select id="lang" aria-label="Idioma / Language" style="margin-top:6px">
-        <option value="es">Español</option>
-        <option value="pt">Português</option>
-        <option value="en">English</option>
-      </select>
+      <p style="font-weight:800;font-size:24px;line-height:1.15;margin:0;color:#fff" data-i18n="title"></p>
+      <p style="font-size:15px;line-height:1.2;font-weight:500;color:#D4F5EE;margin:3px 0 0" data-i18n="subtitle"></p>
     </div>
   </div>
+  <select id="lang" aria-label="Idioma / Language">
+    <option value="es">Español</option>
+    <option value="pt">Português</option>
+    <option value="en">English</option>
+  </select>
   <!-- Pestanas tipo carpeta (estilo Chrome), apoyadas sobre el borde inferior del banner -->
   <nav id="tabs" class="tabs-bar" role="tablist">
     <button class="tab-btn active" role="tab" data-tab="monitor" data-i18n="tabMonitor"></button>
@@ -177,7 +179,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 const DICT = {
-  es: { title:"Mapa de riesgos — Cuenca amazónica", subtitle:"Eventos activos por hazard y prioridad", mapNote:"Mapa base OpenStreetMap. Datos: base propia de eventos verificados (ver lista a la derecha).",
+  es: { title:"Mapa de riesgos — Cuenca amazónica", subtitle:"Eventos activos por amenaza y prioridad", mapNote:"Mapa base OpenStreetMap. Datos: base propia de eventos verificados (ver lista a la derecha).",
     total:"Eventos", red:"Alertas rojas", countries:"Países afectados",
     all:"Todos", FLOOD:"Inundación", EXTREME_RAIN:"Lluvia extrema", DROUGHT:"Sequía", WILDFIRE:"Incendio forestal", EARTHQUAKE:"Sismo", LANDSLIDE:"Deslizamiento", DEFORESTATION:"Deforestación", FLASH_FLOOD:"Inundación repentina", EXTREME_HEAT:"Calor extremo", SEVERE_STORM:"Tormenta severa",
     Brazil:"Brasil", Peru:"Perú", Colombia:"Colombia", Bolivia:"Bolivia", Ecuador:"Ecuador", Venezuela:"Venezuela",

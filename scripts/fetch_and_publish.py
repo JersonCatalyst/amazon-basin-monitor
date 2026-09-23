@@ -6,7 +6,7 @@ Corre DENTRO de GitHub Actions (no en Cowork/Claude). Este script es el unico
 punto del sistema que escribe en el repositorio de GitHub, y por eso nunca
 pasa por la restriccion de acceso a la API de GitHub desde Cowork.
 
-Hace tres cosas, cada una independiente (si una falla, las otras igual se intentan):
+Hace dos cosas, cada una independiente (si una falla, las otras igual se intentan):
 
   1) FIRMS: llama directamente a la API de NASA FIRMS, agrega/recorta la
      ventana movil de RETENTION_DAYS dias, y actualiza firms_hotspots.json.
@@ -20,21 +20,19 @@ Hace tres cosas, cada una independiente (si una falla, las otras igual se intent
      AREA_COORDINATES solo se usa para la llamada a la API de FIRMS (que
      exige un rectangulo), nunca como filtro final.
 
-  2) SHAREPOINT SYNC: descarga events.json y meta.json desde los enlaces
-     "cualquiera con el enlace puede ver" que se configuraron en SharePoint,
-     y los deja listos para el commit.
+  2) (Eliminado) Ya no se sincroniza nada desde SharePoint: events.json,
+     meta.json e index.json los reconstruye rebuild-aggregates.yml a partir
+     de Events/<EVENT_ID>.json, que la tarea diaria de Cowork sube por git.
 
   3) SST/ENSO: calcula la anomalia de temperatura superficial del mar del
      Pacifico ecuatorial (NOAA OISST via Google Earth Engine) contra una
      climatologia 1991-2020 PRECALCULADA (ver scripts/setup_enso_sst_climatology.py,
      que se corre una sola vez, no aqui), y publica sst_layer.json con la URL
      del tile para que index.html la dibuje como capa raster. Esta capa nunca
-     toca SharePoint -- se calcula y se publica enteramente por este script.
+     depende de nada externo al repo -- se calcula y se publica enteramente por este script.
 
 Variables de entorno requeridas (se configuran como GitHub Actions secrets):
   FIRMS_MAP_KEY              -> la MAP_KEY privada de FIRMS
-  SHAREPOINT_EVENTS_URL      -> enlace de descarga directa de events.json
-  SHAREPOINT_META_URL        -> enlace de descarga directa de meta.json
   GEE_SERVICE_ACCOUNT_EMAIL  -> email de la cuenta de servicio de Earth Engine
   GEE_SERVICE_ACCOUNT_KEY    -> contenido JSON de la clave privada de esa cuenta
   GEE_PROJECT_ID             -> opcional, por defecto "ee-jersoncatalyst"
@@ -47,7 +45,6 @@ y no filtrar datos por accidente.
 """
 
 import csv
-import http.cookiejar
 import io
 import json
 import os
@@ -109,8 +106,6 @@ GRID_AGGREGATION_TRIGGER = 1500  # solo agrega si un solo dia supera este umbral
 
 REPO_ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 FIRMS_JSON_PATH = os.path.join(REPO_ROOT, "firms_hotspots.json")
-EVENTS_JSON_PATH = os.path.join(REPO_ROOT, "events.json")
-META_JSON_PATH = os.path.join(REPO_ROOT, "meta.json")
 SST_LAYER_JSON_PATH = os.path.join(REPO_ROOT, "sst_layer.json")
 AMAZON_BASIN_GEOJSON_PATH = os.path.join(REPO_ROOT, "amazon_basin.geojson")
 
@@ -240,7 +235,7 @@ def load_basin_polygon():
     Si shapely no esta instalado o el archivo no existe/esta corrupto, se
     devuelve None y quien llame sigue usando solo el rectangulo -- igual que
     antes de este cambio. Nunca se bloquea FIRMS por esto; se hace lo mismo
-    que con SharePoint y Earth Engine: si algo opcional falla, se avisa y se
+    que con Earth Engine: si algo opcional falla, se avisa y se
     sigue con lo que si funciona.
     """
     if _basin_geometry_cache["loaded"]:
@@ -307,67 +302,6 @@ def update_firms():
     print(f"FIRMS: {len(new_points)} puntos nuevos de hoy, {len(combined)} puntos totales en la ventana de {RETENTION_DAYS} dias (ya recortados a la forma real de la cuenca)")
 
 
-BROWSER_HEADERS = {
-    # SharePoint (y la capa de proteccion contra bots delante de Office 365) suele
-    # rechazar con 403 cualquier peticion que no "parezca" un navegador real, y
-    # los enlaces de "cualquiera con el enlace" a veces pasan por 1-2 redirecciones
-    # que fijan una cookie de sesion antes de servir el archivo. Por eso usamos un
-    # User-Agent de navegador real y un opener con manejo de cookies, en vez de una
-    # peticion urllib "desnuda".
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-    ),
-    "Accept": "application/json,text/plain,*/*",
-    "Accept-Language": "es-CO,es;q=0.9,en;q=0.8",
-}
-
-_cookie_jar = http.cookiejar.CookieJar()
-_opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(_cookie_jar))
-
-
-def download_file(url: str, dest_path: str):
-    req = urllib.request.Request(url, headers=BROWSER_HEADERS)
-    try:
-        with _opener.open(req, timeout=60) as resp:
-            data = resp.read()
-    except urllib.error.HTTPError as e:
-        # Muestra un fragmento del cuerpo de la respuesta de error (sin exponer la
-        # URL completa, que contiene el token de enlace compartido) para poder
-        # diagnosticar si el bloqueo viene de SharePoint, de un WAF, etc.
-        snippet = ""
-        try:
-            snippet = e.read(300).decode("utf-8", errors="replace")
-        except Exception:
-            pass
-        raise urllib.error.URLError(f"HTTP {e.code}: {e.reason} | cuerpo: {snippet!r}") from e
-    with open(dest_path, "wb") as f:
-        f.write(data)
-
-
-def sync_from_sharepoint():
-    events_url = os.environ.get("SHAREPOINT_EVENTS_URL", "")
-    meta_url = os.environ.get("SHAREPOINT_META_URL", "")
-
-    if not events_url or not meta_url:
-        print("SHAREPOINT SYNC: BLOQUEADO - faltan SHAREPOINT_EVENTS_URL y/o SHAREPOINT_META_URL")
-        return
-
-    try:
-        download_file(events_url, EVENTS_JSON_PATH)
-        download_file(meta_url, META_JSON_PATH)
-        # validacion minima: que el archivo descargado sea JSON valido
-        with open(EVENTS_JSON_PATH, "r", encoding="utf-8") as f:
-            events = json.load(f)
-        print(f"SHAREPOINT SYNC: events.json y meta.json actualizados ({len(events)} eventos)")
-    except urllib.error.URLError as e:
-        print(f"SHAREPOINT SYNC: BLOQUEADO - error de red al descargar ({e})")
-    except json.JSONDecodeError:
-        print("SHAREPOINT SYNC: BLOQUEADO - el archivo descargado no es JSON valido (revisar el enlace compartido)")
-    except Exception as e:
-        print(f"SHAREPOINT SYNC: BLOQUEADO - {e}")
-
-
 def _gee_initialize():
     email = os.environ.get("GEE_SERVICE_ACCOUNT_EMAIL", "")
     key_data = os.environ.get("GEE_SERVICE_ACCOUNT_KEY", "")
@@ -426,7 +360,6 @@ def update_sst_layer():
 
 def main():
     update_firms()
-    sync_from_sharepoint()
     update_sst_layer()
 
 

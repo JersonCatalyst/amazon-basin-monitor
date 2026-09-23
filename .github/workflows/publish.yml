@@ -11,11 +11,10 @@ on:
     # Formato: minuto hora dia-mes mes dia-semana, en UTC (NO en hora de Bogota).
     # Bogota es UTC-5 todo el ano (no tiene horario de verano), asi que
     # 10:00 America/Bogota = 15:00 UTC.
-    # Se corre 1 hora despues de la tarea diaria de Cowork (configurada a las
-    # 09:00 America/Bogota) para dejarle margen suficiente a terminar de
-    # subir events.json/meta.json actualizados a SharePoint antes de que este
-    # workflow los descargue - si el margen es muy corto, este workflow puede
-    # descargar silenciosamente la version de ayer sin que se vea como error.
+    # Corre 1 hora despues de la tarea diaria de Cowork (09:00 America/Bogota).
+    # Ya no descarga nada de SharePoint: events.json/meta.json/index.json los
+    # reconstruye rebuild-aggregates.yml desde Events/. Este workflow solo
+    # actualiza FIRMS y SST.
     - cron: "0 15 * * *"
   workflow_dispatch: {}  # permite darle "Run workflow" manualmente desde GitHub
 
@@ -37,11 +36,9 @@ jobs:
       - name: Instalar dependencias (Earth Engine para SST/ENSO; shapely para recortar FIRMS a la forma real de la cuenca)
         run: pip install earthengine-api shapely
 
-      - name: Actualizar events.json, meta.json, firms_hotspots.json y sst_layer.json
+      - name: Actualizar firms_hotspots.json y sst_layer.json
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
-          SHAREPOINT_EVENTS_URL: ${{ secrets.SHAREPOINT_EVENTS_URL }}
-          SHAREPOINT_META_URL: ${{ secrets.SHAREPOINT_META_URL }}
           GEE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GEE_SERVICE_ACCOUNT_EMAIL }}
           GEE_SERVICE_ACCOUNT_KEY: ${{ secrets.GEE_SERVICE_ACCOUNT_KEY }}
         run: python scripts/fetch_and_publish.py
@@ -50,7 +47,7 @@ jobs:
         run: |
           git config user.name "amazon-basin-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add events.json meta.json firms_hotspots.json
+          git add firms_hotspots.json
           # sst_layer.json es opcional: todavia no existe hasta que se complete
           # la integracion con Earth Engine (ver setup_enso_sst_climatology.py
           # y los secrets GEE_*). "git add" con -e activo tumbaria el paso

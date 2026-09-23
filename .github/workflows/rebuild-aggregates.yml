@@ -1,4 +1,5 @@
 # Sube este archivo al repo en la ruta exacta: .github/workflows/rebuild-aggregates.yml
+# (reemplaza la version anterior que subiste - esta corrige un bug real)
 #
 # Que hace: cada vez que se agrega o modifica un archivo en Events/, reconstruye
 # index.json, events.json, meta.json y los CSV trimestrales-reporte a partir de
@@ -38,9 +39,11 @@ jobs:
 
       - name: Hacer commit y push solo si algo cambio
         run: |
+          shopt -s nullglob
           git config user.name "amazon-basin-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add index.json events.json meta.json Amazon_Basin_Disaster_Events_*.csv
+          archivos=(index.json events.json meta.json Amazon_Basin_Disaster_Events_*.csv)
+          git add "${archivos[@]}"
           if git diff --cached --quiet; then
             echo "Sin cambios que publicar hoy."
           else

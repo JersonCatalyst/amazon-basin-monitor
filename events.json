@@ -928,7 +928,7 @@
     "id": "AMZ-20260923-001",
     "country": "Ecuador",
     "hazard": "Extreme Rain",
-    "priority": "YELLOW",
+    "priority": "GREEN",
     "status": "FORECAST",
     "basinStatus": "INSIDE",
     "verification": "SINGLE_SOURCE",

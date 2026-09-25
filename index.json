@@ -73,7 +73,7 @@
     "lon": -60.3806,
     "status": "ONGOING",
     "firstDetected": "2026-09-10",
-    "lastUpdated": "2026-09-24",
+    "lastUpdated": "2026-09-25",
     "descEnPreview": "INPE data show Amazonas (Brazil) led the national heat-spot count in the first week of September 2026 (1,167-1,224 spots, depending on source), far ah"
   },
   {
@@ -251,5 +251,16 @@
     "firstDetected": "2026-09-23",
     "lastUpdated": "2026-09-23",
     "descEnPreview": "According to the National Confederation of Municipalities (CNM, Sep 21), Acre accounted for 24 of the 35 drought/dry-spell abnormality records in Braz"
+  },
+  {
+    "id": "AMZ-20260925-001",
+    "country": "Brazil",
+    "hazard": "Wildfire",
+    "lat": -8.164,
+    "lon": -70.354,
+    "status": "ONGOING",
+    "firstDetected": "2026-09-25",
+    "lastUpdated": "2026-09-25",
+    "descEnPreview": "According to the AcreQueimadas project (Geoprocessing Laboratory, Federal University of Acre), using Landsat 8 and Sentinel-2 imagery, Acre accumulate"
   }
 ]

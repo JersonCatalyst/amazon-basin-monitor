@@ -1,8 +1,8 @@
 {
   "EVENT_ID": "AMZ-20260925-001",
   "FIRST_DETECTED_DATE": "2026-09-25",
-  "LAST_UPDATED_DATE": "2026-09-25",
-  "UPDATE_COUNT": "0",
+  "LAST_UPDATED_DATE": "2026-09-28",
+  "UPDATE_COUNT": "1",
   "COUNTRY": "Brazil",
   "TERRITORY": "",
   "ADMINISTRATIVE_LEVEL_1": "Acre",
@@ -45,8 +45,8 @@
   "SECONDARY_SOURCE": "Portal Acre",
   "SECONDARY_SOURCE_URL": "https://portalacre.com.br/2026/09/acre-ja-soma-42-mil-hectares-queimados-em-2026-com-feijo-concentrando-maior-area/",
   "GDACS_URL": "UNAVAILABLE",
-  "OTHER_SOURCE_URLS": "https://agazetadoacre.com/2026/09/noticias/geral/acre-registra-quase-mil-focos-de-queimadas-em-2026-com-90-das-ocorrencias-concentradas-em-agosto-e-setembro/",
-  "NOTES_ES": "Evento Wildfire distinto de la Sequía de Acre AMZ-20260923-002 (mismo estado, otra amenaza). Coordenadas = sede municipal de Feijó, punto representativo. Sin cifras de impacto humano reportadas. Portal Acre replica el mismo dato UFAC (no es fuente independiente); requiere verificación con INPE/Sema-AC.",
-  "NOTES_PT": "Evento Wildfire distinto da Seca do Acre AMZ-20260923-002 (mesmo estado, outra ameaça). Coordenadas = sede municipal de Feijó, ponto representativo. Sem números de impacto humano. Portal Acre replica o mesmo dado da UFAC; requer verificação com INPE/Sema-AC.",
-  "NOTES_EN": "Wildfire event distinct from the Acre Drought AMZ-20260923-002 (same state, different hazard). Coordinates = Feijó town, a representative point. No human impact figures reported. Portal Acre repeats the same UFAC data (not independent); requires verification against INPE/Sema-AC."
+  "OTHER_SOURCE_URLS": "https://agazetadoacre.com/2026/09/noticias/geral/acre-registra-quase-mil-focos-de-queimadas-em-2026-com-90-das-ocorrencias-concentradas-em-agosto-e-setembro/; https://ac24horas.com/2026/09/28/rio-branco-e-tarauaca-ficam-entre-as-10-cidades-com-mais-queimadas-no-pais/",
+  "NOTES_ES": "Evento Wildfire distinto de la Sequía de Acre AMZ-20260923-002 (mismo estado, otra amenaza). Coordenadas = sede municipal de Feijó, punto representativo. Sin cifras de impacto humano reportadas. Portal Acre replica el mismo dato UFAC (no es fuente independiente); requiere verificación con INPE/Sema-AC. ACTUALIZACIÓN 28/09: según INPE, Acre suma 1.355 focos de calor en 2026 hasta el 26-sep (menor cifra del período en 7 años); 101 focos en 48 h (25-26 sep), 2.º estado del país tras Pará (392); Tarauacá y Rio Branco entre los 10 municipios con más focos, fuente: ac24horas (datos INPE).",
+  "NOTES_PT": "Evento Wildfire distinto da Seca do Acre AMZ-20260923-002 (mesmo estado, outra ameaça). Coordenadas = sede municipal de Feijó, ponto representativo. Sem números de impacto humano. Portal Acre replica o mesmo dado da UFAC; requer verificação com INPE/Sema-AC. ATUALIZAÇÃO 28/09: segundo o INPE, o Acre soma 1.355 focos de calor em 2026 até 26-set (menor número do período em 7 anos); 101 focos em 48 h (25-26 set), 2.º estado do país atrás do Pará (392); Tarauacá e Rio Branco entre os 10 municípios com mais focos, fonte: ac24horas (dados INPE).",
+  "NOTES_EN": "Wildfire event distinct from the Acre Drought AMZ-20260923-002 (same state, different hazard). Coordinates = Feijó town, a representative point. No human impact figures reported. Portal Acre repeats the same UFAC data (not independent); requires verification against INPE/Sema-AC. UPDATE 09/28: per INPE, Acre has 1,355 heat spots in 2026 through Sep 26 (lowest for the period in 7 years); 101 spots in 48 h (Sep 25-26), 2nd nationally after Pará (392); Tarauacá and Rio Branco among the 10 municipalities with most spots, source: ac24horas (INPE data)."
 }

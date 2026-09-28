@@ -18,7 +18,7 @@
     "lon": -60.0224,
     "status": "ONGOING",
     "firstDetected": "2026-09-02",
-    "lastUpdated": "2026-09-22",
+    "lastUpdated": "2026-09-28",
     "descEnPreview": "SGB and INPA report the Rio Negro at Manaus has been falling without interruption since early August, with projections placing the 2026 minimum level "
   },
   {
@@ -73,7 +73,7 @@
     "lon": -60.3806,
     "status": "ONGOING",
     "firstDetected": "2026-09-10",
-    "lastUpdated": "2026-09-25",
+    "lastUpdated": "2026-09-28",
     "descEnPreview": "INPE data show Amazonas (Brazil) led the national heat-spot count in the first week of September 2026 (1,167-1,224 spots, depending on source), far ah"
   },
   {
@@ -238,7 +238,7 @@
     "lon": -77.8129,
     "status": "FORECAST",
     "firstDetected": "2026-09-23",
-    "lastUpdated": "2026-09-23",
+    "lastUpdated": "2026-09-28",
     "descEnPreview": "On Sep 22 INAMHI issued Meteorological Advisory No. 74, valid from Sep 23 (13:00) to Sep 27 (10:00), for rain, thunderstorms and strong wind gusts. In"
   },
   {
@@ -260,7 +260,7 @@
     "lon": -70.354,
     "status": "ONGOING",
     "firstDetected": "2026-09-25",
-    "lastUpdated": "2026-09-25",
+    "lastUpdated": "2026-09-28",
     "descEnPreview": "According to the AcreQueimadas project (Geoprocessing Laboratory, Federal University of Acre), using Landsat 8 and Sentinel-2 imagery, Acre accumulate"
   }
 ]

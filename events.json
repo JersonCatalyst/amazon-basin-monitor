@@ -547,8 +547,8 @@
     "lon": -64.9014,
     "coordAccuracy": "ADMINISTRATIVE_APPROXIMATION (punto representativo, Trinidad/Beni)",
     "firstDetected": "2026-09-12",
-    "lastUpdated": "2026-09-16",
-    "updateCount": 0,
+    "lastUpdated": "2026-09-29",
+    "updateCount": 1,
     "eventDate": "2026-09-12",
     "adminLevel1": "Beni / Pando",
     "adminLevel2": "NOT_REPORTED",
@@ -565,9 +565,9 @@
       "en": "Bolivia's National Meteorology and Hydrology Service (SENAMHI), which had maintained an orange river-overflow alert for Santa Cruz, Cochabamba and La Paz since September 4, 2026, extended it on September 12 to five departments, explicitly adding Beni (ORANGE alert, Mamoré River basin, valid Sep 12-15) and Pando (YELLOW alert, Tahuamanu and Madre de Dios rivers, valid Sep 12-16). On September 14, outlet La Razón reported that traffic was being restored in the Mamoré River section (Beni) following the rains, confirming a real impact on river/road transit in the area between September 12 and 14. No figures for affected families, homes, or hectares have been found."
     },
     "notes": {
-      "es": "Evento nuevo. Coordenadas representan un punto administrativo (Trinidad, Beni), no una ubicación puntual del desborde; el evento también cubre la cuenca de los ríos Tahuamanu/Madre de Dios en Pando (referencia: Cobija). El artículo de La Razón sobre la rehabilitación del tráfico no pudo leerse en texto completo (muro de pago); se cita solo por título y fecha. Se recomienda buscar cifras de familias/hectáreas afectadas y confirmación de la Gobernación de Beni o Defensa Civil en el próximo ciclo.",
-      "pt": "Evento novo. As coordenadas representam um ponto administrativo (Trinidad, Beni), não uma localização pontual do transbordamento; o evento também cobre a bacia dos rios Tahuamanu/Madre de Dios em Pando (referência: Cobija). O artigo do La Razón sobre a reabilitação do tráfego não pôde ser lido na íntegra (paywall); é citado apenas pelo título e pela data. Recomenda-se buscar números de famílias/hectares afetados e confirmação da Governação de Beni ou Defesa Civil no próximo ciclo.",
-      "en": "New event. Coordinates represent an administrative point (Trinidad, Beni), not a precise overflow location; the event also covers the Tahuamanu/Madre de Dios river basin in Pando (reference: Cobija). The La Razón article on traffic rehabilitation could not be read in full (paywall); cited by title and date only. Recommend seeking affected-families/hectares figures and confirmation from the Beni governor's office or Civil Defense next cycle."
+      "es": "Evento nuevo. Coordenadas representan un punto administrativo (Trinidad, Beni), no una ubicación puntual del desborde; el evento también cubre la cuenca de los ríos Tahuamanu/Madre de Dios en Pando (referencia: Cobija). El artículo de La Razón sobre la rehabilitación del tráfico no pudo leerse en texto completo (muro de pago); se cita solo por título y fecha. Se recomienda buscar cifras de familias/hectáreas afectadas y confirmación de la Gobernación de Beni o Defensa Civil en el próximo ciclo. ACTUALIZACIÓN 29/09: SENAMHI activó el 28-sep nuevas alertas hidrológicas vigentes 29-sep a 3-oct: naranja (riesgo importante) en cuencas Beni, Maniquí, Ichilo, Chapare, Yapacaní, Piraí, San Julián, Grande y Parapetí, entre otras; amarilla en Acre, Tahuamanu, Madre de Dios, Beni y Mamoré. Sin impactos reportados aún, fuente: Opinión / La Razón (datos SENAMHI).",
+      "pt": "Evento novo. As coordenadas representam um ponto administrativo (Trinidad, Beni), não uma localização pontual do transbordamento; o evento também cobre a bacia dos rios Tahuamanu/Madre de Dios em Pando (referência: Cobija). O artigo do La Razón sobre a reabilitação do tráfego não pôde ser lido na íntegra (paywall); é citado apenas pelo título e pela data. Recomenda-se buscar números de famílias/hectares afetados e confirmação da Governação de Beni ou Defesa Civil no próximo ciclo. ATUALIZAÇÃO 29/09: o SENAMHI ativou em 28-set novos alertas hidrológicos vigentes de 29-set a 3-out: laranja (risco importante) nas bacias Beni, Maniquí, Ichilo, Chapare, Yapacaní, Piraí, San Julián, Grande e Parapetí, entre outras; amarelo em Acre, Tahuamanu, Madre de Dios, Beni e Mamoré. Sem impactos relatados ainda, fonte: Opinión / La Razón (dados SENAMHI).",
+      "en": "New event. Coordinates represent an administrative point (Trinidad, Beni), not a precise overflow location; the event also covers the Tahuamanu/Madre de Dios river basin in Pando (reference: Cobija). The La Razón article on traffic rehabilitation could not be read in full (paywall); cited by title and date only. Recommend seeking affected-families/hectares figures and confirmation from the Beni governor's office or Civil Defense next cycle. UPDATE 09/29: SENAMHI issued new hydrological alerts on Sep 28, valid Sep 29-Oct 3: orange (significant risk) for the Beni, Maniquí, Ichilo, Chapare, Yapacaní, Piraí, San Julián, Grande and Parapetí basins, among others; yellow for Acre, Tahuamanu, Madre de Dios, Beni and Mamoré. No impacts reported yet, source: Opinión / La Razón (SENAMHI data)."
     },
     "sources": [
       {
@@ -936,8 +936,8 @@
     "lon": -77.8129,
     "coordAccuracy": "APPROXIMATE",
     "firstDetected": "2026-09-23",
-    "lastUpdated": "2026-09-28",
-    "updateCount": 1,
+    "lastUpdated": "2026-09-29",
+    "updateCount": 2,
     "eventDate": "2026-09-23",
     "adminLevel1": "Sucumbíos, Orellana, Napo (piedemonte de Tena), Pastaza, Morona Santiago",
     "adminLevel2": "NOT_REPORTED",
@@ -954,9 +954,9 @@
       "en": "On Sep 22 INAMHI issued Meteorological Advisory No. 74, valid from Sep 23 (13:00) to Sep 27 (10:00), for rain, thunderstorms and strong wind gusts. In the Amazon region the greatest impacts are expected in Sucumbíos, Orellana and the foothills (Tena, Pastaza, Morona Santiago), with totals of 22-31 mm/day (medium intensity) to 32-54 mm/day (high). Peaks are expected on Sep 23 and from the night of Sep 25 into the early morning of Sep 26. INAMHI warns of possible landslides and river overflows in susceptible areas."
     },
     "notes": {
-      "es": "Episodio de pronóstico distinto de AMZ-20260911-002 (Alerta N.° 70, vigencia terminada ~16-18 sep). Mismas provincias afectadas por deslizamientos el 14-sep (AMZ-20260914-001): vigilar impactos 23-27 sep. Coordenadas = Tena, punto representativo, no epicentro. Requiere verificación con boletín oficial INAMHI/SNGR. ACTUALIZACIÓN 28/09: INAMHI emitió la Advertencia Meteorológica N.º 75 (vigente hasta el 28-sep 10:00), con Sucumbíos, Napo, Orellana, Pastaza y Morona Santiago en atención; la SNGR registró entre 21-26 sep un colapso (Alshi, cantón Morona) y un hundimiento en Macas (Morona Santiago), sin cifras de afectados, fuente: Metro Ecuador / El Diario (datos SNGR).",
-      "pt": "Episódio de previsão distinto de AMZ-20260911-002 (Alerta n.º 70, vigência encerrada ~16-18 set). Mesmas províncias afetadas por deslizamentos em 14-set (AMZ-20260914-001): monitorar impactos 23-27 set. Coordenadas = Tena, ponto representativo. Requer verificação no boletim oficial INAMHI/SNGR. ATUALIZAÇÃO 28/09: o INAMHI emitiu a Advertência Meteorológica N.º 75 (válida até 28-set 10:00), com Sucumbíos, Napo, Orellana, Pastaza e Morona Santiago em atenção; a SNGR registrou entre 21-26 set um colapso (Alshi, cantão Morona) e um afundamento em Macas (Morona Santiago), sem números de afetados, fonte: Metro Ecuador / El Diario (dados SNGR).",
-      "en": "Forecast episode distinct from AMZ-20260911-002 (Alert No. 70, validity ended ~Sep 16-18). Same provinces hit by landslides on Sep 14 (AMZ-20260914-001): watch for impacts Sep 23-27. Coordinates = Tena, a representative point. Requires verification against the official INAMHI/SNGR bulletin. UPDATE 09/28: INAMHI issued Meteorological Warning No. 75 (valid to Sep 28 10:00), with Sucumbíos, Napo, Orellana, Pastaza and Morona Santiago under watch; SNGR recorded between Sep 21-26 a collapse (Alshi, Morona canton) and ground subsidence in Macas (Morona Santiago), no affected figures, source: Metro Ecuador / El Diario (SNGR data)."
+      "es": "Episodio de pronóstico distinto de AMZ-20260911-002 (Alerta N.° 70, vigencia terminada ~16-18 sep). Mismas provincias afectadas por deslizamientos el 14-sep (AMZ-20260914-001): vigilar impactos 23-27 sep. Coordenadas = Tena, punto representativo, no epicentro. Requiere verificación con boletín oficial INAMHI/SNGR. ACTUALIZACIÓN 28/09: INAMHI emitió la Advertencia Meteorológica N.º 75 (vigente hasta el 28-sep 10:00), con Sucumbíos, Napo, Orellana, Pastaza y Morona Santiago en atención; la SNGR registró entre 21-26 sep un colapso (Alshi, cantón Morona) y un hundimiento en Macas (Morona Santiago), sin cifras de afectados, fuente: Metro Ecuador / El Diario (datos SNGR). ACTUALIZACIÓN 29/09: pronóstico INAMHI 28-sep a 2-oct prevé lluvias moderadas en Sucumbíos, Orellana y Napo y ligeras en el resto de la Amazonía; la mayor intensidad se concentra en la Costa; sin nuevos impactos amazónicos reportados, fuente: Metro Ecuador.",
+      "pt": "Episódio de previsão distinto de AMZ-20260911-002 (Alerta n.º 70, vigência encerrada ~16-18 set). Mesmas províncias afetadas por deslizamentos em 14-set (AMZ-20260914-001): monitorar impactos 23-27 set. Coordenadas = Tena, ponto representativo. Requer verificação no boletim oficial INAMHI/SNGR. ATUALIZAÇÃO 28/09: o INAMHI emitiu a Advertência Meteorológica N.º 75 (válida até 28-set 10:00), com Sucumbíos, Napo, Orellana, Pastaza e Morona Santiago em atenção; a SNGR registrou entre 21-26 set um colapso (Alshi, cantão Morona) e um afundamento em Macas (Morona Santiago), sem números de afetados, fonte: Metro Ecuador / El Diario (dados SNGR). ATUALIZAÇÃO 29/09: previsão do INAMHI de 28-set a 2-out indica chuvas moderadas em Sucumbíos, Orellana e Napo e fracas no restante da Amazônia; maior intensidade na Costa; sem novos impactos amazônicos, fonte: Metro Ecuador.",
+      "en": "Forecast episode distinct from AMZ-20260911-002 (Alert No. 70, validity ended ~Sep 16-18). Same provinces hit by landslides on Sep 14 (AMZ-20260914-001): watch for impacts Sep 23-27. Coordinates = Tena, a representative point. Requires verification against the official INAMHI/SNGR bulletin. UPDATE 09/28: INAMHI issued Meteorological Warning No. 75 (valid to Sep 28 10:00), with Sucumbíos, Napo, Orellana, Pastaza and Morona Santiago under watch; SNGR recorded between Sep 21-26 a collapse (Alshi, Morona canton) and ground subsidence in Macas (Morona Santiago), no affected figures, source: Metro Ecuador / El Diario (SNGR data). UPDATE 09/29: INAMHI forecast for Sep 28-Oct 2 expects moderate rain in Sucumbíos, Orellana and Napo and light rain elsewhere in the Amazon; heaviest rain on the Coast; no new Amazon impacts reported, source: Metro Ecuador."
     },
     "sources": [
       {
@@ -1052,6 +1052,51 @@
       {
         "label": "Portal Acre",
         "url": "https://portalacre.com.br/2026/09/acre-ja-soma-42-mil-hectares-queimados-em-2026-com-feijo-concentrando-maior-area/"
+      }
+    ]
+  },
+  {
+    "id": "AMZ-20260929-001",
+    "country": "Peru",
+    "hazard": "Earthquake",
+    "priority": "GREEN",
+    "status": "OBSERVED",
+    "basinStatus": "INSIDE",
+    "verification": "MULTIPLE_SOURCES",
+    "lat": -3.1213,
+    "lon": -75.6413,
+    "coordAccuracy": "PRECISE",
+    "firstDetected": "2026-09-29",
+    "lastUpdated": "2026-09-29",
+    "updateCount": 0,
+    "eventDate": "2026-09-29",
+    "adminLevel1": "Loreto",
+    "adminLevel2": "Datem del Marañón",
+    "municipality": "Andoas (referencia IGP: 67 km al NE)",
+    "locality": "NOT_REPORTED",
+    "title": {
+      "es": "Sismo de magnitud 5,2 (IGP) sacude Loreto a 67 km al NE de Andoas, Perú",
+      "pt": "Sismo de magnitude 5,2 (IGP) sacode Loreto a 67 km a NE de Andoas, Peru",
+      "en": "Magnitude 5.2 (IGP) earthquake shakes Loreto, 67 km NE of Andoas, Peru"
+    },
+    "desc": {
+      "es": "El IGP (CENSIS) registró el 29 de septiembre de 2026 a las 05:22 hora local un sismo de magnitud 5,2 con epicentro a 67 km al noreste de Andoas (Datem del Marañón, Loreto) y 150 km de profundidad (reporte RS 2026-0697), con intensidad II MM en Andoas. El USGS registró el mismo evento a las 10:22:14 UTC como mb 4,5, a 96 km al ENE de Alianza Cristiana (-3.1213, -75.6413), profundidad 134,8 km, sin alerta PAGER ni reportes de percepción. Defensa Civil local no reportó heridos ni daños materiales. Se sintió levemente en la frontera amazónica con Ecuador.",
+      "pt": "O IGP (CENSIS) registrou em 29 de setembro de 2026, às 05h22 hora local, um sismo de magnitude 5,2 com epicentro a 67 km a nordeste de Andoas (Datem del Marañón, Loreto) e 150 km de profundidade (relatório RS 2026-0697), com intensidade II MM em Andoas. O USGS registrou o mesmo evento às 10:22:14 UTC como mb 4,5, a 96 km a ENE de Alianza Cristiana (-3,1213, -75,6413), profundidade 134,8 km, sem alerta PAGER nem relatos de percepção. A Defesa Civil local não relatou feridos nem danos materiais. Foi sentido levemente na fronteira amazônica com o Equador.",
+      "en": "Peru's IGP (CENSIS) recorded a magnitude 5.2 earthquake on 29 September 2026 at 05:22 local time, epicenter 67 km NE of Andoas (Datem del Marañón, Loreto), depth 150 km (report RS 2026-0697), intensity II MM at Andoas. USGS logged the same event at 10:22:14 UTC as mb 4.5, 96 km ENE of Alianza Cristiana (-3.1213, -75.6413), depth 134.8 km, with no PAGER alert or felt reports. Local Civil Defense reported no injuries or material damage. It was lightly felt along the Amazonian border with Ecuador."
+    },
+    "notes": {
+      "es": "Evento nuevo. Coordenadas del USGS (API FDSN, estado 'reviewed'). Discrepancia de magnitud USGS mb 4,5 vs IGP 5,2 y de profundidad (135 vs 150 km); se consigna la cifra del IGP en el título por ser la autoridad nacional. Distinto de AMZ-20260916-001 (14-sep) y AMZ-20260910-001 (Condorcanqui).",
+      "pt": "Evento novo. Coordenadas do USGS (API FDSN, status 'reviewed'). Discrepância de magnitude USGS mb 4,5 vs IGP 5,2 e de profundidade (135 vs 150 km); o título usa o valor do IGP por ser a autoridade nacional. Distinto de AMZ-20260916-001 (14-set) e AMZ-20260910-001 (Condorcanqui).",
+      "en": "New event. Coordinates from USGS (FDSN API, status 'reviewed'). Magnitude discrepancy USGS mb 4.5 vs IGP 5.2 and depth (135 vs 150 km); title uses IGP value as national authority. Distinct from AMZ-20260916-001 (Sep 14) and AMZ-20260910-001 (Condorcanqui)."
+    },
+    "sources": [
+      {
+        "label": "USGS (U.S. Geological Survey)",
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tybk"
+      },
+      {
+        "label": "Agencia Andina (citando IGP/CENSIS)",
+        "url": "https://andina.pe/agencia/noticia-temblor-magnitud-52-sacude-loreto-y-peru-bordea-los-700-sismos-lo-va-2026-1093786.aspx"
       }
     ]
   }

@@ -185,7 +185,7 @@
 const DICT = {
   es: { title:"Mapa de riesgos — Cuenca amazónica", subtitle:"Eventos activos por amenaza y prioridad", mapNote:"Mapa base OpenStreetMap. Datos: base propia de eventos verificados (ver lista a la derecha).",
     total:"Eventos", red:"Alertas rojas", countries:"Países afectados",
-    firms24hStat:"Focos FIRMS (24h)", frpMaxStat:"FRP máxima (24h)", alertBannerActive:"activas", alertBannerView:"Ver detalle ↓", exportCsv:"Exportar CSV", firmsTimelineLive:"En vivo",
+    firms24hStat:"Focos FIRMS (24h)", frpMaxStat:"FRP máxima (24h)", alertBannerActive:"activas", alertBannerView:"Ver detalle ↓", alertBannerClear:"Ver todos ×", exportCsv:"Exportar CSV", firmsTimelineLive:"En vivo",
     all:"Todos", FLOOD:"Inundación", EXTREME_RAIN:"Lluvia extrema", DROUGHT:"Sequía", WILDFIRE:"Incendio forestal", EARTHQUAKE:"Sismo", LANDSLIDE:"Deslizamiento", DEFORESTATION:"Deforestación", FLASH_FLOOD:"Inundación repentina", EXTREME_HEAT:"Calor extremo", SEVERE_STORM:"Tormenta severa",
     Brazil:"Brasil", Peru:"Perú", Colombia:"Colombia", Bolivia:"Bolivia", Ecuador:"Ecuador", Venezuela:"Venezuela",
     RED:"Rojo", ORANGE:"Naranja", GREEN:"Verde", updated:"Actualizado", source:"Fuente", readMore:"Leer más",
@@ -213,7 +213,7 @@ const DICT = {
       <p style="margin:4px 0 0;font-size:11px;text-align:center;line-height:1.8">Jerson ACHICANOY<br>Information Management and GIS Expert<br>3iS<br><a href="mailto:jachicanoy@3is.org" style="color:var(--3is-cyan)">jachicanoy@3is.org</a></p>` },
   pt: { title:"Mapa de riscos — Bacia amazônica", subtitle:"Eventos ativos por perigo e prioridade", mapNote:"Mapa base OpenStreetMap. Dados: base própria de eventos verificados (ver lista à direita).",
     total:"Eventos", red:"Alertas vermelhos", countries:"Países afetados",
-    firms24hStat:"Focos FIRMS (24h)", frpMaxStat:"FRP máxima (24h)", alertBannerActive:"ativos", alertBannerView:"Ver detalhe ↓", exportCsv:"Exportar CSV", firmsTimelineLive:"Ao vivo",
+    firms24hStat:"Focos FIRMS (24h)", frpMaxStat:"FRP máxima (24h)", alertBannerActive:"ativos", alertBannerView:"Ver detalhe ↓", alertBannerClear:"Ver todos ×", exportCsv:"Exportar CSV", firmsTimelineLive:"Ao vivo",
     all:"Todos", FLOOD:"Inundação", EXTREME_RAIN:"Chuva extrema", DROUGHT:"Seca", WILDFIRE:"Incêndio florestal", EARTHQUAKE:"Terremoto", LANDSLIDE:"Deslizamento", DEFORESTATION:"Desmatamento", FLASH_FLOOD:"Inundação repentina", EXTREME_HEAT:"Calor extremo", SEVERE_STORM:"Tempestade severa",
     Brazil:"Brasil", Peru:"Peru", Colombia:"Colômbia", Bolivia:"Bolívia", Ecuador:"Equador", Venezuela:"Venezuela",
     RED:"Vermelho", ORANGE:"Laranja", GREEN:"Verde", updated:"Atualizado", source:"Fonte", readMore:"Ler mais",
@@ -241,7 +241,7 @@ const DICT = {
       <p style="margin:4px 0 0;font-size:11px;text-align:center;line-height:1.8">Jerson ACHICANOY<br>Information Management and GIS Expert<br>3iS<br><a href="mailto:jachicanoy@3is.org" style="color:var(--3is-cyan)">jachicanoy@3is.org</a></p>` },
   en: { title:"Risk map — Amazon Basin", subtitle:"Active events by hazard and priority", mapNote:"Base map: OpenStreetMap. Data: our own base of verified events (see list on the right).",
     total:"Events", red:"Red alerts", countries:"Countries affected",
-    firms24hStat:"FIRMS hotspots (24h)", frpMaxStat:"Max FRP (24h)", alertBannerActive:"active", alertBannerView:"View details ↓", exportCsv:"Export CSV", firmsTimelineLive:"Live",
+    firms24hStat:"FIRMS hotspots (24h)", frpMaxStat:"Max FRP (24h)", alertBannerActive:"active", alertBannerView:"View details ↓", alertBannerClear:"View all ×", exportCsv:"Export CSV", firmsTimelineLive:"Live",
     all:"All", FLOOD:"Flood", EXTREME_RAIN:"Extreme rain", DROUGHT:"Drought", WILDFIRE:"Wildfire", EARTHQUAKE:"Earthquake", LANDSLIDE:"Landslide", DEFORESTATION:"Deforestation", FLASH_FLOOD:"Flash flood", EXTREME_HEAT:"Extreme heat", SEVERE_STORM:"Severe storm",
     Brazil:"Brazil", Peru:"Peru", Colombia:"Colombia", Bolivia:"Bolivia", Ecuador:"Ecuador", Venezuela:"Venezuela",
     RED:"Red", ORANGE:"Orange", GREEN:"Green", updated:"Updated", source:"Source", readMore:"Read more",
@@ -383,6 +383,7 @@ function normalizeHazard(h){
 let currentLang = "es";
 let activeCountry = null;
 let activeHazard = null;
+let activePriority = null;
 let dateFrom = null;
 let dateTo = null;
 
@@ -421,10 +422,27 @@ function inDateRange(e){
   if (dateTo && d > dateTo) return false;
   return true;
 }
+function computeRedAlertCount(){
+  // Igual que getFiltered(), pero ignorando activePriority a proposito: el
+  // banner debe seguir mostrando cuantas alertas rojas hay (segun pais/fecha
+  // actuales) incluso despues de que el propio banner haya activado el
+  // filtro por prioridad RED.
+  return EVENTS.filter(function(e){
+    if (activeCountry && e.country !== activeCountry) return false;
+    if (activeHazard && e.hazard !== activeHazard) return false;
+    if (!inDateRange(e)) return false;
+    if (typeof e.lat === 'number' && typeof e.lon === 'number' && !isNaN(e.lat) && !isNaN(e.lon)) {
+      if (!pointInBasin(e.lat, e.lon)) return false;
+    }
+    return e.priority === 'RED';
+  }).length;
+}
+
 function getFiltered(){
   return EVENTS.filter(function(e){
     if (activeCountry && e.country !== activeCountry) return false;
     if (activeHazard && e.hazard !== activeHazard) return false;
+    if (activePriority && e.priority !== activePriority) return false;
     if (!inDateRange(e)) return false;
     // Filtro defensivo del lado del cliente: si el evento SI tiene coordenadas
     // y el poligono real de la cuenca ya cargo, se oculta cualquier evento que
@@ -550,22 +568,46 @@ function computeFirms24hStats(){
   return { count: count, maxFrp: maxFrp };
 }
 
+function zoomToRedEvents(){
+  var redPts = getFiltered().filter(function(e){
+    return e.priority === 'RED' && typeof e.lat === 'number' && typeof e.lon === 'number' && !isNaN(e.lat) && !isNaN(e.lon);
+  });
+  if (redPts.length && map) {
+    var bounds = L.latLngBounds(redPts.map(function(e){ return [e.lat, e.lon]; }));
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 7 });
+  }
+}
+
 function renderAlertBanner(redCount){
   var el = document.getElementById('alertBanner');
   if (!el) return;
-  if (redCount > 0) {
-    el.style.display = 'flex';
+  if (redCount <= 0) {
+    el.style.display = 'none';
+    el.innerHTML = '';
+    return;
+  }
+  el.style.display = 'flex';
+  if (activePriority === 'RED') {
+    el.innerHTML = '<span>\u{1F534} ' + redCount + ' ' + t('red') + ' ' + t('alertBannerActive') + '</span>' +
+      '<a href="#" id="alertBannerClear" style="margin-left:auto;color:#8A1F1F;text-decoration:underline;font-weight:700">' + t('alertBannerClear') + '</a>';
+    var clearLink = document.getElementById('alertBannerClear');
+    if (clearLink) clearLink.onclick = function(ev){
+      ev.preventDefault();
+      activePriority = null;
+      renderAll();
+    };
+  } else {
     el.innerHTML = '<span>\u{1F534} ' + redCount + ' ' + t('red') + ' ' + t('alertBannerActive') + '</span>' +
       '<a href="#" id="alertBannerLink" style="margin-left:auto;color:#8A1F1F;text-decoration:underline;font-weight:700">' + t('alertBannerView') + '</a>';
     var link = document.getElementById('alertBannerLink');
     if (link) link.onclick = function(ev){
       ev.preventDefault();
+      activePriority = 'RED';
+      renderAll();
+      zoomToRedEvents();
       var list = document.getElementById('list');
-      if (list) list.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-  } else {
-    el.style.display = 'none';
-    el.innerHTML = '';
   }
 }
 
@@ -590,7 +632,7 @@ function renderStats(filtered){
     card.innerHTML = '<p>'+c[0]+'</p><p>'+c[1]+'</p>';
     wrap.appendChild(card);
   });
-  renderAlertBanner(red);
+  renderAlertBanner(computeRedAlertCount());
 }
 
 function eventPopupHtml(e){

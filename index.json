@@ -18,7 +18,7 @@
     "lon": -60.0224,
     "status": "ONGOING",
     "firstDetected": "2026-09-02",
-    "lastUpdated": "2026-09-28",
+    "lastUpdated": "2026-10-01",
     "descEnPreview": "SGB and INPA report the Rio Negro at Manaus has been falling without interruption since early August, with projections placing the 2026 minimum level "
   },
   {
@@ -273,5 +273,16 @@
     "firstDetected": "2026-09-29",
     "lastUpdated": "2026-09-29",
     "descEnPreview": "Peru's IGP (CENSIS) recorded a magnitude 5.2 earthquake on 29 September 2026 at 05:22 local time, epicenter 67 km NE of Andoas (Datem del Marañón, Lor"
+  },
+  {
+    "id": "AMZ-20261001-001",
+    "country": "Brazil",
+    "hazard": "Wildfire",
+    "lat": -2.0078,
+    "lon": -54.0692,
+    "status": "ONGOING",
+    "firstDetected": "2026-10-01",
+    "lastUpdated": "2026-10-01",
+    "descEnPreview": "Two municipalities in western Pará (Brazil) declared emergencies due to wildfires: Monte Alegre (Decree 480/2026, Level II emergency) and Rurópolis (D"
   }
 ]

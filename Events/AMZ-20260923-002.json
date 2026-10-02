@@ -1,8 +1,8 @@
 {
   "EVENT_ID": "AMZ-20260923-002",
   "FIRST_DETECTED_DATE": "2026-09-23",
-  "LAST_UPDATED_DATE": "2026-09-23",
-  "UPDATE_COUNT": "0",
+  "LAST_UPDATED_DATE": "2026-10-02",
+  "UPDATE_COUNT": "1",
   "COUNTRY": "Brazil",
   "TERRITORY": "",
   "ADMINISTRATIVE_LEVEL_1": "Acre",
@@ -34,7 +34,7 @@
   "AGRICULTURAL_IMPACT": "R$ 46,8 millones en pérdidas agrícolas (agregado Región Norte, CNM, 1-jul a 15-sep); Acre = 24 de 35 registros",
   "LIVESTOCK_IMPACT": "R$ 32,6 millones (agregado Región Norte, CNM)",
   "FOREST_IMPACT": "NOT_REPORTED",
-  "WATER_IMPACT": "Río Acre en Rio Branco: mínimo 2026 de 1,59 m; distribución de agua en carros cisterna; R$ 17 millones en pérdidas de abastecimiento (agregado Región Norte, CNM)",
+  "WATER_IMPACT": "Río Acre en Rio Branco: mínimo 2026 de 1,59 m; distribución de agua en carros cisterna; R$ 17 millones en pérdidas de abastecimiento (agregado Región Norte, CNM); 1-oct: río Acre en Rio Branco a 1,67 m, 21 cm sobre la cota de referencia de estiaje (1,46 m) según ANA",
   "FOOD_SECURITY_IMPACT": "NOT_REPORTED",
   "ALERT_PRIORITY": "ORANGE",
   "AA_RELEVANCE": "HIGH",
@@ -45,8 +45,8 @@
   "SECONDARY_SOURCE": "Defesa Civil do Acre, vía A Gazeta do Acre",
   "SECONDARY_SOURCE_URL": "https://agazetadoacre.com/2026/09/noticias/geral/nivel-do-rio-acre-apresenta-elevacao-mas-defesa-civil-alerta-que-oscilacao-nao-altera-cenario-de-seca/",
   "GDACS_URL": "UNAVAILABLE",
-  "OTHER_SOURCE_URLS": "https://portalamazonia.com/amazonia/acre-seca-severa-emergencia/; https://newsrondonia.com.br/noticias/2026/08/03/acre-decreta-situacao-de-emergencia-diante-da-previsao-de-seca-severa-no-rio-acre-e-reforca-medidas-de-prevencao-aos-impactos-do-el-nino",
-  "NOTES_ES": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) y AMZ-20260911-003 (Roraima). Cifras de pérdidas son agregadas de la Región Norte, no exclusivas de Acre. Coordenadas = Rio Branco, punto representativo. Población afectada no reportada: verificar con Defesa Civil/S2iD.",
-  "NOTES_PT": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) e AMZ-20260911-003 (Roraima). Valores de prejuízo são agregados da Região Norte, não exclusivos do Acre. Coordenadas = Rio Branco, ponto representativo. População afetada não informada: verificar com Defesa Civil/S2iD.",
-  "NOTES_EN": "Distinct from AMZ-20260902-001 (Rio Negro/Manaus) and AMZ-20260911-003 (Roraima). Loss figures are North Region aggregates, not Acre-only. Coordinates = Rio Branco, representative point. Affected population not reported: verify with Civil Defense/S2iD."
+  "OTHER_SOURCE_URLS": "https://portalamazonia.com/amazonia/acre-seca-severa-emergencia/; https://newsrondonia.com.br/noticias/2026/08/03/acre-decreta-situacao-de-emergencia-diante-da-previsao-de-seca-severa-no-rio-acre-e-reforca-medidas-de-prevencao-aos-impactos-do-el-nino; https://ac24horas.com/2026/10/01/nivel-do-rio-acre-fica-21-centimetros-acima-da-cota-de-referencia-para-estiagem",
+  "NOTES_ES": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) y AMZ-20260911-003 (Roraima). Cifras de pérdidas son agregadas de la Región Norte, no exclusivas de Acre. Coordenadas = Rio Branco, punto representativo. Población afectada no reportada: verificar con Defesa Civil/S2iD. ACTUALIZACIÓN 02/10: según la ANA, el 1-oct el río Acre en Rio Branco marcaba 1,67 m (21 cm sobre la cota de referencia de estiaje, 1,46 m), cerca de ese umbral desde agosto; el Juruá en Cruzeiro do Sul marcaba 4,25 m (1,10 m sobre referencia); lluvias de ago-sep bajo el promedio histórico, fuente: ac24horas.",
+  "NOTES_PT": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) e AMZ-20260911-003 (Roraima). Valores de prejuízo são agregados da Região Norte, não exclusivos do Acre. Coordenadas = Rio Branco, ponto representativo. População afetada não informada: verificar com Defesa Civil/S2iD. ATUALIZAÇÃO 02/10: segundo a ANA, em 1-out o Rio Acre em Rio Branco marcava 1,67 m (21 cm acima da cota de referência de estiagem, 1,46 m), próximo desse limiar desde agosto; o Juruá em Cruzeiro do Sul marcava 4,25 m (1,10 m acima da referência); chuvas de ago-set abaixo da média histórica, fonte: ac24horas.",
+  "NOTES_EN": "Distinct from AMZ-20260902-001 (Rio Negro/Manaus) and AMZ-20260911-003 (Roraima). Loss figures are North Region aggregates, not Acre-only. Coordinates = Rio Branco, representative point. Affected population not reported: verify with Civil Defense/S2iD. UPDATE 10/02: per ANA, on Oct 1 the Acre River at Rio Branco stood at 1.67 m (21 cm above the 1.46 m dry-season reference level), near that threshold since August; the Juruá at Cruzeiro do Sul stood at 4.25 m (1.10 m above reference); Aug-Sep rainfall below historical average, source: ac24horas."
 }

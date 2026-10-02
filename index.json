@@ -249,7 +249,7 @@
     "lon": -67.8076,
     "status": "ONGOING",
     "firstDetected": "2026-09-23",
-    "lastUpdated": "2026-09-23",
+    "lastUpdated": "2026-10-02",
     "descEnPreview": "According to the National Confederation of Municipalities (CNM, Sep 21), Acre accounted for 24 of the 35 drought/dry-spell abnormality records in Braz"
   },
   {
@@ -284,5 +284,16 @@
     "firstDetected": "2026-10-01",
     "lastUpdated": "2026-10-01",
     "descEnPreview": "Two municipalities in western Pará (Brazil) declared emergencies due to wildfires: Monte Alegre (Decree 480/2026, Level II emergency) and Rurópolis (D"
+  },
+  {
+    "id": "AMZ-20261002-001",
+    "country": "Ecuador",
+    "hazard": "Extreme Rain",
+    "lat": -0.9938,
+    "lon": -77.8129,
+    "status": "FORECAST",
+    "firstDetected": "2026-10-02",
+    "lastUpdated": "2026-10-02",
+    "descEnPreview": "INAMHI issued Meteorological Advisory No. 77, valid from Oct 1 (15:00) to Oct 5 (10:00), for rain, thunderstorms and possible river rises, driven by u"
   }
 ]

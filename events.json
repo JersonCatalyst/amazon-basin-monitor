@@ -977,8 +977,8 @@
     "lon": -67.8076,
     "coordAccuracy": "MUNICIPALITY_APPROXIMATION",
     "firstDetected": "2026-09-23",
-    "lastUpdated": "2026-09-23",
-    "updateCount": 0,
+    "lastUpdated": "2026-10-02",
+    "updateCount": 1,
     "eventDate": "2026-09-21",
     "adminLevel1": "Acre",
     "adminLevel2": "NOT_REPORTED",
@@ -995,9 +995,9 @@
       "en": "According to the National Confederation of Municipalities (CNM, Sep 21), Acre accounted for 24 of the 35 drought/dry-spell abnormality records in Brazil's North Region between Jul 1 and Sep 15, 2026 (68.6%), 20% more than in 2025 (20 cases). Across the North Region, 33 municipalities were affected, with estimated losses of R$ 632 million (agriculture R$ 46.8M; livestock R$ 32.6M; water supply R$ 17M). Acre's government decreed a state of emergency on Aug 3 over the forecast severe drought of the Acre River. In August the Drought Monitor reported drought across 100% of Acre's territory, the most severe in Brazil. The Acre River at Rio Branco hit its 2026 low (1.59 m); Civil Defense continues tanker-truck water distribution and registration of rural producers with crop losses."
     },
     "notes": {
-      "es": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) y AMZ-20260911-003 (Roraima). Cifras de pérdidas son agregadas de la Región Norte, no exclusivas de Acre. Coordenadas = Rio Branco, punto representativo. Población afectada no reportada: verificar con Defesa Civil/S2iD.",
-      "pt": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) e AMZ-20260911-003 (Roraima). Valores de prejuízo são agregados da Região Norte, não exclusivos do Acre. Coordenadas = Rio Branco, ponto representativo. População afetada não informada: verificar com Defesa Civil/S2iD.",
-      "en": "Distinct from AMZ-20260902-001 (Rio Negro/Manaus) and AMZ-20260911-003 (Roraima). Loss figures are North Region aggregates, not Acre-only. Coordinates = Rio Branco, representative point. Affected population not reported: verify with Civil Defense/S2iD."
+      "es": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) y AMZ-20260911-003 (Roraima). Cifras de pérdidas son agregadas de la Región Norte, no exclusivas de Acre. Coordenadas = Rio Branco, punto representativo. Población afectada no reportada: verificar con Defesa Civil/S2iD. ACTUALIZACIÓN 02/10: según la ANA, el 1-oct el río Acre en Rio Branco marcaba 1,67 m (21 cm sobre la cota de referencia de estiaje, 1,46 m), cerca de ese umbral desde agosto; el Juruá en Cruzeiro do Sul marcaba 4,25 m (1,10 m sobre referencia); lluvias de ago-sep bajo el promedio histórico, fuente: ac24horas.",
+      "pt": "Evento distinto de AMZ-20260902-001 (Rio Negro/Manaus) e AMZ-20260911-003 (Roraima). Valores de prejuízo são agregados da Região Norte, não exclusivos do Acre. Coordenadas = Rio Branco, ponto representativo. População afetada não informada: verificar com Defesa Civil/S2iD. ATUALIZAÇÃO 02/10: segundo a ANA, em 1-out o Rio Acre em Rio Branco marcava 1,67 m (21 cm acima da cota de referência de estiagem, 1,46 m), próximo desse limiar desde agosto; o Juruá em Cruzeiro do Sul marcava 4,25 m (1,10 m acima da referência); chuvas de ago-set abaixo da média histórica, fonte: ac24horas.",
+      "en": "Distinct from AMZ-20260902-001 (Rio Negro/Manaus) and AMZ-20260911-003 (Roraima). Loss figures are North Region aggregates, not Acre-only. Coordinates = Rio Branco, representative point. Affected population not reported: verify with Civil Defense/S2iD. UPDATE 10/02: per ANA, on Oct 1 the Acre River at Rio Branco stood at 1.67 m (21 cm above the 1.46 m dry-season reference level), near that threshold since August; the Juruá at Cruzeiro do Sul stood at 4.25 m (1.10 m above reference); Aug-Sep rainfall below historical average, source: ac24horas."
     },
     "sources": [
       {
@@ -1142,6 +1142,51 @@
       {
         "label": "Brasil em Folhas",
         "url": "https://www.brasilemfolhas.com.br/2026/09/monte-alegre-e-ruropolis-decretam-emergencia-por-incendios-florestais/"
+      }
+    ]
+  },
+  {
+    "id": "AMZ-20261002-001",
+    "country": "Ecuador",
+    "hazard": "Extreme Rain",
+    "priority": "GREEN",
+    "status": "FORECAST",
+    "basinStatus": "INSIDE",
+    "verification": "MULTIPLE_SOURCES",
+    "lat": -0.9938,
+    "lon": -77.8129,
+    "coordAccuracy": "APPROXIMATE",
+    "firstDetected": "2026-10-02",
+    "lastUpdated": "2026-10-02",
+    "updateCount": 0,
+    "eventDate": "2026-10-01",
+    "adminLevel1": "Sucumbíos, Napo, Pastaza, Morona Santiago",
+    "adminLevel2": "NOT_REPORTED",
+    "municipality": "Tena (referencia)",
+    "locality": "Piedemonte amazónico (referencia representativa)",
+    "title": {
+      "es": "INAMHI emite Advertencia N.° 77 por lluvias y tormentas en la Amazonía ecuatoriana (1-5 oct)",
+      "pt": "INAMHI emite Aviso n.º 77 por chuvas e tempestades na Amazônia equatoriana (1-5 out)",
+      "en": "INAMHI issues Advisory No. 77 for rain and storms in Ecuador's Amazon region (Oct 1-5)"
+    },
+    "desc": {
+      "es": "El INAMHI emitió la Advertencia Meteorológica N.° 77, vigente del 1-oct (15:00) al 5-oct (10:00), por lluvias, tormentas y posibles crecidas, atribuidas a divergencia en altura, transporte de humedad y una baja presión, amplificadas por temperaturas oceánicas elevadas asociadas a El Niño. En la Amazonía se prevén lluvias moderadas con episodios fuertes localizados en Sucumbíos, Napo, Pastaza y Morona Santiago, con acumulados de 32-60 mm en el nivel alto. Se advierte acumulación de agua, caída de árboles, posibles inundaciones y deslizamientos. La mayor intensidad del episodio se concentra en la Costa.",
+      "pt": "O INAMHI emitiu o Aviso Meteorológico n.º 77, válido de 1-out (15h) a 5-out (10h), por chuvas, tempestades e possíveis cheias, atribuídas a divergência em altitude, transporte de umidade e uma baixa pressão, amplificadas por temperaturas oceânicas elevadas associadas ao El Niño. Na Amazônia são previstas chuvas moderadas com episódios fortes localizados em Sucumbíos, Napo, Pastaza e Morona Santiago, com acumulados de 32-60 mm no nível alto. Alerta para acúmulo de água, queda de árvores, possíveis inundações e deslizamentos. A maior intensidade concentra-se na Costa.",
+      "en": "INAMHI issued Meteorological Advisory No. 77, valid from Oct 1 (15:00) to Oct 5 (10:00), for rain, thunderstorms and possible river rises, driven by upper-level divergence, moisture transport and a low-pressure system, amplified by El Niño-related warm ocean temperatures. In the Amazon region, moderate rain with localized heavy episodes is expected in Sucumbíos, Napo, Pastaza and Morona Santiago, with totals of 32-60 mm at the high level. Water ponding, falling trees, possible flooding and landslides are warned. The heaviest rain in this episode is concentrated on the Coast."
+    },
+    "notes": {
+      "es": "Nuevo episodio de pronóstico, distinto de AMZ-20260923-001 (Advertencias N.° 74-75, 23-28 sep). Sin impactos amazónicos confirmados al 2-oct. Coordenadas = Tena, punto representativo, no ubicación de impacto. Vigilar reportes SNGR en Napo, Pastaza y Morona Santiago (deslizamientos previos: AMZ-20260914-001).",
+      "pt": "Novo episódio de previsão, distinto de AMZ-20260923-001 (Avisos n.º 74-75, 23-28 set). Sem impactos amazônicos confirmados até 2-out. Coordenadas = Tena, ponto representativo. Monitorar relatórios da SNGR em Napo, Pastaza e Morona Santiago (deslizamentos anteriores: AMZ-20260914-001).",
+      "en": "New forecast episode, distinct from AMZ-20260923-001 (Advisories No. 74-75, Sep 23-28). No confirmed Amazon impacts as of Oct 2. Coordinates = Tena, representative point, not an impact location. Watch SNGR reports in Napo, Pastaza and Morona Santiago (earlier landslides: AMZ-20260914-001)."
+    },
+    "sources": [
+      {
+        "label": "INAMHI (Advertencia Meteorológica N.° 77), vía El Universo",
+        "url": "https://www.eluniverso.com/comunidad/ecuador/inamhi-alerta-por-lluvias-intensas-y-tormentas-en-ecuador-del-1-al-5-de-octubre-estas-son-las-provincias-con-mayor-riesgo-de-inundaciones-y-deslizamientos-nota/"
+      },
+      {
+        "label": "INAMHI / SNGR, vía El Diario (Ecuador)",
+        "url": "https://www.eldiario.ec/ecuador/lluvias-fuertes-tormentas-y-crecidas-estas-zonas-de-ecuador-estaran-bajo-alerta-hasta-el-5-de-octubre-02102026"
       }
     ]
   }

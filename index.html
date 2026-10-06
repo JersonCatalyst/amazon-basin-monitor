@@ -375,6 +375,16 @@ const COUNTRY_BOUNDS = {
   Venezuela: [[0.65,-73.38],[12.20,-59.80]]
 };
 
+// ISO 3166-1 alpha-3 de cada pais, para buscar su geometria real (cargada en
+// COUNTRY_FEATURES por loadBordersLayer) y hacer "zoom to layer" + resaltado
+// sobre el limite real en vez de la caja aproximada de arriba.
+const COUNTRY_ISO3 = {
+  Brazil: "BRA", Peru: "PER", Colombia: "COL",
+  Bolivia: "BOL", Ecuador: "ECU", Venezuela: "VEN"
+};
+// Se llena de forma asincrona cuando loadBordersLayer() recibe el GeoJSON.
+let COUNTRY_FEATURES = {};
+
 function normalizeHazard(h){
   if (!h) return 'DEFAULT';
   return String(h).toUpperCase().trim().replace(/[\s-]+/g,'_');
@@ -387,7 +397,7 @@ let activePriority = null;
 let dateFrom = null;
 let dateTo = null;
 
-let map, newsLayer, firmsLayer, sstLayer, layersControl, basinLayer, firmsRenderer, firmsLegendControl;
+let map, newsLayer, firmsLayer, sstLayer, layersControl, basinLayer, firmsRenderer, firmsLegendControl, countryHighlightLayer;
 // Linea de tiempo FIRMS: null = modo "en vivo" (ultimas 24h / filtro de fechas
 // normal, igual que antes); una fecha concreta = se congela el mapa de FIRMS
 // en ese dia, para poder repasar los ultimos dias uno por uno.
@@ -458,6 +468,50 @@ function getFiltered(){
   });
 }
 
+// Devuelve los bounds reales del pais (geometria oficial via COUNTRY_FEATURES),
+// o la caja aproximada COUNTRY_BOUNDS como respaldo si la geometria real
+// todavia no cargo (fetch en curso) o fallo.
+function countryZoomBounds(c){
+  var iso3 = COUNTRY_ISO3[c];
+  var feat = iso3 && COUNTRY_FEATURES[iso3];
+  if (feat) {
+    try { return L.geoJSON(feat).getBounds(); } catch(e){}
+  }
+  return COUNTRY_BOUNDS[c] ? L.latLngBounds(COUNTRY_BOUNDS[c]) : null;
+}
+
+// Dibuja el limite real del pais activo resaltado (color propio, mas grueso
+// que el limite nacional normal) en su propio pane, por encima de la cuenca.
+function renderCountryHighlight(){
+  if (!countryHighlightLayer) return;
+  countryHighlightLayer.clearLayers();
+  if (!activeCountry) return;
+  var iso3 = COUNTRY_ISO3[activeCountry];
+  var feat = iso3 && COUNTRY_FEATURES[iso3];
+  if (!feat) return;
+  L.geoJSON(feat, {
+    pane: 'countryHighlightPane', interactive: false,
+    style: { color: '#4CDBB0', weight: 4, opacity: 1, fill: false }
+  }).addTo(countryHighlightLayer);
+}
+
+// Zoom a los eventos actualmente filtrados (pais + amenaza + fecha); si no
+// hay ninguno con coordenadas, cae a fallbackBounds (p.ej. el pais activo) y,
+// si tampoco hay eso, vuelve a la vista por defecto de toda la cuenca.
+function zoomToFilteredEvents(fallbackBounds){
+  if (!map) return;
+  var pts = getFiltered().filter(function(e){
+    return typeof e.lat === 'number' && typeof e.lon === 'number' && !isNaN(e.lat) && !isNaN(e.lon);
+  });
+  if (pts.length) {
+    map.fitBounds(L.latLngBounds(pts.map(function(e){ return [e.lat, e.lon]; })), { padding: [40, 40], maxZoom: 8 });
+  } else if (fallbackBounds) {
+    map.fitBounds(fallbackBounds, { padding: [20, 20] });
+  } else {
+    map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
+  }
+}
+
 function renderCountryFilters(){
   var wrap = document.getElementById('countryFilters');
   wrap.innerHTML = '';
@@ -467,6 +521,7 @@ function renderCountryFilters(){
   allChip.onclick = function(){
     activeCountry = null;
     renderAll();
+    renderCountryHighlight();
     if (map) map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
   };
   wrap.appendChild(allChip);
@@ -477,10 +532,13 @@ function renderCountryFilters(){
     chip.onclick = function(){
       activeCountry = (activeCountry === c) ? null : c;
       renderAll();
+      renderCountryHighlight();
       if (map) {
-        if (activeCountry && COUNTRY_BOUNDS[activeCountry]) {
-          map.fitBounds(COUNTRY_BOUNDS[activeCountry], { padding: [20,20] });
-        } else if (!activeCountry) {
+        if (activeCountry) {
+          if (!map.hasLayer(window.__bordersLayer)) map.addLayer(window.__bordersLayer);
+          var b = countryZoomBounds(activeCountry);
+          if (b) map.fitBounds(b, { padding: [30,30] });
+        } else {
           map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM);
         }
       }
@@ -495,7 +553,14 @@ function renderHazardFilters(){
   var allChip = document.createElement('button');
   allChip.className = 'chip' + (activeHazard ? '' : ' active');
   allChip.textContent = t('all');
-  allChip.onclick = function(){ activeHazard = null; renderAll(); };
+  allChip.onclick = function(){
+    activeHazard = null;
+    renderAll();
+    if (map) {
+      var b = activeCountry ? countryZoomBounds(activeCountry) : null;
+      if (b) { map.fitBounds(b, { padding: [30,30] }); } else { map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM); }
+    }
+  };
   wrap.appendChild(allChip);
   presentHazards().forEach(function(hz){
     var chip = document.createElement('button');
@@ -504,7 +569,18 @@ function renderHazardFilters(){
     chip.style.alignItems = 'center';
     chip.style.gap = '5px';
     chip.innerHTML = iconSvg(hz,13) + '<span>' + hazardLabel(hz) + '</span>';
-    chip.onclick = function(){ activeHazard = (activeHazard === hz) ? null : hz; renderAll(); };
+    chip.onclick = function(){
+      activeHazard = (activeHazard === hz) ? null : hz;
+      renderAll();
+      if (map) {
+        if (activeHazard) {
+          zoomToFilteredEvents(activeCountry ? countryZoomBounds(activeCountry) : null);
+        } else {
+          var b = activeCountry ? countryZoomBounds(activeCountry) : null;
+          if (b) { map.fitBounds(b, { padding: [30,30] }); } else { map.setView(DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM); }
+        }
+      }
+    };
     wrap.appendChild(chip);
   });
 }
@@ -856,7 +932,11 @@ function renderBasinLayer(){
   if (!AMAZON_BASIN_GEOJSON) return;
   L.geoJSON(AMAZON_BASIN_GEOJSON, {
     pane: 'basinPane', interactive: false,
-    style: { color: '#207685', weight: 2.5, opacity: 0.95, dashArray: '6 4', fillColor: '#41C0A6', fillOpacity: 0.06 }
+    style: { color: '#E6F7F4', weight: 5, opacity: 0.55, dashArray: null, fill: false }
+  }).addTo(basinLayer);
+  L.geoJSON(AMAZON_BASIN_GEOJSON, {
+    pane: 'basinPane', interactive: false,
+    style: { color: '#207685', weight: 3, opacity: 1, dashArray: '7 5', fillColor: '#41C0A6', fillOpacity: 0.08 }
   }).addTo(basinLayer);
 }
 
@@ -1012,8 +1092,8 @@ function renderAll(){
 
 function buildLayersControl(){
   var baseLayers = {};
-  baseLayers['OpenStreetMap'] = window.__osmLayer;
   baseLayers['Satellite'] = window.__satLayer;
+  baseLayers['OpenStreetMap'] = window.__osmLayer;
   var overlays = {};
   overlays[t('layerBasin')] = basinLayer;
   overlays[t('borders')] = window.__bordersLayer;
@@ -1037,10 +1117,12 @@ function loadBordersLayer(){
           return PROJECT_ISO3.indexOf(f.id) !== -1;
         })
       };
+      filtered.features.forEach(function(f){ COUNTRY_FEATURES[f.id] = f; });
       L.geoJSON(filtered, {
         style: { color: '#063B6D', weight: 3, opacity: 0.9, fill: false },
         interactive: false
       }).addTo(window.__bordersLayer);
+      renderCountryHighlight();
     })
     .catch(function(err){ console.error('Error cargando limites nacionales:', err); });
 }
@@ -1050,11 +1132,11 @@ function initMap(){
 
   window.__osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap', maxZoom: 18
-  }).addTo(map);
+  });
 
   window.__satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Esri World Imagery', maxZoom: 18
-  });
+  }).addTo(map);
 
   // Capa vectorial (no tile) con solo los limites de los 6 paises del analisis;
   // se puebla de forma asincrona y queda vacia hasta que el GeoJSON responde.
@@ -1066,6 +1148,11 @@ function initMap(){
   map.getPane('basinPane').style.zIndex = 350;
   map.getPane('basinPane').style.pointerEvents = 'none';
   basinLayer = L.layerGroup().addTo(map);
+
+  map.createPane('countryHighlightPane');
+  map.getPane('countryHighlightPane').style.zIndex = 360;
+  map.getPane('countryHighlightPane').style.pointerEvents = 'none';
+  countryHighlightLayer = L.layerGroup().addTo(map);
 
   newsLayer = L.layerGroup().addTo(map);
   // Canvas en vez de SVG: miles de focos de calor se dibujan mucho mas rapido.

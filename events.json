@@ -11,8 +11,8 @@
     "lon": -64.9,
     "coordAccuracy": "APPROXIMATE",
     "firstDetected": "2026-08-01",
-    "lastUpdated": "2026-09-23",
-    "updateCount": 5,
+    "lastUpdated": "2026-10-06",
+    "updateCount": 6,
     "eventDate": "2026-09-11",
     "adminLevel1": "Beni / Santa Cruz",
     "adminLevel2": "NOT_REPORTED",
@@ -29,9 +29,9 @@
       "en": "Bolivia is experiencing a wildfire season that had already surpassed the 2025 peak by 21 July (2,835 heat spots, versus 2,536 for all of 2025). CEJIS documented 1,122 heat spots between 17-31 August across 30 of 58 indigenous territories. Beni and Santa Cruz account for 86.7% of nationally burned area. UPDATE (11 Sep): the Santa Cruz government reports 395 heat spots (10 Sep) and 6,615 cumulative for September; 5 active wildfires: Concepción, San José de Chiquitos, San Ignacio de Velasco, San Miguel de Velasco (extinguished), and Otuquis, where fire crossed from Brazil into Bolivia. Concepción, Chiquitos, Velasco, and Otuquis lie in the Santa Cruz Chiquitania/Pantanal, outside the Amazon basin; Beni remains the Amazonian department of primary interest."
     },
     "notes": {
-      "es": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni es amazónico, gran parte de Santa Cruz es Chiquitania/Chaco (fuera de la cuenca). ACTUALIZACIÓN 16/09: La Razón (14-sep, título/fecha verificados, contenido tras muro de pago) reporta coordinación bilateral Bolivia-Brasil para el combate de incendios, en el contexto del foco transfronterizo de Otuquis que cruzó desde Brasil hacia el Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que la crisis de incendios sigue activa y ahora tiene una dimensión de cooperación internacional. Se mantiene la recomendación de aislar cifras de Beni (amazónico) del total de Santa Cruz (mayormente Chiquitania/Chaco). ACTUALIZACIÓN 23/09: el Centro Departamental de Monitoreo de Santa Cruz reportó el 21-sep 347 focos de calor en el día, 13.618 acumulados en septiembre, 128 incendios registrados en el mes y 23.103 ha afectadas; 2 incendios activos en fase de monitoreo (Aguas Calientes y zona Vertedero, Concepción -- Chiquitania, mayormente fuera de la cuenca); 4 incendios extinguidos el fin de semana. Sin cifra nueva para Beni. Fuente: El Deber / La Razón (21-sep).",
-      "pt": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni é amazônico, grande parte de Santa Cruz é Chiquitania/Chaco (fora da bacia). ATUALIZAÇÃO 16/09: La Razón (14-set, título/data verificados, conteúdo atrás de paywall) noticia coordenação bilateral Bolívia-Brasil para o combate a incêndios, no contexto do foco transfronteiriço de Otuquis vindo do Brasil para o Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que a crise de incêndios segue ativa e agora tem uma dimensão de cooperação internacional. Mantém-se a recomendação de isolar números de Beni (amazônico) do total de Santa Cruz (majoritariamente Chiquitania/Chaco). ATUALIZAÇÃO 23/09: o Centro Departamental de Monitoramento de Santa Cruz relatou em 21-set 347 focos de calor no dia, 13.618 acumulados em setembro, 128 incêndios registrados no mês e 23.103 ha afetados; 2 incêndios ativos em fase de monitoramento (Aguas Calientes e zona Vertedero, Concepción -- Chiquitania, majoritariamente fora da bacia); 4 incêndios extintos no fim de semana. Sem número novo para Beni. Fonte: El Deber / La Razón (21-set).",
-      "en": "AMAZON_BASIN_STATUS marked PARTIALLY_INSIDE: Beni is Amazonian, much of Santa Cruz is Chiquitania/Chaco (outside the basin). UPDATE 09/16: La Razón (Sep 14, title/date verified, content behind a paywall) reports bilateral Bolivia-Brazil coordination to fight fires, in the context of the cross-border Otuquis blaze that crossed from Brazil into Otuquis National Park (Germán Busch, Santa Cruz); confirms the fire crisis remains active and now has an international cooperation dimension. The recommendation to isolate Beni-specific (Amazonian) figures from the Santa Cruz total (mostly Chiquitania/Chaco) stands. UPDATE 09/23: Santa Cruz's Departmental Monitoring Center reported on Sep 21 347 heat spots that day, 13,618 accumulated in September, 128 fires registered this month and 23,103 ha affected; 2 active fires under monitoring (Aguas Calientes and the Vertedero area, Concepción -- Chiquitania, mostly outside the basin); 4 fires extinguished over the weekend. No new figure for Beni. Source: El Deber / La Razón (Sep 21)."
+      "es": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni es amazónico, gran parte de Santa Cruz es Chiquitania/Chaco (fuera de la cuenca). ACTUALIZACIÓN 16/09: La Razón (14-sep, título/fecha verificados, contenido tras muro de pago) reporta coordinación bilateral Bolivia-Brasil para el combate de incendios, en el contexto del foco transfronterizo de Otuquis que cruzó desde Brasil hacia el Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que la crisis de incendios sigue activa y ahora tiene una dimensión de cooperación internacional. Se mantiene la recomendación de aislar cifras de Beni (amazónico) del total de Santa Cruz (mayormente Chiquitania/Chaco). ACTUALIZACIÓN 23/09: el Centro Departamental de Monitoreo de Santa Cruz reportó el 21-sep 347 focos de calor en el día, 13.618 acumulados en septiembre, 128 incendios registrados en el mes y 23.103 ha afectadas; 2 incendios activos en fase de monitoreo (Aguas Calientes y zona Vertedero, Concepción -- Chiquitania, mayormente fuera de la cuenca); 4 incendios extinguidos el fin de semana. Sin cifra nueva para Beni. Fuente: El Deber / La Razón (21-sep). ACTUALIZACIÓN 06/10: la Gobernación de Santa Cruz reportó el 29-sep 1.084 focos de calor, 12 incendios activos y 41.360 ha quemadas en el departamento (Concepción, San Antonio de Lomerío, Charagua, Cabezas, San Ignacio, San Javier, San Miguel, San José); sin cifra nueva para Beni, fuente: Red Uno.",
+      "pt": "AMAZON_BASIN_STATUS marcado PARTIALLY_INSIDE: Beni é amazônico, grande parte de Santa Cruz é Chiquitania/Chaco (fora da bacia). ATUALIZAÇÃO 16/09: La Razón (14-set, título/data verificados, conteúdo atrás de paywall) noticia coordenação bilateral Bolívia-Brasil para o combate a incêndios, no contexto do foco transfronteiriço de Otuquis vindo do Brasil para o Parque Nacional Otuquis (Germán Busch, Santa Cruz); confirma que a crise de incêndios segue ativa e agora tem uma dimensão de cooperação internacional. Mantém-se a recomendação de isolar números de Beni (amazônico) do total de Santa Cruz (majoritariamente Chiquitania/Chaco). ATUALIZAÇÃO 23/09: o Centro Departamental de Monitoramento de Santa Cruz relatou em 21-set 347 focos de calor no dia, 13.618 acumulados em setembro, 128 incêndios registrados no mês e 23.103 ha afetados; 2 incêndios ativos em fase de monitoramento (Aguas Calientes e zona Vertedero, Concepción -- Chiquitania, majoritariamente fora da bacia); 4 incêndios extintos no fim de semana. Sem número novo para Beni. Fonte: El Deber / La Razón (21-set). ATUALIZAÇÃO 06/10: o Governo de Santa Cruz informou em 29-set 1.084 focos de calor, 12 incêndios ativos e 41.360 ha queimados no departamento (Concepción, San Antonio de Lomerío, Charagua, Cabezas, San Ignacio, San Javier, San Miguel, San José); sem dado novo para Beni, fonte: Red Uno.",
+      "en": "AMAZON_BASIN_STATUS marked PARTIALLY_INSIDE: Beni is Amazonian, much of Santa Cruz is Chiquitania/Chaco (outside the basin). UPDATE 09/16: La Razón (Sep 14, title/date verified, content behind a paywall) reports bilateral Bolivia-Brazil coordination to fight fires, in the context of the cross-border Otuquis blaze that crossed from Brazil into Otuquis National Park (Germán Busch, Santa Cruz); confirms the fire crisis remains active and now has an international cooperation dimension. The recommendation to isolate Beni-specific (Amazonian) figures from the Santa Cruz total (mostly Chiquitania/Chaco) stands. UPDATE 09/23: Santa Cruz's Departmental Monitoring Center reported on Sep 21 347 heat spots that day, 13,618 accumulated in September, 128 fires registered this month and 23,103 ha affected; 2 active fires under monitoring (Aguas Calientes and the Vertedero area, Concepción -- Chiquitania, mostly outside the basin); 4 fires extinguished over the weekend. No new figure for Beni. Source: El Deber / La Razón (Sep 21). UPDATE 10/06: Santa Cruz Governorship reported on 29 Sep 1,084 heat spots, 12 active fires and 41,360 ha burned in the department (Concepción, San Antonio de Lomerío, Charagua, Cabezas, San Ignacio, San Javier, San Miguel, San José); no new Beni figure, source: Red Uno."
     },
     "sources": [
       {
@@ -1187,6 +1187,51 @@
       {
         "label": "INAMHI / SNGR, vía El Diario (Ecuador)",
         "url": "https://www.eldiario.ec/ecuador/lluvias-fuertes-tormentas-y-crecidas-estas-zonas-de-ecuador-estaran-bajo-alerta-hasta-el-5-de-octubre-02102026"
+      }
+    ]
+  },
+  {
+    "id": "AMZ-20261006-001",
+    "country": "Brazil",
+    "hazard": "Drought",
+    "priority": "ORANGE",
+    "status": "ONGOING",
+    "basinStatus": "INSIDE",
+    "verification": "MULTIPLE_SOURCES",
+    "lat": -8.7612,
+    "lon": -63.9004,
+    "coordAccuracy": "APPROXIMATE",
+    "firstDetected": "2026-10-06",
+    "lastUpdated": "2026-10-06",
+    "updateCount": 0,
+    "eventDate": "2026-10-01",
+    "adminLevel1": "Rondônia",
+    "adminLevel2": "Porto Velho",
+    "municipality": "Porto Velho",
+    "locality": "Distritos del Alto, Medio y Bajo Madeira (Calama, Demarcação, Nazaré, São Carlos, Abunã, Nova Mutum-Paraná, Jaci-Paraná, União Bandeirantes, Rio Pardo, Extrema, Fortaleza do Abunã, Nova Califórnia)",
+    "title": {
+      "es": "Porto Velho (Rondônia) decreta situación de emergencia por estiaje en distritos del río Madeira",
+      "pt": "Porto Velho (Rondônia) decreta situação de emergência por estiagem em distritos do rio Madeira",
+      "en": "Porto Velho (Rondônia) declares drought emergency in Madeira River districts"
+    },
+    "desc": {
+      "es": "La Prefeitura de Porto Velho firmó el 1-oct-2026 (publicado el 5-oct) el Decreto Municipal n.º 22.515, que declara Situación de Emergencia (Nivel II) por 180 días a causa del estiaje severo en distritos del Bajo Madeira (Calama, Demarcação, Nazaré, São Carlos), Medio Madeira (zona rural del distrito sede, Abunã, Nova Mutum-Paraná, Jaci-Paraná, União Bandeirantes, Rio Pardo) y Alto Madeira (Extrema, Fortaleza do Abunã, Nova Califórnia). Se reportan 7.442 familias afectadas en 85 localidades rurales, ribereñas e indígenas, más 517 personas en cinco aldeas indígenas. El decreto habilita apoyo estatal/federal, distribución de agua potable por camiones y embarcaciones, reservorios y compras de emergencia. Las autoridades atribuyen el evento a un \"Super El Niño\".",
+      "pt": "A Prefeitura de Porto Velho assinou em 1-out-2026 (publicado em 5-out) o Decreto Municipal nº 22.515, que declara Situação de Emergência (Nível II) por 180 dias devido à estiagem severa em distritos do Baixo Madeira (Calama, Demarcação, Nazaré, São Carlos), Médio Madeira (zona rural do distrito-sede, Abunã, Nova Mutum-Paraná, Jaci-Paraná, União Bandeirantes, Rio Pardo) e Alto Madeira (Extrema, Fortaleza do Abunã, Nova Califórnia). São 7.442 famílias afetadas em 85 localidades rurais, ribeirinhas e indígenas, além de 517 pessoas em cinco aldeias indígenas. O decreto viabiliza apoio estadual/federal, entrega de água potável por caminhões-pipa e embarcações, reservatórios e compras emergenciais. As autoridades atribuem o evento a um \"Super El Niño\".",
+      "en": "Porto Velho city government signed on 1 Oct 2026 (published 5 Oct) Municipal Decree No. 22,515 declaring a Situation of Emergency (Level II) for 180 days due to severe drought in districts of the Lower Madeira (Calama, Demarcação, Nazaré, São Carlos), Middle Madeira (rural zone of the seat district, Abunã, Nova Mutum-Paraná, Jaci-Paraná, União Bandeirantes, Rio Pardo) and Upper Madeira (Extrema, Fortaleza do Abunã, Nova Califórnia). 7,442 families are reported affected across 85 rural, riverine and indigenous localities, plus 517 people in five indigenous villages. The decree enables state/federal support, drinking-water delivery by trucks and boats, reservoirs and emergency procurement. Authorities attribute the event to a \"Super El Niño\"."
+    },
+    "notes": {
+      "es": "Evento nuevo; distinto de AMZ-20260902-001 (sequía Amazonas/Rio Negro) y AMZ-20260923-002 (Acre). Coordenadas = sede municipal de Porto Velho (punto representativo, los distritos se extienden a lo largo del Madeira). El SGB (39º boletín, 29-sep) reportó el Madeira en Porto Velho en 386 cm con repunte de +86 cm en 24 h. Requiere verificación con Diário Oficial del Municipio / S2iD.",
+      "pt": "Evento novo; distinto de AMZ-20260902-001 (seca Amazonas/Rio Negro) e AMZ-20260923-002 (Acre). Coordenadas = sede municipal de Porto Velho (ponto representativo; os distritos se estendem ao longo do Madeira). O SGB (39º boletim, 29-set) registrou o Madeira em Porto Velho em 386 cm, com alta de +86 cm em 24 h. Requer verificação no Diário Oficial do Município / S2iD.",
+      "en": "New event; distinct from AMZ-20260902-001 (Amazonas/Rio Negro drought) and AMZ-20260923-002 (Acre). Coordinates = Porto Velho municipal seat (representative point; districts stretch along the Madeira). SGB (39th bulletin, 29 Sep) reported the Madeira at Porto Velho at 386 cm with a +86 cm rise in 24 h. Requires verification against the Municipal Official Gazette / S2iD."
+    },
+    "sources": [
+      {
+        "label": "Prefeitura de Porto Velho (Decreto 22.515), vía Rondoniaovivo",
+        "url": "https://www.rondoniaovivo.com/noticia/geral/2026/10/05/estiagem-situacao-de-emergencia-e-decretada-em-distritos-do-alto-medio-e-baixo-madeira.html"
+      },
+      {
+        "label": "Rondônia Dinâmica",
+        "url": "https://www.rondoniadinamica.com/noticias/2026/10/prefeitura-de-porto-velho-decretada-situacao-de-emergencia-em-distritos-do-alto-medio-e-baixo-madeira,255796.shtml"
       }
     ]
   }

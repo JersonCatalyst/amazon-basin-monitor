@@ -7,7 +7,7 @@
     "lon": -64.9,
     "status": "ONGOING",
     "firstDetected": "2026-08-01",
-    "lastUpdated": "2026-09-23",
+    "lastUpdated": "2026-10-06",
     "descEnPreview": "Bolivia is experiencing a wildfire season that had already surpassed the 2025 peak by 21 July (2,835 heat spots, versus 2,536 for all of 2025). CEJIS "
   },
   {
@@ -295,5 +295,16 @@
     "firstDetected": "2026-10-02",
     "lastUpdated": "2026-10-03",
     "descEnPreview": "INAMHI issued Meteorological Advisory No. 77, valid from Oct 1 (15:00) to Oct 5 (10:00), for rain, thunderstorms and possible river rises, driven by u"
+  },
+  {
+    "id": "AMZ-20261006-001",
+    "country": "Brazil",
+    "hazard": "Drought",
+    "lat": -8.7612,
+    "lon": -63.9004,
+    "status": "ONGOING",
+    "firstDetected": "2026-10-06",
+    "lastUpdated": "2026-10-06",
+    "descEnPreview": "Porto Velho city government signed on 1 Oct 2026 (published 5 Oct) Municipal Decree No. 22,515 declaring a Situation of Emergency (Level II) for 180 d"
   }
 ]

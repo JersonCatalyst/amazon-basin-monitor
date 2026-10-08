@@ -18,7 +18,7 @@
     "lon": -60.0224,
     "status": "ONGOING",
     "firstDetected": "2026-09-02",
-    "lastUpdated": "2026-10-03",
+    "lastUpdated": "2026-10-08",
     "descEnPreview": "SGB and INPA report the Rio Negro at Manaus has been falling without interruption since early August, with projections placing the 2026 minimum level "
   },
   {
@@ -73,7 +73,7 @@
     "lon": -60.3806,
     "status": "ONGOING",
     "firstDetected": "2026-09-10",
-    "lastUpdated": "2026-09-28",
+    "lastUpdated": "2026-10-08",
     "descEnPreview": "INPE data show Amazonas (Brazil) led the national heat-spot count in the first week of September 2026 (1,167-1,224 spots, depending on source), far ah"
   },
   {
@@ -306,5 +306,16 @@
     "firstDetected": "2026-10-06",
     "lastUpdated": "2026-10-06",
     "descEnPreview": "Porto Velho city government signed on 1 Oct 2026 (published 5 Oct) Municipal Decree No. 22,515 declaring a Situation of Emergency (Level II) for 180 d"
+  },
+  {
+    "id": "AMZ-20261008-001",
+    "country": "Peru",
+    "hazard": "Extreme Heat",
+    "lat": -3.7437,
+    "lon": -73.2516,
+    "status": "FORECAST",
+    "firstDetected": "2026-10-08",
+    "lastUpdated": "2026-10-08",
+    "descEnPreview": "Peru's SENAMHI issued weather advisory No. 397 for a daytime temperature rise in the jungle, valid Oct 4-6, 2026, covering Amazonas, Cajamarca, Huánuc"
   }
 ]
